@@ -44,11 +44,12 @@ body {
 }
 
 .style-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 30px;
   width: 100%;
-  max-width: 1600px;
   margin: 0 auto;
 }
 
@@ -56,6 +57,7 @@ body {
   background: white;
   border-radius: 15px;
   overflow: hidden;
+  width: 300px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
 }
@@ -94,6 +96,7 @@ body {
   padding: 20px;
   background: #f9f9f9;
   border-top: 1px solid #eee;
+  border-radius: 0px 0px 16px 16px;
 }
 
 .expandable-section pre {
