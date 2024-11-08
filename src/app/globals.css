@@ -18,6 +18,10 @@ body {
   padding: 20px;
 }
 
+.preview-button {
+  padding: 12px 32px;
+}
+
 .main {
   max-width: 1600px;
   margin: 0 auto;
@@ -58,6 +62,15 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+.style-frame > * {
+  margin-bottom: 20px;
+}
+
+/* Remove margin from the last element */
+.style-frame > *:last-child {
+  margin-bottom: 0;
 }
 
 .style-info {

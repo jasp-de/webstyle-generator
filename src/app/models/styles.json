@@ -34,7 +34,12 @@
         "fontFamily": "inherit",
         "fontSize": "1em",
         "cursor": "pointer",
-        "transition": "all 0.3s ease"
+        "transition": "all 0.3s ease",
+        ":hover": {
+          "background": "#fff",
+          "transform": "translateY(-2px)",
+          "boxShadow": "0 5px 15px rgba(0,0,0,0.2)"
+        }
       },
       "font": {
         "family": "Cinzel",
@@ -79,7 +84,12 @@
         "fontFamily": "inherit",
         "textTransform": "uppercase",
         "cursor": "pointer",
-        "transition": "all 0.3s ease"
+        "transition": "all 0.3s ease",
+        ":hover": {
+          "background": "#ff4e00",
+          "transform": "translateY(-3px)",
+          "boxShadow": "0 5px 15px rgba(255,78,0,0.3)"
+        }
       },
       "font": {
         "family": "Orbitron",
@@ -123,7 +133,12 @@
         "border": "none",
         "backdropFilter": "blur(5px)",
         "borderRadius": "30px",
-        "transition": "all 0.3s"
+        "transition": "all 0.3s",
+        ":hover": {
+          "background": "rgba(255,255,255,0.3)",
+          "transform": "translateY(-5px)",
+          "boxShadow": "0 5px 15px rgba(0,0,0,0.2)"
+        }
       },
       "font": {
         "family": "Roboto",
