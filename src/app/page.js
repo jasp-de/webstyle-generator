@@ -11,7 +11,7 @@ export default function Home() {
           <h1>Webstyle Explorer</h1>
           <p>Discover and compare different web design aesthetics</p>
         </div>
-        <div className="previews">
+        <div>
           <StyleGrid></StyleGrid>
         </div>
       </main>
