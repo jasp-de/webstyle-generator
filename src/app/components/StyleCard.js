@@ -47,8 +47,14 @@ export default function StyleCard({ style }) {
     .join("\n  ")}
 }`;
 
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(cssText);
+  const copyToClipboard = (event) => {
+    const button = event.currentTarget;
+    navigator.clipboard.writeText(cssText).then(() => {
+      button.textContent = "Copied!";
+      setTimeout(() => {
+        button.textContent = "Copy CSS";
+      }, 2000);
+    });
   };
 
   return (
