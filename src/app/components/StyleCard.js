@@ -1,5 +1,15 @@
+"use client";
+
+import { useState } from "react";
+
 export default function StyleCard({ style }) {
   const { text, info, css } = style;
+  const [isHovered, setIsHovered] = useState(false);
+
+  const buttonStyle = {
+    ...css.button,
+    ...(isHovered ? css.button[":hover"] : {}),
+  };
 
   return (
     <div className="style-card">
@@ -10,7 +20,12 @@ export default function StyleCard({ style }) {
         <p className="preview-paragraph" style={css.p}>
           {text.shortDescription}
         </p>
-        <button className="preview-button" style={css.button}>
+        <button
+          className="preview-button"
+          style={buttonStyle}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
           {text.buttonText}
         </button>
       </div>
