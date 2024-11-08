@@ -29,28 +29,36 @@ export default mongoose.models.Style || mongoose.model("Style", StyleSchema);
 
 /*
 
-Style Model
+STYLE MODEL
 
 text
 - title
 - shortDescription
 - buttonText
+
 info
 - name
 - fontname
-- colors
+- colorScheme
 - style
 - features
+- LIKED BY [] 
+
 ---
----
-- font
---family
--- weights
+
 ---
 - css
 -- frame
 -- h1
 -- p
 -- button
+-- font
+---family
+--- weights
+
+
+USER MODEL
+- username
+- likes
 
 */

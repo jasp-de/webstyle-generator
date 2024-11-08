@@ -145,5 +145,754 @@
         "weights": ["400", "700"]
       }
     }
+  },
+
+  {
+    "text": {
+      "title": "Soft UI",
+      "shortDescription": "Touch the future",
+      "buttonText": "Feel It"
+    },
+    "info": {
+      "name": "Neumorphic",
+      "fontname": "Poppins",
+      "colorScheme": "Soft shadows",
+      "style": "3D, tactile",
+      "features": "Layered shadows"
+    },
+    "css": {
+      "frame": {
+        "background": "#e0e5ec",
+        "color": "#4d4d4d",
+        "fontFamily": "'Poppins', sans-serif"
+      },
+      "h1": {
+        "fontSize": "2.5em",
+        "fontWeight": "600",
+        "color": "#4d4d4d"
+      },
+      "p": {
+        "fontSize": "1.1em",
+        "color": "#666"
+      },
+      "button": {
+        "background": "#e0e5ec",
+        "color": "#4d4d4d",
+        "border": "none",
+        "padding": "15px 40px",
+        "borderRadius": "10px",
+        "fontFamily": "inherit",
+        "fontSize": "1em",
+        "cursor": "pointer",
+        "transition": "all 0.3s ease",
+        "boxShadow": "6px 6px 12px #b8b9be, -6px -6px 12px #ffffff",
+        ":hover": {
+          "boxShadow": "4px 4px 8px #b8b9be, -4px -4px 8px #ffffff",
+          "transform": "translateY(-2px)"
+        }
+      },
+      "font": {
+        "family": "Poppins",
+        "weights": ["400", "600"]
+      }
+    }
+  },
+  {
+    "text": {
+      "title": "Mystic",
+      "shortDescription": "Ethereal vibes",
+      "buttonText": "Enter"
+    },
+    "info": {
+      "name": "Mystic",
+      "fontname": "Marcellus",
+      "colorScheme": "Purple & Gold",
+      "style": "Mystical, ethereal",
+      "features": "Gradient overlay, serif font"
+    },
+    "css": {
+      "frame": {
+        "background": "linear-gradient(135deg, #2a1b3d, #44318d)",
+        "color": "#e4d3ff",
+        "fontFamily": "'Marcellus', serif"
+      },
+      "h1": {
+        "fontSize": "2.8em",
+        "textShadow": "0 2px 4px rgba(0,0,0,0.3)"
+      },
+      "p": {
+        "fontSize": "1.2em",
+        "color": "rgba(228,211,255,0.9)"
+      },
+      "button": {
+        "background": "rgba(255,255,255,0.1)",
+        "color": "#fff",
+        "border": "1px solid rgba(255,255,255,0.3)",
+        "backdropFilter": "blur(5px)",
+        "fontFamily": "inherit",
+        "fontSize": "1em",
+        "cursor": "pointer",
+        "transition": "all 0.3s ease",
+        ":hover": {
+          "background": "rgba(255,255,255,0.2)",
+          "transform": "translateY(-2px)",
+          "boxShadow": "0 5px 15px rgba(0,0,0,0.2)"
+        }
+      },
+      "font": {
+        "family": "Marcellus",
+        "weights": ["400"]
+      }
+    }
+  },
+  {
+    "text": {
+      "title": "Velvet Void",
+      "shortDescription": "Luxurious depth",
+      "buttonText": "Indulge"
+    },
+    "info": {
+      "name": "Velvet",
+      "fontname": "Cormorant Garamond",
+      "colorScheme": "Deep Purple, Pink",
+      "style": "Rich, elegant",
+      "features": "Radial gradients, serif font"
+    },
+    "css": {
+      "frame": {
+        "background": "radial-gradient(circle, #3e1046, #1f0824)",
+        "color": "#f9d2ff",
+        "fontFamily": "'Cormorant Garamond', serif"
+      },
+      "h1": {
+        "fontSize": "3em",
+        "fontWeight": "700"
+      },
+      "p": {
+        "fontSize": "1.2em",
+        "color": "rgba(249,210,255,0.9)"
+      },
+      "button": {
+        "background": "#f9d2ff",
+        "color": "#3e1046",
+        "border": "none",
+        "fontFamily": "inherit",
+        "fontSize": "1.1em",
+        "cursor": "pointer",
+        "transition": "all 0.3s ease",
+        ":hover": {
+          "background": "#fff",
+          "transform": "translateY(-2px)",
+          "boxShadow": "0 5px 15px rgba(249,210,255,0.3)"
+        }
+      },
+      "font": {
+        "family": "Cormorant Garamond",
+        "weights": ["400", "700"]
+      }
+    }
+  },
+  {
+    "text": {
+      "title": "Crystal Clear",
+      "shortDescription": "Pure transparency",
+      "buttonText": "Explore"
+    },
+    "info": {
+      "name": "Glassmorphism",
+      "fontname": "Inter",
+      "colorScheme": "Transparent, Light Gray",
+      "style": "Modern, Clean",
+      "features": "Frosted glass effect, Subtle borders"
+    },
+    "css": {
+      "frame": {
+        "background": "rgba(255, 255, 255, 0.1)",
+        "backdropFilter": "blur(10px)",
+        "color": "#7a7a7a",
+        "fontFamily": "'Inter', sans-serif",
+        "border": "1px solid rgba(255, 255, 255, 0.2)"
+      },
+      "h1": {
+        "fontSize": "2.5em",
+        "fontWeight": "200",
+        "color": "#7a7a7a"
+      },
+      "p": {
+        "fontSize": "1.1em",
+        "color": "#999"
+      },
+      "button": {
+        "background": "rgba(202, 202, 202, 0.5)",
+        "color": "#7a7a7a",
+        "border": "none",
+        "padding": "15px 40px",
+        "borderRadius": "30px",
+        "fontFamily": "inherit",
+        "fontSize": "1em",
+        "cursor": "pointer",
+        "transition": "all 0.3s ease",
+        ":hover": {
+          "background": "rgba(221, 221, 221, 0.5)"
+        }
+      },
+      "font": {
+        "family": "Inter",
+        "weights": ["200", "400"]
+      }
+    }
+  },
+  {
+    "text": {
+      "title": "Natural Flow",
+      "shortDescription": "Organic beauty",
+      "buttonText": "Grow"
+    },
+    "info": {
+      "name": "Organic",
+      "fontname": "Marcellus",
+      "colorScheme": "Earth tones, Green",
+      "style": "Natural, Flowing",
+      "features": "Curved shapes, Natural colors"
+    },
+    "css": {
+      "frame": {
+        "background": "#f0ead6",
+        "color": "#3a3a3a",
+        "fontFamily": "'Marcellus', serif",
+        "borderRadius": "20px"
+      },
+      "h1": {
+        "fontSize": "2.8em",
+        "color": "#4a6741",
+        "marginBottom": "20px"
+      },
+      "p": {
+        "fontSize": "1.2em",
+        "color": "#666"
+      },
+      "button": {
+        "background": "#97bc62",
+        "color": "#fff",
+        "border": "none",
+        "borderRadius": "25px",
+        "padding": "15px 40px",
+        "fontFamily": "inherit",
+        "transition": "all 0.3s ease",
+        ":hover": {
+          "background": "#7a9e4c",
+          "transform": "translateY(-2px)"
+        }
+      },
+      "font": {
+        "family": "Marcellus",
+        "weights": ["400"]
+      }
+    }
+  },
+  {
+    "text": {
+      "title": "Solar Flare",
+      "shortDescription": "Radiant energy",
+      "buttonText": "Shine"
+    },
+    "info": {
+      "name": "Solar Flare",
+      "fontname": "Poppins",
+      "colorScheme": "Yellow, Orange",
+      "style": "Bright, dynamic",
+      "features": "Linear gradients, sans-serif"
+    },
+    "css": {
+      "frame": {
+        "background": "linear-gradient(90deg, #ffdd00, #ff3e00)",
+        "color": "#2d2d2d",
+        "fontFamily": "'Poppins', sans-serif"
+      },
+      "h1": {
+        "fontSize": "2.8em",
+        "fontWeight": "600"
+      },
+      "p": {
+        "fontSize": "1.2em",
+        "color": "#2d2d2d"
+      },
+      "button": {
+        "background": "#ff3e00",
+        "color": "#fff",
+        "border": "none",
+        "padding": "15px 40px",
+        "borderRadius": "8px",
+        "fontFamily": "inherit",
+        "fontSize": "1em",
+        "cursor": "pointer",
+        "transition": "all 0.3s ease",
+        ":hover": {
+          "background": "#ff5500",
+          "transform": "translateY(-2px)",
+          "boxShadow": "0 5px 15px rgba(255,62,0,0.3)"
+        }
+      },
+      "font": {
+        "family": "Poppins",
+        "weights": ["400", "600"]
+      }
+    }
+  },
+  {
+    "text": {
+      "title": "Crystal Lake",
+      "shortDescription": "Serene reflections",
+      "buttonText": "Dive In"
+    },
+    "info": {
+      "name": "Crystal Lake",
+      "fontname": "Inter",
+      "colorScheme": "Blue, Teal",
+      "style": "Calm, refreshing",
+      "features": "Cool tones, sans-serif"
+    },
+    "css": {
+      "frame": {
+        "background": "#88ccee",
+        "color": "#1a4d6d",
+        "fontFamily": "'Inter', sans-serif"
+      },
+      "h1": {
+        "fontSize": "2.6em",
+        "fontWeight": "200",
+        "color": "#1a4d6d"
+      },
+      "p": {
+        "fontSize": "1.1em",
+        "color": "#2d7ca7"
+      },
+      "button": {
+        "background": "rgba(255,255,255,0.3)",
+        "color": "#1a4d6d",
+        "border": "1px solid #1a4d6d",
+        "borderRadius": "30px",
+        "padding": "15px 40px",
+        "fontFamily": "inherit",
+        "fontSize": "1em",
+        "cursor": "pointer",
+        "transition": "all 0.3s ease",
+        ":hover": {
+          "background": "#1a4d6d",
+          "color": "#fff",
+          "transform": "translateY(-2px)"
+        }
+      },
+      "font": {
+        "family": "Inter",
+        "weights": ["200", "400"]
+      }
+    }
+  },
+  {
+    "text": {
+      "title": "Candy Kingdom",
+      "shortDescription": "Sugar rush",
+      "buttonText": "Indulge"
+    },
+    "info": {
+      "name": "Candy Kingdom",
+      "fontname": "Permanent Marker",
+      "colorScheme": "Pink, Yellow, Blue",
+      "style": "Fun, playful",
+      "features": "Bouncing elements, lollipop cursor"
+    },
+    "css": {
+      "frame": {
+        "background": "linear-gradient(135deg, #ff4da6, #ffe0e0)",
+        "color": "#ff0090",
+        "fontFamily": "'Permanent Marker', cursive",
+        "position": "relative",
+        "overflow": "hidden",
+        "cursor": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23ff4da6'/%3E%3Crect x='14' y='5' width='4' height='22' fill='white' rx='2'/%3E%3C/svg%3E\"), auto"
+      },
+      "h1": {
+        "fontSize": "3em",
+        "marginBottom": "20px",
+        "animation": "bounce 0.5s ease infinite alternate"
+      },
+      "p": {
+        "fontSize": "1.2em",
+        "color": "#0090ff"
+      },
+      "button": {
+        "background": "#ff0090",
+        "color": "#ffe0e0",
+        "border": "none",
+        "borderRadius": "50px",
+        "padding": "15px 40px",
+        "fontFamily": "inherit",
+        "fontSize": "1.2em",
+        "cursor": "pointer",
+        "transition": "all 0.3s",
+        "animation": "squish 2s ease-in-out infinite",
+        ":hover": {
+          "background": "#0090ff",
+          "transform": "scale(1.1)"
+        }
+      },
+      "font": {
+        "family": "Permanent Marker",
+        "weights": ["400"]
+      }
+    }
+  },
+  {
+    "text": {
+      "title": "Arctic Frost",
+      "shortDescription": "Chill vibes",
+      "buttonText": "Cool Down"
+    },
+    "info": {
+      "name": "Arctic Frost",
+      "fontname": "Quicksand",
+      "colorScheme": "Ice Blue, White",
+      "style": "Icy, fresh",
+      "features": "Frost effect, icicle formation"
+    },
+    "css": {
+      "frame": {
+        "background": "linear-gradient(to bottom, #e0f7fa, #b2ebf2)",
+        "color": "#006064",
+        "fontFamily": "'Quicksand', sans-serif",
+        "position": "relative",
+        "overflow": "hidden"
+      },
+      "h1": {
+        "fontSize": "2.8em",
+        "color": "#006064",
+        "textShadow": "0 0 10px rgba(0,96,100,0.2)"
+      },
+      "p": {
+        "fontSize": "1.1em",
+        "color": "#00838f"
+      },
+      "button": {
+        "background": "transparent",
+        "color": "#006064",
+        "border": "2px solid #006064",
+        "padding": "15px 40px",
+        "borderRadius": "30px",
+        "fontFamily": "inherit",
+        "fontSize": "1em",
+        "cursor": "pointer",
+        "transition": "all 0.3s ease",
+        "position": "relative",
+        "overflow": "hidden",
+        ":hover": {
+          "color": "#e0f7fa"
+        }
+      },
+      "font": {
+        "family": "Quicksand",
+        "weights": ["300", "500"]
+      }
+    }
+  },
+  {
+    "text": {
+      "title": "Midnight Glow",
+      "shortDescription": "After dark",
+      "buttonText": "Enter"
+    },
+    "info": {
+      "name": "Midnight Glow",
+      "fontname": "VT323",
+      "colorScheme": "Dark Blue, Neon Pink",
+      "style": "Mysterious, vibrant",
+      "features": "Glowing text, starry background"
+    },
+    "css": {
+      "frame": {
+        "background": "#0a0a2a",
+        "color": "#ff1493",
+        "fontFamily": "'VT323', monospace",
+        "textShadow": "0 0 10px #ff1493",
+        "position": "relative",
+        "overflow": "hidden"
+      },
+      "h1": {
+        "fontSize": "3.5em",
+        "letterSpacing": "2px",
+        "animation": "glow 2s ease-in-out infinite alternate"
+      },
+      "p": {
+        "fontSize": "1.4em",
+        "color": "#fff",
+        "textShadow": "0 0 5px #fff"
+      },
+      "button": {
+        "background": "transparent",
+        "color": "#ff1493",
+        "border": "2px solid #ff1493",
+        "padding": "15px 40px",
+        "fontFamily": "inherit",
+        "fontSize": "1.2em",
+        "letterSpacing": "2px",
+        "cursor": "pointer",
+        "transition": "all 0.3s ease",
+        "boxShadow": "0 0 10px #ff1493",
+        ":hover": {
+          "background": "#ff1493",
+          "color": "#0a0a2a",
+          "transform": "scale(1.1)",
+          "boxShadow": "0 0 20px #ff1493"
+        }
+      },
+      "font": {
+        "family": "VT323",
+        "weights": ["400"]
+      }
+    }
+  },
+  {
+    "text": {
+      "title": "Sweet Dreams",
+      "shortDescription": "Kawaii cuteness",
+      "buttonText": "Let's Play!"
+    },
+    "info": {
+      "name": "Kawaii",
+      "fontname": "Pacifico",
+      "colorScheme": "Pink, White",
+      "style": "Cute, Playful",
+      "features": "Rounded corners, Soft shadows"
+    },
+    "css": {
+      "frame": {
+        "background": "#ffe6e6",
+        "color": "#ff69b4",
+        "fontFamily": "'Pacifico', cursive"
+      },
+      "h1": {
+        "fontSize": "2.5em",
+        "marginBottom": "20px"
+      },
+      "p": {
+        "fontSize": "1.2em",
+        "marginBottom": "30px"
+      },
+      "button": {
+        "background": "#ff69b4",
+        "color": "#fff",
+        "border": "none",
+        "borderRadius": "25px",
+        "padding": "15px 40px",
+        "fontFamily": "inherit",
+        "fontSize": "1.1em",
+        "cursor": "pointer",
+        "transition": "all 0.3s ease",
+        ":hover": {
+          "background": "#ff8dc7",
+          "transform": "scale(1.1)",
+          "boxShadow": "0 5px 15px rgba(255,105,180,0.3)"
+        }
+      },
+      "font": {
+        "family": "Pacifico",
+        "weights": ["400"]
+      }
+    }
+  },
+  {
+    "text": {
+      "title": "Neon Noir",
+      "shortDescription": "Cyberpunk vibes",
+      "buttonText": "Enter"
+    },
+    "info": {
+      "name": "Neon Noir",
+      "fontname": "Blade Runner",
+      "colorScheme": "Black, Cyan",
+      "style": "Cyberpunk, Noir",
+      "features": "Rain effect, Neon glow"
+    },
+    "css": {
+      "frame": {
+        "background": "#000",
+        "color": "#0ff",
+        "fontFamily": "'Blade Runner', sans-serif",
+        "position": "relative",
+        "overflow": "hidden",
+        "textShadow": "0 0 10px #0ff"
+      },
+      "h1": {
+        "fontSize": "3em",
+        "letterSpacing": "2px",
+        "animation": "flicker 2s infinite alternate"
+      },
+      "p": {
+        "fontSize": "1.2em",
+        "color": "rgba(0, 255, 255, 0.8)"
+      },
+      "button": {
+        "background": "transparent",
+        "color": "#0ff",
+        "border": "2px solid #0ff",
+        "padding": "15px 40px",
+        "fontFamily": "inherit",
+        "fontSize": "1.1em",
+        "cursor": "pointer",
+        "transition": "all 0.3s ease",
+        "boxShadow": "0 0 10px #0ff",
+        ":hover": {
+          "background": "#0ff",
+          "color": "#000",
+          "boxShadow": "0 0 20px #0ff"
+        }
+      },
+      "font": {
+        "family": "Blade Runner",
+        "weights": ["400"]
+      }
+    }
+  },
+  {
+    "text": {
+      "title": "Digital Dreams",
+      "shortDescription": "Neon future",
+      "buttonText": "Execute"
+    },
+    "info": {
+      "name": "Cyberpunk",
+      "fontname": "Share Tech Mono",
+      "colorScheme": "Black, Neon Green",
+      "style": "Digital, Retro-future",
+      "features": "Matrix effects, Terminal style"
+    },
+    "css": {
+      "frame": {
+        "background": "#120458",
+        "color": "#00ff41",
+        "fontFamily": "'Share Tech Mono', monospace"
+      },
+      "h1": {
+        "fontSize": "2.5em",
+        "textTransform": "uppercase",
+        "marginBottom": "20px"
+      },
+      "p": {
+        "fontSize": "1.2em",
+        "marginBottom": "30px"
+      },
+      "button": {
+        "background": "transparent",
+        "color": "#00ff41",
+        "border": "2px solid #00ff41",
+        "padding": "15px 40px",
+        "fontFamily": "inherit",
+        "textTransform": "uppercase",
+        "cursor": "pointer",
+        "transition": "all 0.3s ease",
+        ":hover": {
+          "background": "#00ff41",
+          "color": "#120458"
+        }
+      },
+      "font": {
+        "family": "Share Tech Mono",
+        "weights": ["400"]
+      }
+    }
+  },
+  {
+    "text": {
+      "title": "Retro Wave",
+      "shortDescription": "Aesthetic vibes",
+      "buttonText": "Vibe"
+    },
+    "info": {
+      "name": "Vaporwave",
+      "fontname": "VT323",
+      "colorScheme": "Pink, Purple, Blue",
+      "style": "Retro, 80s",
+      "features": "Gradient background, Text effects"
+    },
+    "css": {
+      "frame": {
+        "background": "linear-gradient(45deg, #ff6ad5, #c774e8, #ad8cff)",
+        "color": "#fff",
+        "fontFamily": "'VT323', monospace"
+      },
+      "h1": {
+        "fontSize": "3em",
+        "textShadow": "2px 2px #ff6ad5, 4px 4px #c774e8",
+        "marginBottom": "20px"
+      },
+      "p": {
+        "fontSize": "1.5em",
+        "marginBottom": "30px"
+      },
+      "button": {
+        "background": "rgba(255,255,255,0.2)",
+        "color": "#fff",
+        "border": "none",
+        "padding": "15px 40px",
+        "fontFamily": "inherit",
+        "cursor": "pointer",
+        "transition": "all 0.3s ease",
+        ":hover": {
+          "background": "rgba(255,255,255,0.4)",
+          "transform": "translateY(-2px)"
+        }
+      },
+      "font": {
+        "family": "VT323",
+        "weights": ["400"]
+      }
+    }
+  },
+  {
+    "text": {
+      "title": "Natural Tech",
+      "shortDescription": "Eco conscious",
+      "buttonText": "Grow"
+    },
+    "info": {
+      "name": "Eco-Friendly",
+      "fontname": "Quicksand",
+      "colorScheme": "Green, White",
+      "style": "Organic, Clean",
+      "features": "Leaf accents, Natural colors"
+    },
+    "css": {
+      "frame": {
+        "background": "#f0f7f4",
+        "color": "#2c5f2d",
+        "fontFamily": "'Quicksand', sans-serif",
+        "border": "2px solid #97bc62",
+        "position": "relative"
+      },
+      "h1": {
+        "fontSize": "2.5em",
+        "marginBottom": "20px",
+        "color": "#1e4d2b"
+      },
+      "p": {
+        "color": "#4a7c59",
+        "marginBottom": "30px"
+      },
+      "button": {
+        "background": "#97bc62",
+        "color": "#fff",
+        "border": "none",
+        "padding": "15px 40px",
+        "borderRadius": "25px",
+        "fontFamily": "inherit",
+        "transition": "all 0.3s ease",
+        ":hover": {
+          "background": "#2c5f2d"
+        }
+      },
+      "font": {
+        "family": "Quicksand",
+        "weights": ["400", "500"]
+      }
+    }
   }
 ]
