@@ -4,8 +4,12 @@ export default function StyleCard({ style }) {
   return (
     <div className="style-card">
       <div className="style-frame" style={css.frame}>
-        <h1 style={css.h1}>{text.title}</h1>
-        <p style={css.p}>{text.shortDescription}</p>
+        <h1 className="preview-heading" style={css.h1}>
+          {text.title}
+        </h1>
+        <p className="preview-paragraph" style={css.p}>
+          {text.shortDescription}
+        </p>
         <button className="preview-button" style={css.button}>
           {text.buttonText}
         </button>
