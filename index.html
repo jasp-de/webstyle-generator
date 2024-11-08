@@ -1,0 +1,3846 @@
+<html>
+  <head>
+    <base href="https://websim-ai.design/designer/mega-preview/" />
+    <meta charset="UTF-8" />
+    <title>Ultimate Web Style Explorer</title>
+    <style>
+
+      @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&family=Courier+Prime&family=Pacifico&family=DM+Sans&family=VT323&family=Orbitron:wght@400;900&family=Cinzel:wght@400;700&family=Poppins:wght@200;600&family=Marcellus&family=Inter:wght@200;600&family=Abril+Fatface&family=Permanent+Marker&family=Press+Start+2P&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: #f0f0f0;
+        font-family: "Inter", sans-serif;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 1600px;
+        margin: 0 auto;
+      }
+
+      .heading {
+        text-align: center;
+        margin-bottom: 40px;
+        padding: 20px;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .previews {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 30px;
+      }
+
+      .preview-card {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      .preview-card:hover {
+        transform: translateY(-2px);
+      }
+
+      .preview-frame {
+        padding: 40px;
+        height: 350px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+
+      .preview-info {
+        padding: 20px;
+        border-top: 1px solid #eee;
+      }
+
+      .preview-style {
+        font-weight: 600;
+        margin-bottom: 10px;
+      }
+
+      .style-details {
+        font-size: 12px;
+        color: #666;
+      }
+
+      code {
+        display: block;
+        font-family: monospace;
+        font-size: 11px;
+        color: #666;
+        line-height: 1.4;
+      }
+
+      /* Classic Elegant */
+      .preview-classic {
+        background: #f9f6f0;
+        color: #2c1810;
+        font-family: "Playfair Display", serif;
+        border: 1px solid #e0d5c5;
+      }
+
+      .preview-classic h1 {
+        font-size: 2.8em;
+        margin-bottom: 20px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+      }
+
+      .preview-classic p {
+        font-style: italic;
+        margin-bottom: 30px;
+        color: #5c4030;
+      }
+
+      .preview-classic button {
+        background: transparent;
+        border: 1px solid #2c1810;
+        color: #2c1810;
+        padding: 15px 40px;
+        font-family: "Marcellus", serif;
+        letter-spacing: 2px;
+        transition: all 0.3s ease;
+      }
+
+      /* Modern */
+      .preview-modern {
+        background: white;
+        color: #000;
+        font-family: "DM Sans", sans-serif;
+      }
+
+      .preview-modern h1 {
+        font-size: 4em;
+        font-weight: 700;
+        margin-bottom: 20px;
+        letter-spacing: -1px;
+      }
+
+      .preview-modern p {
+        font-size: 1.2em;
+        color: #666;
+        margin-bottom: 30px;
+      }
+
+      .preview-modern button {
+        background: #000;
+        color: white;
+        border: none;
+        padding: 18px 50px;
+        border-radius: 30px;
+        font-size: 1.1em;
+        font-weight: 500;
+      }
+
+      /* Brutalist */
+      .preview-brutalist {
+        background: #ffffff;
+        color: #000000;
+        font-family: "Courier Prime", monospace;
+        border: 6px solid #000;
+      }
+
+      .preview-brutalist h1 {
+        font-size: 3em;
+        text-transform: uppercase;
+        border-bottom: 6px solid #000;
+        padding-bottom: 15px;
+        margin-bottom: 20px;
+        width: 100%;
+      }
+
+      .preview-brutalist p {
+        font-size: 1.2em;
+        margin-bottom: 30px;
+        text-transform: uppercase;
+      }
+
+      .preview-brutalist button {
+        background: #000;
+        color: #fff;
+        border: none;
+        padding: 20px 40px;
+        font-family: inherit;
+        font-size: 1.2em;
+        cursor: pointer;
+      }
+
+      /* Retro */
+      .preview-retro {
+        background: linear-gradient(45deg, #ff6b6b, #ffe66d);
+        color: #2d2d2d;
+        font-family: "Press Start 2P", cursive;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .preview-retro::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: repeating-linear-gradient(
+          90deg,
+          rgba(0, 0, 0, 0.1) 0px,
+          rgba(0, 0, 0, 0.1) 2px,
+          transparent 2px,
+          transparent 4px
+        );
+        pointer-events: none;
+      }
+
+      .preview-retro h1 {
+        font-size: 2.5em;
+        text-shadow: 4px 4px 0 rgba(0, 0, 0, 0.2);
+        margin-bottom: 30px;
+        color: #ff355e;
+      }
+
+      .preview-retro p {
+        font-size: 1em;
+        margin-bottom: 30px;
+        color: #2d2d2d;
+      }
+
+      .preview-retro button {
+        background: #4a90e2;
+        color: #fff;
+        border: 4px solid #2d2d2d;
+        padding: 15px 40px;
+        font-family: inherit;
+        box-shadow: 4px 4px 0 #2d2d2d;
+        transform: rotate(-2deg);
+      }
+
+      /* Minimalist */
+      .preview-minimalist {
+        background: #ffffff;
+        color: #000000;
+        font-family: "Inter", sans-serif;
+      }
+
+      .preview-minimalist h1 {
+        font-size: 2em;
+        font-weight: 200;
+        margin-bottom: 20px;
+        letter-spacing: -0.5px;
+      }
+
+      .preview-minimalist p {
+        font-size: 0.9em;
+        color: #666;
+        margin-bottom: 30px;
+      }
+
+      .preview-minimalist button {
+        background: none;
+        border: 1px solid #000;
+        padding: 12px 30px;
+        font-size: 0.8em;
+        letter-spacing: 1px;
+      }
+
+      /* Neumorphism */
+      .preview-neumorph {
+        background: #e0e5ec;
+        color: #4d4d4d;
+        font-family: "Poppins", sans-serif;
+      }
+
+      .preview-neumorph h1 {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 3px #ffffff, -2px -2px 3px rgba(0, 0, 0, 0.1);
+      }
+
+      .preview-neumorph p {
+        margin-bottom: 30px;
+        color: #666;
+      }
+
+      .preview-neumorph button {
+        padding: 15px 40px;
+        border-radius: 15px;
+        border: none;
+        background: #e0e5ec;
+        box-shadow: 8px 8px 15px #a3b1c6, -8px -8px 15px #ffffff;
+        color: #4d4d4d;
+        font-weight: 600;
+      }
+
+      /* Dark Mode */
+      .preview-dark {
+        background: #141414;
+        color: #ffffff;
+        font-family: "Inter", sans-serif;
+      }
+
+      .preview-dark h1 {
+        font-size: 2.8em;
+        font-weight: 200;
+        margin-bottom: 20px;
+        color: #fff;
+      }
+
+      .preview-dark p {
+        color: #888;
+        margin-bottom: 30px;
+      }
+
+      .preview-dark button {
+        background: #2a2a2a;
+        color: #fff;
+        border: 1px solid #444;
+        padding: 15px 40px;
+        border-radius: 4px;
+        font-size: 0.9em;
+        letter-spacing: 1px;
+      }
+
+      /* Cyberpunk */
+      .preview-cyberpunk {
+        background: #120458;
+        color: #00ff41;
+        font-family: "Orbitron", sans-serif;
+        text-shadow: 0 0 5px #00ff41;
+        border: 2px solid #00ff41;
+        box-shadow: 0 0 10px #00ff41, inset 0 0 10px #00ff41;
+      }
+
+      .preview-cyberpunk h1 {
+        font-size: 2.5em;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+      }
+
+      .preview-cyberpunk p {
+        font-size: 1.2em;
+        margin-bottom: 30px;
+      }
+
+      .preview-cyberpunk button {
+        background: transparent;
+        color: #00ff41;
+        border: 2px solid #00ff41;
+        padding: 15px 40px;
+        font-family: inherit;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .preview-cyberpunk button:hover {
+        background: #00ff41;
+        color: #120458;
+      }
+
+      /* Vaporwave */
+      .preview-vaporwave {
+        background: linear-gradient(45deg, #ff6ad5, #c774e8, #ad8cff);
+        color: #fff;
+        font-family: "VT323", monospace;
+      }
+
+      .preview-vaporwave h1 {
+        font-size: 3em;
+        text-shadow: 2px 2px #ff6ad5, 4px 4px #c774e8;
+        margin-bottom: 20px;
+      }
+
+      .preview-vaporwave p {
+        font-size: 1.5em;
+        margin-bottom: 30px;
+      }
+
+      .preview-vaporwave button {
+        background: rgba(255, 255, 255, 0.2);
+        color: #fff;
+        border: none;
+        padding: 15px 40px;
+        font-family: inherit;
+        font-size: 1.2em;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .preview-vaporwave button:hover {
+        background: rgba(255, 255, 255, 0.4);
+      }
+
+      /* Glassmorphism */
+      .preview-glassmorphism {
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: #7a7a7a;
+        font-family: "Poppins", sans-serif;
+      }
+
+      .preview-glassmorphism h1 {
+        font-size: 2.5em;
+        font-weight: 600;
+        margin-bottom: 20px;
+      }
+
+      .preview-glassmorphism p {
+        font-size: 1.2em;
+        margin-bottom: 30px;
+      }
+
+      .preview-glassmorphism button {
+        background: rgba(202, 202, 202, 0.5);
+        color: #7a7a7a;
+        border: none;
+        padding: 15px 40px;
+        border-radius: 30px;
+        font-family: inherit;
+        font-size: 1em;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .preview-glassmorphism button:hover {
+        background: rgba(221, 221, 221, 0.5);
+      }
+
+      /* Organic */
+      .preview-organic {
+        background: #f0ead6;
+        color: #3a3a3a;
+        font-family: "Marcellus", serif;
+        border-radius: 20px;
+      }
+
+      .preview-organic h1 {
+        font-size: 2.8em;
+        margin-bottom: 20px;
+        color: #4a6741;
+      }
+
+      .preview-organic p {
+        font-size: 1.2em;
+        margin-bottom: 30px;
+        color: #6b8e23;
+      }
+
+      .preview-organic button {
+        background: #8fbc8f;
+        color: #fff;
+        border: none;
+        padding: 15px 40px;
+        border-radius: 30px;
+        font-family: inherit;
+        font-size: 1em;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .preview-organic button:hover {
+        background: #6b8e23;
+      }
+
+      /* Art Deco */
+      .preview-artdeco {
+        background: #000;
+        color: #ffd700;
+        font-family: "Cinzel", serif;
+        border: 5px solid #ffd700;
+      }
+
+      .preview-artdeco h1 {
+        font-size: 3em;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+      }
+
+      .preview-artdeco p {
+        font-size: 1.2em;
+        margin-bottom: 30px;
+        font-style: italic;
+      }
+
+      .preview-artdeco button {
+        background: #ffd700;
+        color: #000;
+        border: none;
+        padding: 15px 40px;
+        font-family: inherit;
+        font-size: 1em;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .preview-artdeco button:hover {
+        background: #fff;
+      }
+
+      /* Kawaii */
+      .preview-kawaii {
+        background: #ffe6e6;
+        color: #ff69b4;
+        font-family: "Pacifico", cursive;
+      }
+
+      .preview-kawaii h1 {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+      }
+
+      .preview-kawaii p {
+        font-size: 1.2em;
+        margin-bottom: 30px;
+      }
+
+      .preview-kawaii button {
+        background: #ff69b4;
+        color: #fff;
+        border: none;
+        padding: 15px 40px;
+        border-radius: 50px;
+        font-family: inherit;
+        font-size: 1em;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .preview-kawaii button:hover {
+        background: #ff1493;
+      }
+
+      /* Steampunk */
+      .preview-steampunk {
+        background: #8b4513;
+        color: #ffd700;
+        font-family: "Courier Prime", monospace;
+        border: 5px solid #cd853f;
+        box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+      }
+
+      .preview-steampunk h1 {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      .preview-steampunk p {
+        font-size: 1.2em;
+        margin-bottom: 30px;
+      }
+
+      .preview-steampunk button {
+        background: #cd853f;
+        color: #000;
+        border: 2px solid #ffd700;
+        padding: 15px 40px;
+        font-family: inherit;
+        font-size: 1em;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .preview-steampunk button:hover {
+        background: #ffd700;
+        color: #8b4513;
+      }
+
+      /* Expandable section styles */
+      .expandable-section {
+        display: none;
+        padding: 20px;
+        background: #f9f9f9;
+        border-top: 1px solid #eee;
+      }
+
+      .expandable-section pre {
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        font-size: 12px;
+        color: #333;
+      }
+
+      .expand-button {
+        background: none;
+        border: none;
+        color: #4a90e2;
+        cursor: pointer;
+        font-size: 14px;
+        padding: 20px;
+        width: 100%;
+        text-align: left;
+      }
+
+      .expand-button:hover {
+        text-decoration: underline;
+      }
+
+      .copy-button {
+        background: #4a90e2;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 3px;
+        cursor: pointer;
+        font-size: 12px;
+        margin-top: 10px;
+      }
+
+      .copy-button:hover {
+        background: #3a7bc8;
+      }
+
+      /* Synthwave */
+      .preview-synthwave {
+        background: linear-gradient(to bottom, #2b1055, #7597de);
+        color: #ff00ff;
+        font-family: 'Outrun future', sans-serif;
+        text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .preview-synthwave::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(transparent 0%, rgba(255, 0, 255, 0.2) 100%);
+        pointer-events: none;
+      }
+
+      .preview-synthwave h1 {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+      }
+
+      .preview-synthwave p {
+        color: #00ffff;
+        text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff;
+        margin-bottom: 30px;
+      }
+
+      .preview-synthwave button {
+        background: transparent;
+        border: 2px solid #ff00ff;
+        color: #ff00ff;
+        padding: 15px 40px;
+        font-family: inherit;
+        text-shadow: 0 0 5px #ff00ff;
+        box-shadow: 0 0 10px #ff00ff;
+      }
+
+      /* Eco-Friendly */
+      .preview-eco {
+        background: #f0f7f4;
+        color: #2c5f2d;
+        font-family: 'Quicksand', sans-serif;
+        border: 2px solid #97bc62;
+        position: relative;
+      }
+
+      .preview-eco::before {
+        content: '🍃';
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 24px;
+      }
+
+      .preview-eco h1 {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+        color: #1e4d2b;
+      }
+
+      .preview-eco p {
+        color: #4a7c59;
+        margin-bottom: 30px;
+      }
+
+      .preview-eco button {
+        background: #97bc62;
+        color: #fff;
+        border: none;
+        padding: 15px 40px;
+        border-radius: 25px;
+        font-family: inherit;
+        transition: all 0.3s ease;
+      }
+
+      .preview-eco button:hover {
+        background: #2c5f2d;
+      }
+
+      /* Sci-Fi */
+      .preview-scifi {
+        background: #020814;
+        color: #0af;
+        font-family: 'Exo 2', sans-serif;
+        border: 1px solid #0af;
+        box-shadow: 0 0 20px rgba(0, 170, 255, 0.5);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .preview-scifi::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        right: -50%;
+        bottom: -50%;
+        background: url('https://example.com/space-bg.jpg') center/cover no-repeat;
+        opacity: 0.1;
+        animation: space-drift 100s linear infinite;
+      }
+
+      @keyframes space-drift {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+
+      .preview-scifi h1 {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+        text-shadow: 0 0 10px #0af;
+      }
+
+      .preview-scifi p {
+        color: #7af;
+        margin-bottom: 30px;
+      }
+
+      .preview-scifi button {
+        background: rgba(0, 170, 255, 0.2);
+        color: #0af;
+        border: 1px solid #0af;
+        padding: 15px 40px;
+        font-family: inherit;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .preview-scifi button::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        right: -50%;
+        bottom: -50%;
+        background: linear-gradient(45deg, transparent, rgba(0, 170, 255, 0.6), transparent);
+        transform: rotate(45deg);
+        transition: all 0.3s ease;
+      }
+
+      .preview-scifi button:hover::before {
+        left: 150%;
+        transition: all 0.3s ease;
+      }
+
+      /* Neon Noir */
+      .preview-neon-noir {
+        background: #000000;
+        color: #00ffff;
+        font-family: 'Blade Runner', sans-serif;
+        text-shadow: 0 0 10px #00ffff;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .preview-neon-noir::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        right: -50%;
+        bottom: -50%;
+        background: linear-gradient(to bottom, transparent 0%, rgba(0, 255, 255, 0.2) 100%);
+        animation: rain 15s linear infinite;
+        pointer-events: none;
+      }
+
+      @keyframes rain {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(100%); }
+      }
+
+      .preview-neon-noir h1 {
+        font-size: 3em;
+        margin-bottom: 20px;
+        color: #ff1493;
+        text-shadow: 0 0 15px #ff1493;
+      }
+
+      .preview-neon-noir p {
+        font-size: 1.2em;
+        margin-bottom: 30px;
+      }
+
+      .preview-neon-noir button {
+        background: transparent;
+        color: #00ffff;
+        border: 2px solid #00ffff;
+        padding: 15px 40px;
+        font-family: inherit;
+        font-size: 1em;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        box-shadow: 0 0 10px #00ffff;
+        transition: all 0.3s ease;
+      }
+
+      .preview-neon-noir button:hover {
+        background: #00ffff;
+        color: #000000;
+      }
+
+      /* Biomorphic */
+      .preview-biomorphic {
+        background: #f0f4f8;
+        color: #2c3e50;
+        font-family: 'Euclid Circular A', sans-serif;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .preview-biomorphic::before,
+      .preview-biomorphic::after {
+        content: '';
+        position: absolute;
+        border-radius: 50%;
+        opacity: 0.6;
+      }
+
+      .preview-biomorphic::before {
+        width: 300px;
+        height: 300px;
+        background: #a8e6cf;
+        top: -100px;
+        left: -100px;
+      }
+
+      .preview-biomorphic::after {
+        width: 200px;
+        height: 200px;
+        background: #ffd3b6;
+        bottom: -50px;
+        right: -50px;
+      }
+
+      .preview-biomorphic h1 {
+        font-size: 2.8em;
+        margin-bottom: 20px;
+        color: #3d5a80;
+        z-index: 1;
+      }
+
+      .preview-biomorphic p {
+        font-size: 1.2em;
+        margin-bottom: 30px;
+        color: #98c1d9;
+        z-index: 1;
+
+      }
+
+      .preview-biomorphic button {
+        background: #ee8572;
+        color: #ffffff;
+        border: none;
+        padding: 15px 40px;
+        font-family: inherit;
+        font-size: 1em;
+        border-radius: 50px;
+        transition: all 0.3s ease;   
+        z-index: 1;
+
+      }
+
+      .preview-biomorphic button:hover {
+        background: #3d5a80;
+        transform: scale(1.05);
+      }
+
+      /* Solarpunk */
+      .preview-solarpunk {
+        background: linear-gradient(135deg, #c4e17f, #7fdca6);
+        color: #1a5f7a;
+        font-family: 'Montserrat', sans-serif;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .preview-solarpunk::before {
+        content: '☀️';
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 40px;
+        opacity: 0.8;
+      }
+
+      .preview-solarpunk h1 {
+        font-size: 2.8em;
+        margin-bottom: 20px;
+        color: #006d77;
+        text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+      }
+
+      .preview-solarpunk p {
+        font-size: 1.2em;
+        margin-bottom: 30px;
+        color: #2a9d8f;
+      }
+
+      .preview-solarpunk button {
+        background: #ffd166;
+        color: #006d77;
+        border: none;
+        padding: 15px 40px;
+        font-family: inherit;
+        font-size: 1em;
+        border-radius: 50px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .preview-solarpunk button:hover {
+        background: #006d77;
+        color: #ffd166;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+      }
+
+      .preview-solarpunk::after {
+        content: '🌿';
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        font-size: 30px;
+        opacity: 0.8;
+      }
+
+ 
+  @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;500&display=swap');
+
+  /* Bioluminescent Deep Sea */
+  .preview-deep-sea {
+    background: #000510;
+    color: #7fdbff;
+    font-family: 'Rajdhani', sans-serif;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .preview-deep-sea::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    right: -50%;
+    bottom: -50%;
+    background: 
+      radial-gradient(circle, transparent 20%, #000510 80%),
+      linear-gradient(#0ff 1px, transparent 1px),
+      linear-gradient(90deg, #0ff 1px, transparent 1px);
+    background-size: 100% 100%, 20px 20px, 20px 20px;
+    animation: deep-sea-drift 20s linear infinite;
+    opacity: 0.1;
+  }
+
+  @keyframes deep-sea-drift {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(-20px, -20px); }
+  }
+
+  .preview-deep-sea h1 {
+    font-size: 2.8em;
+    margin-bottom: 20px;
+    color: #00ffd5;
+    text-shadow: 0 0 10px #00ffd5, 0 0 20px #00ffd5;
+  }
+
+  .preview-deep-sea p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    color: #7fdbff;
+  }
+
+  .preview-deep-sea button {
+    background: rgba(0, 255, 213, 0.2);
+    color: #00ffd5;
+    border: 2px solid #00ffd5;
+    border-radius: 30px;
+    padding: 15px 40px;
+    font-family: inherit;
+    font-size: 1em;
+    letter-spacing: 2px;
+    box-shadow: 0 0 15px #00ffd5;
+    transition: all 0.3s ease;
+  }
+
+  .preview-deep-sea button:hover {
+    background: #00ffd5;
+    color: #000510;
+    box-shadow: 0 0 25px #00ffd5;
+  }
+
+  @import url('https://fonts.googleapis.com/css2?family=Space+Mono&family=Comfortaa&family=Audiowide&display=swap');
+
+  /* Quantum Flux */
+  .preview-quantum-flux {
+    background: #000;
+    color: #fff;
+    font-family: 'Space Mono', monospace;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .preview-quantum-flux::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    right: -50%;
+    bottom: -50%;
+    background: 
+      radial-gradient(circle, rgba(255,0,255,0.1) 10%, transparent 10%),
+      radial-gradient(circle, rgba(0,255,255,0.1) 10%, transparent 10%);
+    background-size: 50px 50px;
+    animation: quantum-shift 8s linear infinite;
+    opacity: 0.5;
+  }
+
+  @keyframes quantum-shift {
+    0%, 100% { transform: translate(0, 0); }
+    25% { transform: translate(25px, 0); }
+    50% { transform: translate(25px, 25px); }
+    75% { transform: translate(0, 25px); }
+  }
+
+  .preview-quantum-flux h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    animation: quantum-flicker 2s infinite;
+  }
+
+  @keyframes quantum-flicker {
+    0%, 100% { color: #ff00ff; text-shadow: 0 0 5px #ff00ff; }
+    33% { color: #00ffff; text-shadow: 0 0 5px #00ffff; }
+    66% { color: #ffff00; text-shadow: 0 0 5px #ffff00; }
+  }
+
+  .preview-quantum-flux p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    opacity: 0.8;
+  }
+
+  .preview-quantum-flux button {
+    background: linear-gradient(45deg, #ff00ff, #00ffff, #ffff00);
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    padding: 15px 40px;
+    font-family: inherit;
+    font-size: 1em;
+    font-weight: bold;
+    letter-spacing: 2px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .preview-quantum-flux button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+  }
+
+  /* Synesthesia */
+  .preview-synesthesia {
+    background: #1a0b19;
+    color: #fff;
+    font-family: 'Comfortaa', cursive;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .preview-synesthesia::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    right: -50%;
+    bottom: -50%;
+    background: 
+      radial-gradient(circle, #ff0000 20%, transparent 20%),
+      radial-gradient(circle, #00ff00 20%, transparent 20%),
+      radial-gradient(circle, #0000ff 20%, transparent 20%);
+    background-size: 100px 100px, 120px 120px, 140px 140px;
+    animation: synesthesia-pulse 10s linear infinite;
+    opacity: 0.1;
+  }
+
+  @keyframes synesthesia-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+  }
+
+  .preview-synesthesia h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #8b00ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    animation: rainbow-text 8s linear infinite;
+  }
+
+  @keyframes rainbow-text {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+  }
+
+  .preview-synesthesia p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    opacity: 0.8;
+  }
+
+  .preview-synesthesia button {
+    background: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 50px;
+    padding: 15px 40px;
+    font-family: inherit;
+    font-size: 1em;
+    letter-spacing: 2px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .preview-synesthesia button:hover {
+    background: #fff;
+    color: #1a0b19;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+  }
+
+  .preview-synesthesia button::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(from 0deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #8b00ff, #ff0000);
+    animation: rotate 4s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .preview-synesthesia button:hover::before {
+    opacity: 0.3;
+  }
+
+  @keyframes rotate {
+    100% { transform: rotate(360deg); }
+  }
+
+  /* Fractal Dreamscape */
+  .preview-fractal-dream {
+    background: #000;
+    color: #fff;
+    font-family: 'Audiowide', cursive;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .preview-fractal-dream::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    right: -50%;
+    bottom: -50%;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="%23ffffff" stroke-width="1"/><circle cx="50" cy="50" r="10" fill="none" stroke="%23ffffff" stroke-width="1"/></svg>');
+    background-size: 100px 100px;
+    opacity: 0.1;
+    animation: fractal-zoom 20s linear infinite;
+  }
+
+  @keyframes fractal-zoom {
+    0% { transform: scale(1); }
+    100% { transform: scale(20); }
+  }
+
+  .preview-fractal-dream h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff;
+  }
+
+  .preview-fractal-dream p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    opacity: 0.8;
+  }
+
+  .preview-fractal-dream button {
+    background: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+    padding: 15px 40px;
+    font-family: inherit;
+    font-size: 1em;
+    letter-spacing: 2px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .preview-fractal-dream button::before,
+  .preview-fractal-dream button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background: rgba(255,255,255,0.1);
+    transition: all 0.3s ease;
+  }
+
+  .preview-fractal-dream button::before {
+    left: -50%;
+  }
+
+  .preview-fractal-dream button::after {
+    right: -50%;
+  }
+
+  .preview-fractal-dream button:hover::before {
+    left: 0;
+  }
+
+  .preview-fractal-dream button:hover::after {
+    right: 0;
+  }
+
+  /* Mystic */
+.preview-mystic {
+  background: linear-gradient(135deg, #5e42a6, #342e65);
+  color: #d4b3ff;
+  font-family: 'Cinzel', serif;
+  position: relative;
+  overflow: hidden;
+}
+.preview-mystic::before {
+  content: '✨';
+  position: absolute;
+  font-size: 100px;
+  opacity: 0.1;
+  top: -20px;
+  left: -20px;
+  animation: float 6s ease-in-out infinite;
+}
+.preview-mystic h1 {
+  text-shadow: 0 0 10px #d4b3ff;
+  font-size: 3em;
+  margin-bottom: 30px;
+}
+.preview-mystic p {
+  font-style: italic;
+  letter-spacing: 2px;
+  margin-bottom: 30px;
+
+}
+.preview-mystic button {
+  border: 2px solid #d4b3ff;
+  background: transparent;
+  color: #d4b3ff;
+  padding: 15px 30px;
+  font-family: inherit;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.preview-mystic button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(212, 179, 255, 0.4), transparent);
+  transition: all 0.4s;
+}
+.preview-mystic button:hover::before {
+  left: 100%;
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+/* Night Vision */
+.preview-night-vision {
+  background: #000;
+  color: #0f0;
+  font-family: 'Courier New', monospace;
+  position: relative;
+  overflow: hidden;
+}
+.preview-night-vision::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(rgba(0,255,0,0.1) 50%, transparent 50%);
+  background-size: 100% 4px;
+  pointer-events: none;
+}
+.preview-night-vision h1 {
+  font-size: 2.5em;
+  text-shadow: 0 0 5px #0f0;
+  margin-bottom: 30px;
+}
+.preview-night-vision p {
+  opacity: 0.7;
+  margin-bottom: 20px;
+
+}
+.preview-night-vision button {
+  background: #0f0;
+  color: #000;
+  border: none;
+  padding: 10px 20px;
+  font-family: inherit;
+  font-size: 1em;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.preview-night-vision button::before {
+  content: 'EXPLORE';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(100%);
+  transition: transform 0.3s;
+}
+.preview-night-vision button:hover::before {
+  transform: translateY(0);
+}
+
+/* Velvet Void */
+.preview-velvet {
+  background: radial-gradient(circle, #3e1046, #1f0824);
+  color: #f9d2ff;
+  font-family: 'Cormorant Garamond', serif;
+  position: relative;
+  overflow: hidden;
+}
+.preview-velvet::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  background-image: radial-gradient(#f9d2ff 1px, transparent 1px);
+  background-size: 30px 30px;
+  opacity: 0.1;
+  animation: twinkle 4s infinite alternate;
+}
+.preview-velvet h1 {
+  font-size: 3.5em;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+.preview-velvet p {
+  font-style: italic;
+  font-size: 1.2em;
+  margin-bottom: 30px;
+
+}
+.preview-velvet button {
+  background: #f9d2ff;
+  color: #3e1046;
+  border: none;
+  padding: 15px 30px;
+  font-family: inherit;
+  font-size: 1.2em;
+  cursor: pointer;
+  transform: perspective(500px) rotateX(15deg);
+  transition: all 0.3s;
+}
+.preview-velvet button:hover {
+  transform: perspective(500px) rotateX(0);
+  box-shadow: 0 10px 20px rgba(249, 210, 255, 0.4);
+}
+@keyframes twinkle {
+  0% { opacity: 0.1; }
+  100% { opacity: 0.3; }
+}
+
+/* Solar Flare */
+.preview-solar {
+  background: linear-gradient(45deg, #ffdd00, #ff3e00);
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+.preview-solar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+  animation: pulse 4s infinite;
+}
+.preview-solar h1 {
+  font-size: 3em;
+  text-shadow: 0 0 10px rgba(255,255,255,0.5);
+  margin-bottom: 20px;
+}
+.preview-solar p {
+  font-weight: 300;
+  letter-spacing: 1px;
+  margin-bottom: 30px;
+
+}
+.preview-solar button {
+  background: #ff3e00;
+  color: #fff;
+  border: none;
+  padding: 15px 40px;
+  font-family: inherit;
+  font-size: 1.2em;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.preview-solar button::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: rgba(255,255,255,0.2);
+  transform: rotate(45deg);
+  animation: heatWave 2s linear infinite;
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.2); opacity: 0.7; }
+}
+@keyframes heatWave {
+  0% { transform: translateY(-50%) translateX(-50%) rotate(0deg); }
+  100% { transform: translateY(-50%) translateX(-50%) rotate(360deg); }
+}
+
+/* Crystal Lake */
+.preview-crystal-lake {
+  background: linear-gradient(to bottom, #88ccee, #005f73);
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+.preview-crystal-lake::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="white" stroke-width="2"/></svg>') center/10% no-repeat;
+  opacity: 0.1;
+  animation: ripple 4s linear infinite;
+}
+.preview-crystal-lake h1 {
+  font-size: 3.5em;
+  font-weight: 300;
+  margin-bottom: 20px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+.preview-crystal-lake p {
+  font-size: 1.2em;
+  opacity: 0.8;
+  margin-bottom: 30px;
+
+}
+.preview-crystal-lake button {
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #fff;
+  padding: 15px 40px;
+  font-family: inherit;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.preview-crystal-lake button:hover {
+  background: rgba(255,255,255,0.3);
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+@keyframes ripple {
+  0% { transform: scale(1); opacity: 0.1; }
+  50% { transform: scale(1.5); opacity: 0.3; }
+  100% { transform: scale(2); opacity: 0.1; }
+}
+
+/* Candy Kingdom */
+.preview-candy {
+  background: linear-gradient(135deg, #ff4da6, #ffe0e0);
+  color: #ff0090;
+  font-family: 'Permanent Marker', cursive;
+  position: relative;
+  overflow: hidden;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23ff4da6'/%3E%3Crect x='14' y='5' width='4' height='22' fill='white' rx='2'/%3E%3C/svg%3E"), auto;
+}
+.preview-candy::before, .preview-candy::after {
+  content: '🍬';
+  position: absolute;
+  font-size: 2em;
+  animation: float 3s ease-in-out infinite alternate;
+}
+.preview-candy::before {
+  top: 10px;
+  left: 10px;
+}
+.preview-candy::after {
+  bottom: 10px;
+  right: 10px;
+  animation-delay: -1.5s;
+}
+.preview-candy h1 {
+  font-size: 3em;
+  margin-bottom: 20px;
+  animation: bounce 0.5s ease infinite alternate;
+}
+.preview-candy p {
+  font-size: 1.2em;
+  color: #0090ff;
+  margin-bottom: 30px;
+
+}
+.preview-candy button {
+  background: #ff0090;
+  color: #ffe0e0;
+  border: none;
+  border-radius: 50px;
+  padding: 15px 40px;
+  font-family: inherit;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: all 0.3s;
+  animation: squish 2s ease-in-out infinite;
+}
+.preview-candy button:hover {
+  background: #0090ff;
+  transform: scale(1.1);
+}
+@keyframes float {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-10px); }
+}
+@keyframes bounce {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-5px); }
+}
+@keyframes squish {
+  0%, 100% { transform: scaleX(1); }
+  50% { transform: scaleX(1.2) scaleY(0.8); }
+}
+
+/* Arctic Frost */
+.preview-frost {
+  background: linear-gradient(to bottom, #e0f7fa, #b2ebf2);
+  color: #006064;
+  font-family: 'Quicksand', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+.preview-frost::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 50 50'%3E%3Cpath d='M25 10 L30 3 L25 0 L20 3 Z' fill='white' fill-opacity='0.5'/%3E%3C/svg%3E");
+  animation: snowfall 10s linear infinite;
+}
+.preview-frost h1 {
+  font-size: 3.5em;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px rgba(255,255,255,0.8);
+}
+.preview-frost p {
+  font-size: 1.2em;
+  text-shadow: 0 0 5px rgba(255,255,255,0.8);
+  margin-bottom: 30px;
+
+}
+.preview-frost button {
+  background: transparent;
+  border: 2px solid #006064;
+  color: #006064;
+  padding: 15px 40px;
+  font-family: inherit;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.preview-frost button::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  height: 0;
+  background: #006064;
+  transition: height 0.3s ease-out;
+  z-index: -1;
+}
+.preview-frost button:hover {
+  color: #e0f7fa;
+}
+.preview-frost button:hover::before {
+  height: calc(100% + 4px);
+}
+@keyframes snowfall {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 50px; }
+}
+
+/* Lava Lamp */
+.preview-lava {
+  background: #2d3047;
+  color: #ff6f59;
+  font-family: 'Orbitron', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+.preview-lava::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, #ff6f59, #ff4136);
+  border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+  animation: morph 10s linear infinite alternate;
+  z-index: -1;
+  filter: blur(20px);
+}
+.preview-lava h1 {
+  font-size: 3em;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px #ff6f59;
+}
+.preview-lava p {
+  font-size: 1.2em;
+  text-shadow: 0 0 5px #ff6f59;
+  margin-bottom: 30px;
+
+}
+.preview-lava button {
+  background: #ff6f59;
+  color: #2d3047;
+  border: none;
+  padding: 15px 40px;
+  font-family: inherit;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.preview-lava button::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, transparent, rgba(255,255,255,0.2), transparent);
+  transform: rotate(45deg);
+  transition: all 0.3s;
+}
+.preview-lava button:hover::after {
+  left: 100%;
+}
+@keyframes morph {
+  0% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+  100% { border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%; }
+}
+
+/* Sundown */
+.preview-sundown {
+  background: linear-gradient(to bottom, #ff8966, #e76f51, #6f1d1b);
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+.preview-sundown::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30%;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23000' fill-opacity='0.5' d='M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,208C1248,224,1344,192,1392,176L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") no-repeat bottom;
+  background-size: cover;
+}
+.preview-sundown h1 {
+  font-size: 3.5em;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+.preview-sundown p {
+  font-size: 1.2em;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+  margin-bottom: 30px;
+
+}
+.preview-sundown button {
+  background: rgba(255,255,255,0.2);
+  border: none;
+  color: #fff;
+  padding: 15px 40px;
+  font-family: inherit;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: all 0.3s;
+  backdrop-filter: blur(5px);
+  border-radius: 30px;
+}
+.preview-sundown button:hover {
+  background: rgba(255,255,255,0.3);
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Midnight Glow */
+.preview-midnight {
+  background: #1b1b2f;
+  color: #ff4a6e;
+  font-family: 'VT323', monospace;
+  position: relative;
+  overflow: hidden;
+}
+.preview-midnight::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+    radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
+    radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px);
+  background-size: 550px 550px, 350px 350px, 250px 250px;
+  background-position: 0 0, 40px 60px, 130px 270px;
+  animation: twinkle 10s linear infinite;
+}
+.preview-midnight h1 {
+  font-size: 3.5em;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px #ff4a6e, 0 0 20px #ff4a6e, 0 0 30px #ff4a6e;
+}
+.preview-midnight p {
+  font-size: 1.5em;
+  margin-bottom: 30px;
+  text-shadow: 0 0 5px #ff4a6e;
+}
+.preview-midnight button {
+  background: transparent;
+  border: 2px solid #ff4a6e;
+  color: #ff4a6e;
+  padding: 15px 40px;
+  font-family: inherit;
+  font-size: 1.3em;
+  cursor: pointer;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.preview-midnight button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 74, 110, 0.4),
+    transparent
+  );
+  transition: all 0.4s;
+}
+.preview-midnight button:hover::before {
+  left: 100%;
+}
+.preview-midnight button:hover {
+  box-shadow: 0 0 10px #ff4a6e, 0 0 20px #ff4a6e, 0 0 30px #ff4a6e;
+}
+@keyframes twinkle {
+  0% { background-position: 0 0, 40px 60px, 130px 270px; }
+  100% { background-position: -550px 0, -310px 60px, -180px 270px; }
+}
+
+</style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="heading">
+        <h1>Ultimate Web Style Explorer</h1>
+        <p>Discover and compare different web design aesthetics</p>
+      </div>
+
+      <div class="previews">
+        
+        <!-- Classic -->
+        <div class="preview-card">
+          <div class="preview-frame preview-classic">
+            <h1>Timeless Grace</h1>
+            <p>Elegance in every detail</p>
+            <button>Discover More</button>
+          </div>
+          <div class="preview-info">
+            <div class="preview-style">Classic Elegant</div>
+            <div class="style-details">
+              <code>
+                <strong>Font:</strong> Playfair Display<br />
+                <strong>Colors:</strong> Cream, Dark Brown<br />
+                <strong>Style:</strong> Refined, balanced<br />
+                <strong>Features:</strong> Serif, subtle borders
+              </code>
+            </div>
+          </div>
+          <button class="expand-button">View CSS</button>
+          <div class="expandable-section">
+            <pre><code class="css-code">
+.preview-classic {
+  background: #f9f6f0;
+  color: #2c1810;
+  font-family: "Playfair Display", serif;
+  border: 1px solid #e0d5c5;
+}
+
+.preview-classic h1 {
+  font-size: 2.8em;
+  margin-bottom: 20px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.preview-classic p {
+  font-style: italic;
+  margin-bottom: 30px;
+  color: #5c4030;
+}
+
+.preview-classic button {
+  background: transparent;
+  border: 1px solid #2c1810;
+  color: #2c1810;
+  padding: 15px 40px;
+  font-family: "Marcellus", serif;
+  letter-spacing: 2px;
+  transition: all 0.3s ease;
+}
+            </code></pre>
+            <button class="copy-button">Copy CSS</button>
+          </div>
+        </div>
+
+        <!-- Modern -->
+        <div class="preview-card">
+          <div class="preview-frame preview-modern">
+            <h1>Modern</h1>
+            <p>Less noise. More signal.</p>
+            <button>Explore</button>
+          </div>
+          <div class="preview-info">
+            <div class="preview-style">Modern Minimal</div>
+            <div class="style-details">
+              <code>
+                <strong>Font:</strong> DM Sans<br />
+                <strong>Colors:</strong> Black & White<br />
+                <strong>Style:</strong> Clean, bold<br />
+                <strong>Features:</strong> Sans-serif, white space
+              </code>
+            </div>
+          </div>
+          <button class="expand-button">View CSS</button>
+          <div class="expandable-section">
+            <pre><code class="css-code">
+.preview-modern {
+  background: white;
+  color: #000;
+  font-family: "DM Sans", sans-serif;
+}
+
+.preview-modern h1 {
+  font-size: 4em;
+  font-weight: 700;
+  margin-bottom: 20px;
+  letter-spacing: -1px;
+}
+
+.preview-modern p {
+  font-size: 1.2em;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.preview-modern button {
+  background: #000;
+  color: white;
+  border: none;
+  padding: 18px 50px;
+  border-radius: 30px;
+  font-size: 1.1em;
+  font-weight: 500;
+}
+            </code></pre>
+            <button class="copy-button">Copy CSS</button>
+          </div>
+        </div>
+
+        <!-- Brutalist -->
+        <div class="preview-card">
+          <div class="preview-frame preview-brutalist">
+            <h1>RAW POWER</h1>
+            <p>NO SUGAR COATING</p>
+            <button>SMASH IT</button>
+          </div>
+          <div class="preview-info">
+            <div class="preview-style">Brutalist</div>
+            <div class="style-details">
+              <code>
+                <strong>Font:</strong> Courier Prime<br />
+                <strong>Colors:</strong> High contrast B&W<br />
+                <strong>Style:</strong> Raw, unpolished<br />
+                <strong>Features:</strong> Heavy borders, uppercase
+              </code>
+            </div>
+          </div>
+          <button class="expand-button">View CSS</button>
+          <div class="expandable-section">
+            <pre><code class="css-code">
+.preview-brutalist {
+  background: #ffffff;
+  color: #000000;
+  font-family: "Courier Prime", monospace;
+  border: 6px solid #000;
+}
+
+.preview-brutalist h1 {
+  font-size: 3em;
+  text-transform: uppercase;
+  border-bottom: 6px solid #000;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.preview-brutalist p {
+  font-size: 1.2em;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+
+.preview-brutalist button {
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 20px 40px;
+  font-family: inherit;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+            </code></pre>
+            <button class="copy-button">Copy CSS</button>
+          </div>
+        </div>
+
+        <!-- Retro -->
+        <div class="preview-card">
+          <div class="preview-frame preview-retro">
+            <h1>RETRO</h1>
+            <p>BACK TO THE FUTURE</p>
+            <button>PLAY NOW</button>
+          </div>
+          <div class="preview-info">
+            <div class="preview-style">Retro Gaming</div>
+            <div class="style-details">
+              <code>
+                <strong>Font:</strong> Press Start 2P<br />
+                <strong>Colors:</strong> Bright gradients<br />
+                <strong>Style:</strong> 80s arcade<br />
+                <strong>Features:</strong> Pixel patterns
+              </code>
+            </div>
+          </div>
+          <button class="expand-button">View CSS</button>
+          <div class="expandable-section">
+            <pre><code class="css-code">
+.preview-retro {
+  background: linear-gradient(45deg, #ff6b6b, #ffe66d);
+  color: #2d2d2d;
+  font-family: "Press Start 2P", cursive;
+  position: relative;
+  overflow: hidden;
+}
+
+.preview-retro::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.1) 0px,
+    rgba(0, 0, 0, 0.1) 2px,
+    transparent 2px,
+    transparent 4px
+  );
+  pointer-events: none;
+}
+
+.preview-retro h1 {
+  font-size: 2.5em;
+  text-shadow: 4px 4px 0 rgba(0, 0, 0, 0.2);
+  margin-bottom: 30px;
+  color: #ff355e;
+}
+
+.preview-retro p {
+  font-size: 1em;
+  margin-bottom: 30px;
+  color: #2d2d2d;
+}
+
+.preview-retro button {
+  background: #4a90e2;
+  color: #fff;
+  border: 4px solid #2d2d2d;
+  padding: 15px 40px;
+  font-family: inherit;
+  box-shadow: 4px 4px 0 #2d2d2d;
+  transform: rotate(-2deg);
+}
+            </code></pre>
+            <button class="copy-button">Copy CSS</button>
+          </div>
+        </div>
+
+        <!-- Minimalist -->
+        <div class="preview-card">
+          <div class="preview-frame preview-minimalist">
+            <h1>Less</h1>
+            <p>Embracing simplicity</p>
+            <button>Enter</button>
+          </div>
+          <div class="preview-info">
+            <div class="preview-style">Minimalist</div>
+            <div class="style-details">
+              <code>
+                <strong>Font:</strong> Inter<br />
+                <strong>Colors:</strong> Monochrome<br />
+                <strong>Style:</strong> Ultra minimal<br />
+                <strong>Features:</strong> Thin weights, spacing
+              </code>
+            </div>
+          </div>
+          <button class="expand-button">View CSS</button>
+          <div class="expandable-section">
+            <pre><code class="css-code">
+.preview-minimalist {
+  background: #ffffff;
+  color: #000000;
+  font-family: "Inter", sans-serif;
+}
+
+.preview-minimalist h1 {
+  font-size: 2em;
+  font-weight: 200;
+  margin-bottom: 20px;
+  letter-spacing: -0.5px;
+}
+
+.preview-minimalist p {
+  font-size: 0.9em;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.preview-minimalist button {
+  background: none;
+  border: 1px solid #000;
+  padding: 12px 30px;
+  font-size: 0.8em;
+  letter-spacing: 1px;
+}
+            </code></pre>
+            <button class="copy-button">Copy CSS</button>
+          </div>
+        </div>
+
+        <!-- Neumorphism -->
+        <div class="preview-card">
+          <div class="preview-frame preview-neumorph">
+            <h1>Soft UI</h1>
+            <p>Touch the future</p>
+            <button>Feel It</button>
+          </div>
+          <div class="preview-info">
+            <div class="preview-style">Neumorphic</div>
+            <div class="style-details">
+              <code>
+                <strong>Font:</strong> Poppins<br />
+                <strong>Colors:</strong> Soft shadows<br />
+                <strong>Style:</strong> 3D, tactile<br />
+                <strong>Features:</strong> Layered shadows
+              </code>
+            </div>
+          </div>
+          <button class="expand-button">View CSS</button>
+          <div class="expandable-section">
+            <pre><code class="css-code">
+.preview-neumorph {
+  background: #e0e5ec;
+  color: #4d4d4d;
+  font-family: "Poppins", sans-serif;
+}
+
+.preview-neumorph h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 3px #ffffff, -2px -2px 3px rgba(0, 0, 0, 0.1);
+}
+
+.preview-neumorph p {
+  margin-bottom: 30px;
+  color: #666;
+}
+
+.preview-neumorph button {
+  padding: 15px 40px;
+  border-radius: 15px;
+  border: none;
+  background: #e0e5ec;
+  box-shadow: 8px 8px 15px #a3b1c6, -8px -8px 15px #ffffff;
+  color: #4d4d4d;
+  font-weight: 600;
+}
+            </code></pre>
+            <button class="copy-button">Copy CSS</button>
+          </div>
+        </div>
+
+        <!-- Dark Mode -->
+        <div class="preview-card">
+          <div class="preview-frame preview-dark">
+            <h1>After Hours</h1>
+            <p>Embrace the darkness</p>
+            <button>Enter Night Mode</button>
+          </div>
+          <div class="preview-info">
+            <div class="preview-style">Dark Mode</div>
+            <div class="style-details">
+              <code>
+                <strong>Font:</strong> Inter<br />
+                <strong>Colors:</strong> Dark grays<br />
+                <strong>Style:</strong> Mysterious<br />
+                <strong>Features:</strong> Subtle glow
+              </code>
+            </div>
+          </div>
+          <button class="expand-button">View CSS</button>
+          <div class="expandable-section">
+            <pre><code class="css-code">
+.preview-dark {
+  background: #141414;
+  color: #ffffff;
+  font-family: "Inter", sans-serif;
+}
+
+.preview-dark h1 {
+  font-size: 2.8em;
+  font-weight: 200;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.preview-dark p {
+  color: #888;
+  margin-bottom: 30px;
+}
+
+.preview-dark button {
+  background: #2a2a2a;
+  color: #fff;
+  border: 1px solid #444;
+  padding: 15px 40px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  letter-spacing: 1px;
+}
+            </code></pre>
+            <button class="copy-button">Copy CSS</button>
+          </div>
+        </div>
+
+        <!-- Cyberpunk -->
+        <div class="preview-card">
+          <div class="preview-frame preview-cyberpunk">
+            <h1>Neo Tokyo</h1>
+            <p>Hack the mainframe</p>
+            <button>Jack In</button>
+          </div>
+          <div class="preview-info">
+            <div class="preview-style">Cyberpunk</div>
+            <div class="style-details">
+              <code>
+                <strong>Font:</strong> Orbitron<br />
+                <strong>Colors:</strong> Neon green, dark blue<br />
+                <strong>Style:</strong> Futuristic, techy<br />
+                <strong>Features:</strong> Glowing effects
+              </code>
+            </div>
+          </div>
+          <button class="expand-button">View CSS</button>
+          <div class="expandable-section">
+            <pre><code class="css-code">
+.preview-cyberpunk {
+  background: #120458;
+  color: #00ff41;
+  font-family: 'Orbitron', sans-serif;
+  text-shadow: 0 0 5px #00ff41;
+  border: 2px solid #00ff41;
+  box-shadow: 0 0 10px #00ff41, inset 0 0 10px #00ff41;
+}
+            </code></pre>
+            <button class="copy-button">Copy CSS</button>
+          </div>
+        </div>
+
+        <!-- Vaporwave -->
+        <div class="preview-card">
+          <div class="preview-frame preview-vaporwave">
+            <h1>Aesthetic</h1>
+            <p>Retro future vibes</p>
+            <button>Chill Out</button>
+          </div>
+          <div class="preview-info">
+            <div class="preview-style">Vaporwave</div>
+            <div class="style-details">
+              <code>
+                <strong>Font:</strong> VT323<br />
+                <strong>Colors:</strong> Pastel gradients<br />
+                <strong>Style:</strong> 80s/90s nostalgia<br />
+                <strong>Features:</strong> Glitch text effects
+              </code>
+            </div>
+          </div>
+          <button class="expand-button">View CSS</button>
+          <div class="expandable-section">
+            <pre><code class="css-code">
+.preview-vaporwave {
+  background: linear-gradient(45deg, #ff6ad5, #c774e8, #ad8cff);
+  color: #fff;
+  font-family: 'VT323', monospace;
+}
+            </code></pre>
+            <button class="copy-button">Copy CSS</button>
+          </div>
+        </div>
+
+        <!-- Glassmorphism -->
+        <div class="preview-card">
+          <div class="preview-frame preview-glassmorphism">
+            <h1>Crystal Clear</h1>
+            <p>Transparency redefined</p>
+            <button>Peek Through</button>
+          </div>
+          <div class="preview-info">
+            <div class="preview-style">Glassmorphism</div>
+            <div class="style-details">
+              <code>
+                <strong>Font:</strong> Poppins<br />
+                <strong>Colors:</strong> Transparent white<br />
+                <strong>Style:</strong> Modern, clean<br />
+                <strong>Features:</strong> Blur effects
+              </code>
+            </div>
+          </div>
+          <button class="expand-button">View CSS</button>
+          <div class="expandable-section">
+            <pre><code class="css-code">
+.preview-glassmorphism {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+}
+            </code></pre>
+            <button class="copy-button">Copy CSS</button>
+          </div>
+        </div>
+
+        <!-- Organic -->
+        <div class="preview-card">
+          <div class="preview-frame preview-organic">
+            <h1>Natural Harmony</h1>
+            <p>In tune with nature</p>
+            <button>Grow</button>
+          </div>
+          <div class="preview-info">
+            <div class="preview-style">Organic</div>
+            <div class="style-details">
+              <code>
+                <strong>Font:</strong> Marcellus<br />
+                <strong>Colors:</strong> Earth tones<br />
+                <strong>Style:</strong> Natural, soothing<br />
+                <strong>Features:</strong> Rounded shapes
+              </code>
+            </div>
+          </div>
+          <button class="expand-button">View CSS</button>
+          <div class="expandable-section">
+            <pre><code class="css-code">
+.preview-organic {
+  background: #f0ead6;
+  color: #3a3a3a;
+  font-family: 'Marcellus', serif;
+  border-radius: 20px;
+}
+            </code></pre>
+            <button class="copy-button">Copy CSS</button>
+          </div>
+        </div>
+
+        <!-- Art Deco -->
+        <div class="preview-card">
+          <div class="preview-frame preview-artdeco">
+            <h1>Golden Age</h1>
+            <p>Luxurious & bold</p>
+            <button>Indulge</button>
+          </div>
+          <div class="preview-info">
+            <div class="preview-style">Art Deco</div>
+            <div class="style-details">
+              <code>
+                <strong>Font:</strong> Cinzel<br />
+                <strong>Colors:</strong> Gold, black<br />
+                <strong>Style:</strong> Elegant, geometric<br />
+                <strong>Features:</strong> Bold shapes
+              </code>
+            </div>
+          </div>
+          <button class="expand-button">View CSS</button>
+          <div class="expandable-section">
+            <pre><code class="css-code">
+.preview-artdeco {
+  background: #000;
+  color: #ffd700;
+  font-family: 'Cinzel', serif;
+  border: 5px solid #ffd700;
+}
+            </code></pre>
+            <button class="copy-button">Copy CSS</button>
+          </div>
+        </div>
+
+        <!-- Kawaii -->
+        <div class="preview-card">
+          <div class="preview-frame preview-kawaii">
+            <h1>Cute Overload</h1>
+            <p>Sweetness galore</p>
+            <button>Cuddle</button>
+          </div>
+          <div class="preview-info">
+            <div class="preview-style">Kawaii</div>
+            <div class="style-details">
+              <code>
+                <strong>Font:</strong> Pacifico<br />
+                <strong>Colors:</strong> Pastel pink<br />
+                <strong>Style:</strong> Cute, playful<br />
+                <strong>Features:</strong> Rounded elements
+              </code>
+            </div>
+          </div>
+          <button class="expand-button">View CSS</button>
+          <div class="expandable-section">
+            <pre><code class="css-code">
+.preview-kawaii {
+  background: #ffe6e6;
+  color: #ff69b4;
+  font-family: 'Pacifico', cursive;
+}
+            </code></pre>
+            <button class="copy-button">Copy CSS</button>
+          </div>
+        </div>
+
+        <!-- Steampunk -->
+        <div class="preview-card">
+          <div class="preview-frame preview-steampunk">
+            <h1>Clockwork</h1>
+            <p>Victorian futurism</p>
+            <button>Engage</button>
+          </div>
+          <div class="preview-info">
+            <div class="preview-style">Steampunk</div>
+            <div class="style-details">
+              <code>
+                <strong>Font:</strong> Courier Prime<br />
+                <strong>Colors:</strong> Brown, gold<br />
+                <strong>Style:</strong> Industrial, vintage<br />
+                <strong>Features:</strong> Metallic textures
+              </code>
+            </div>
+          </div>
+          <button class="expand-button">View CSS</button>
+          <div class="expandable-section">
+            <pre><code class="css-code">
+.preview-steampunk {
+  background: #8b4513;
+  color: #ffd700;
+  font-family: 'Courier Prime', monospace;
+  border: 5px solid #cd853f;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+}
+            </code></pre>
+            <button class="copy-button">Copy CSS</button>
+          </div>
+        </div>
+
+        <!-- Synthwave -->
+        <div class="preview-card">
+          <div class="preview-frame preview-synthwave">
+            <h1>Neon Dreams</h1>
+            <p>Ride the retro wave</p>
+            <button>Sync In</button>
+          </div>
+          <div class="preview-info">
+            <div class="preview-style">Synthwave</div>
+            <div class="style-details">
+              <code>
+                <strong>Font:</strong> Outrun future<br />
+                <strong>Colors:</strong> Neon purple, blue, pink<br />
+                <strong>Style:</strong> 80s futurism<br />
+                <strong>Features:</strong> Neon glow, grid
+              </code>
+            </div>
+          </div>
+          <button class="expand-button">View CSS</button>
+          <div class="expandable-section">
+            <pre><code class="css-code">
+.preview-synthwave {
+  background: linear-gradient(to bottom, #2b1055, #7597de);
+  color: #ff00ff;
+  font-family: 'Outrun future', sans-serif;
+  text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff;
+  position: relative;
+  overflow: hidden;
+}
+
+.preview-synthwave::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(transparent 0%, rgba(255, 0, 255, 0.2) 100%);
+  pointer-events: none;
+}
+
+.preview-synthwave h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.preview-synthwave p {
+  color: #00ffff;
+  text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff;
+}
+
+.preview-synthwave button {
+  background: transparent;
+  border: 2px solid #ff00ff;
+  color: #ff00ff;
+  padding: 15px 40px;
+  font-family: inherit;
+  text-shadow: 0 0 5px #ff00ff;
+  box-shadow: 0 0 10px #ff00ff;
+}
+            </code></pre>
+            <button class="copy-button">Copy CSS</button>
+          </div>
+        </div>
+
+        <!-- Eco-Friendly -->
+        <div class="preview-card">
+          <div class="preview-frame preview-eco">
+            <h1>Green Living</h1>
+            <p>Sustainable design</p>
+            <button>Go Green</button>
+          </div>
+          <div class="preview-info">
+            <div class="preview-style">Eco-Friendly</div>
+            <div class="style-details">
+              <code>
+                <strong>Font:</strong> Quicksand<br />
+                <strong>Colors:</strong> Natural greens, earthy tones<br />
+                <strong>Style:</strong> Clean, organic<br />
+                <strong>Features:</strong> Leaf motifs, recycled textures
+              </code>
+            </div>
+          </div>
+          <button class="expand-button">View CSS</button>
+          <div class="expandable-section">
+            <pre><code class="css-code">
+.preview-eco {
+  background: #f0f7f4;
+  color: #2c5f2d;
+  font-family: 'Quicksand', sans-serif;
+  border: 2px solid #97bc62;
+  position: relative;
+}
+
+.preview-eco::before {
+  content: '🍃';
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+}
+
+.preview-eco h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  color: #1e4d2b;
+}
+
+.preview-eco p {
+  color: #4a7c59;
+  margin-bottom: 30px;
+}
+
+.preview-eco button {
+  background: #97bc62;
+  color: #fff;
+  border: none;
+  padding: 15px 40px;
+  border-radius: 25px;
+  font-family: inherit;
+  transition: all 0.3s ease;
+}
+
+.preview-eco button:hover {
+  background: #2c5f2d;
+}
+            </code></pre>
+            <button class="copy-button">Copy CSS</button>
+          </div>
+        </div>
+
+        <!-- Sci-Fi -->
+        <div class="preview-card">
+          <div class="preview-frame preview-scifi">
+            <h1>Galactic Interface</h1>
+            <p>Explore the unknown</p>
+            <button>Launch</button>
+          </div>
+          <div class="preview-info">
+            <div class="preview-style">Sci-Fi</div>
+            <div class="style-details">
+              <code>
+                <strong>Font:</strong> Exo 2<br />
+                <strong>Colors:</strong> Deep space blue, neon accents<br />
+                <strong>Style:</strong> Futuristic, high-tech<br />
+                <strong>Features:</strong> Holographic effects, space imagery
+              </code>
+            </div>
+          </div>
+          <button class="expand-button">View CSS</button>
+          <div class="expandable-section">
+            <pre><code class="css-code">
+.preview-scifi {
+  background: #020814;
+  color: #0af;
+  font-family: 'Exo 2', sans-serif;
+  border: 1px solid #0af;
+  box-shadow: 0 0 20px rgba(0, 170, 255, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+.preview-scifi::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  background: url('https://example.com/space-bg.jpg') center/cover no-repeat;
+  opacity: 0.1;
+  animation: space-drift 100s linear infinite;
+}
+
+@keyframes space-drift {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.preview-scifi h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px #0af;
+}
+
+.preview-scifi p {
+  color: #7af;
+  margin-bottom: 30px;
+}
+
+.preview-scifi button {
+  background: rgba(0, 170, 255, 0.2);
+  color: #0af;
+  border: 1px solid #0af;
+  padding: 15px 40px;
+  font-family: inherit;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+  overflow: hidden;
+}
+
+.preview-scifi button::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  background: linear-gradient(45deg, transparent, rgba(0, 170, 255, 0.6), transparent);
+  transform: rotate(45deg);
+  transition: all 0.3s ease;
+}
+
+.preview-scifi button:hover::before {
+  left: 150%;
+  transition: all 0.3s ease;
+}
+            </code></pre>
+            <button class="copy-button">Copy CSS</button>
+          </div>
+        </div>
+
+        <!-- Neon Noir -->
+        <div class="preview-card">
+          <div class="preview-frame preview-neon-noir">
+            <h1>Dark City</h1>
+            <p>Where shadows come alive</p>
+            <button>Enter the Night</button>
+          </div>
+          <div class="preview-info">
+            <div class="preview-style">Neon Noir</div>
+            <div class="style-details">
+              <code>
+                <strong>Font:</strong> Blade Runner<br />
+                <strong>Colors:</strong> Black, neon blue, hot pink<br />
+                <strong>Style:</strong> Moody, mysterious<br />
+                <strong>Features:</strong> Neon glow, rain effect
+              </code>
+            </div>
+          </div>
+          <button class="expand-button">View CSS</button>
+          <div class="expandable-section">
+            <pre><code class="css-code">
+.preview-neon-noir {
+  background: #000000;
+  color: #00ffff;
+  font-family: 'Blade Runner', sans-serif;
+  text-shadow: 0 0 10px #00ffff;
+  position: relative;
+  overflow: hidden;
+}
+
+.preview-neon-noir::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  background: linear-gradient(to bottom, transparent 0%, rgba(0, 255, 255, 0.2) 100%);
+  animation: rain 15s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes rain {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(100%); }
+}
+
+.preview-neon-noir h1 {
+  font-size: 3em;
+  margin-bottom: 20px;
+  color: #ff1493;
+  text-shadow: 0 0 15px #ff1493;
+}
+
+.preview-neon-noir p {
+  font-size: 1.2em;
+  margin-bottom: 30px;
+}
+
+.preview-neon-noir button {
+  background: transparent;
+  color: #00ffff;
+  border: 2px solid #00ffff;
+  padding: 15px 40px;
+  font-family: inherit;
+  font-size: 1em;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  box-shadow: 0 0 10px #00ffff;
+  transition: all 0.3s ease;
+}
+
+.preview-neon-noir button:hover {
+  background: #00ffff;
+  color: #000000;
+}
+            </code></pre>
+            <button class="copy-button">Copy CSS</button>
+          </div>
+        </div>
+
+        <!-- Biomorphic -->
+        <div class="preview-card">
+          <div class="preview-frame preview-biomorphic">
+            <h1>Organic Flow</h1>
+            <p>Inspired by nature's forms</p>
+            <button>Explore Shapes</button>
+          </div>
+          <div class="preview-info">
+            <div class="preview-style">Biomorphic</div>
+            <div class="style-details">
+              <code>
+                <strong>Font:</strong> Euclid Circular A<br />
+                <strong>Colors:</strong> Soft pastels, nature-inspired<br />
+                <strong>Style:</strong> Fluid, organic<br />
+                <strong>Features:</strong> Blob shapes, smooth transitions
+              </code>
+            </div>
+          </div>
+          <button class="expand-button">View CSS</button>
+          <div class="expandable-section">
+            <pre><code class="css-code">
+.preview-biomorphic {
+  background: #f0f4f8;
+  color: #2c3e50;
+  font-family: 'Euclid Circular A', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.preview-biomorphic::before,
+.preview-biomorphic::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+.preview-biomorphic::before {
+  width: 300px;
+  height: 300px;
+  background: #a8e6cf;
+  top: -100px;
+  left: -100px;
+}
+
+.preview-biomorphic::after {
+  width: 200px;
+  height: 200px;
+  background: #ffd3b6;
+  bottom: -50px;
+  right: -50px;
+}
+
+.preview-biomorphic h1 {
+  font-size: 2.8em;
+  margin-bottom: 20px;
+  color: #3d5a80;
+}
+
+.preview-biomorphic p {
+  font-size: 1.2em;
+  margin-bottom: 30px;
+  color: #98c1d9;
+}
+
+.preview-biomorphic button {
+  background: #ee8572;
+  color: #ffffff;
+  border: none;
+  padding: 15px 40px;
+  font-family: inherit;
+  font-size: 1em;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.preview-biomorphic button:hover {
+  background: #3d5a80;
+  transform: scale(1.05);
+}
+            </code></pre>
+            <button class="copy-button">Copy CSS</button>
+          </div>
+        </div>
+
+        <!-- Solarpunk -->
+        <div class="preview-card">
+          <div class="preview-frame preview-solarpunk">
+            <h1>Eco Utopia</h1>
+            <p>Sustainable future, today</p>
+            <button>Grow Together</button>
+          </div>
+          <div class="preview-info">
+            <div class="preview-style">Solarpunk</div>
+            <div class="style-details">
+              <code>
+                <strong>Font:</strong> Montserrat<br />
+                <strong>Colors:</strong> Vibrant greens, sunny yellows<br />
+                <strong>Style:</strong> Optimistic, eco-futuristic<br />
+                <strong>Features:</strong> Plant motifs, solar elements
+              </code>
+            </div>
+          </div>
+          <button class="expand-button">View CSS</button>
+          <div class="expandable-section">
+            <pre><code class="css-code">
+.preview-solarpunk {
+  background: linear-gradient(135deg, #c4e17f, #7fdca6);
+  color: #1a5f7a;
+  font-family: 'Montserrat', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.preview-solarpunk::before {
+  content: '☀️';
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 40px;
+  opacity: 0.8;
+}
+
+.preview-solarpunk h1 {
+  font-size: 2.8em;
+  margin-bottom: 20px;
+  color: #006d77;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+.preview-solarpunk p {
+  font-size: 1.2em;
+  margin-bottom: 30px;
+  color: #2a9d8f;
+}
+
+.preview-solarpunk button {
+  background: #ffd166;
+  color: #006d77;
+  border: none;
+  padding: 15px 40px;
+  font-family: inherit;
+  font-size: 1em;
+  border-radius: 50px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.preview-solarpunk button:hover {
+  background: #006d77;
+  color: #ffd166;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.preview-solarpunk::after {
+  content: '🌿';
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  font-size: 30px;
+  opacity: 0.8;
+}
+            </code></pre>
+            <button class="copy-button">Copy CSS</button>
+          </div>
+        </div>
+
+        <!-- Quantum Flux -->
+        <div class="preview-card">
+          <div class="preview-frame preview-quantum-flux">
+            <h1>Quantum Entanglement</h1>
+            <p>Beyond the boundaries</p>
+            <button>Enter</button>
+          </div>
+          <div class="preview-info">
+            <div class="preview-style">Quantum Flux</div>
+            <div class="style-details">
+              <code>
+                <strong>Font:</strong> Comfortaa<br />
+                <strong>Colors:</strong> Neon purple, cyan, yellow<br />
+                <strong>Style:</strong> Futuristic, abstract<br />
+                <strong>Features:</strong> Glowing particles, distorted shapes
+              </code>
+            </div>
+          </div>
+          <button class="expand-button">View CSS</button>
+          <div class="expandable-section">
+            <pre><code class="css-code">
+.preview-quantum-flux {
+  background: #000;
+  color: #fff;
+  font-family: 'Comfortaa', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.preview-quantum-flux::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('https://example.com/quantum-bg.jpg') center/cover no-repeat;
+  opacity: 0.2;
+  animation: flux 10s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes flux {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+.preview-quantum-flux h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  text-shadow: 0 0 20px #fff;
+}
+
+.preview-quantum-flux p {
+  color: #7af;
+  margin-bottom: 30px;
+  text-shadow: 0 0 10px #fff;
+}
+
+.preview-quantum-flux button {
+  background: linear-gradient(45deg, #ff00ff, #00ffff, #ffff00);
+  color: #000;
+  border: none;
+  border-radius: 5px;
+  padding: 15px 40px;
+  font-family: inherit;
+  font-size: 1em;
+  font-weight: bold;
+  letter-spacing: 2px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.preview-quantum-flux button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+            </code></pre>
+            <button class="copy-button">Copy CSS</button>
+          </div>
+        </div>
+
+        <!-- Fractal Dreamscape -->
+        <div class="preview-card">
+          <div class="preview-frame preview-fractal-dream">
+            <h1>Infinite Recursion</h1>
+            <p>Explore the fractal</p>
+            <button>Dive In</button>
+          </div>
+          <div class="preview-info">
+            <div class="preview-style">Fractal Dreamscape</div>
+            <div class="style-details">
+              <code>
+                <strong>Font:</strong> Space Mono<br />
+                <strong>Colors:</strong> Neon green, purple<br />
+                <strong>Style:</strong> Abstract, geometric<br />
+                <strong>Features:</strong> Intricate patterns, interactive
+              </code>
+            </div>
+          </div>
+          <button class="expand-button">View CSS</button>
+          <div class="expandable-section">
+            <pre><code class="css-code">
+.preview-fractal-dream {
+  background: #000;
+  color: #fff;
+  font-family: 'Space Mono', monospace;
+  position: relative;
+  overflow: hidden;
+}
+
+.preview-fractal-dream::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('https://example.com/fractal-bg.jpg') center/cover no-repeat;
+  opacity: 0.2;
+  animation: drift 100s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes drift {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.preview-fractal-dream h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  background: linear-gradient(45deg, #00ff00, #8b00ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: rainbow-text 8s linear infinite;
+}
+
+@keyframes rainbow-text {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
+.preview-fractal-dream p {
+  color: #7af;
+  margin-bottom: 30px;
+  text-shadow: 0 0 10px #fff;
+}
+
+.preview-fractal-dream button {
+  background: transparent;
+  color: #00ff00;
+  border: 2px solid #00ff00;
+  padding: 15px 40px;
+  font-family: inherit;
+  font-size: 1em;
+  letter-spacing: 2px;
+  box-shadow: 0 0 10px #00ff00;
+  transition: all 0.3s ease;
+}
+
+.preview-fractal-dream button:hover {
+  background: #00ff00;
+  color: #000;
+  text-shadow: none;
+  box-shadow: 0 0 20px #00ff00;
+}
+            </code></pre>
+            <button class="copy-button">Copy CSS</button>
+          </div>
+      </div>
+
+  <!-- Synesthesia -->
+        <div class="preview-card">
+    <div class="preview-frame preview-synesthesia">
+      <h1>Taste the Rainbow</h1>
+      <p>Hear colors, see sounds</p>
+      <button>Blend Senses</button>
+          </div>
+          <div class="preview-info">
+      <div class="preview-style">Synesthesia</div>
+            <div class="style-details">
+              <code>
+          <strong>Font:</strong> Comfortaa<br />
+          <strong>Colors:</strong> Vibrant, sensory-inspired palette<br />
+          <strong>Style:</strong> Fluid, interconnected<br />
+          <strong>Features:</strong> Color-sound interactions, sensory animations
+              </code>
+            </div>
+          </div>
+          <button class="expand-button">View CSS</button>
+          <div class="expandable-section">
+            <pre><code class="css-code">
+  .preview-synesthesia {
+    background: #1a0b19;
+    color: #fff;
+    font-family: 'Comfortaa', cursive;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .preview-synesthesia::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    right: -50%;
+    bottom: -50%;
+    background: 
+      radial-gradient(circle, #ff0000 20%, transparent 20%),
+      radial-gradient(circle, #00ff00 20%, transparent 20%),
+      radial-gradient(circle, #0000ff 20%, transparent 20%);
+    background-size: 100px 100px, 120px 120px, 140px 140px;
+    animation: synesthesia-pulse 10s linear infinite;
+    opacity: 0.1;
+  }
+  
+  @keyframes synesthesia-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+  }
+  
+  .preview-synesthesia h1 {
+    font-size: 2.5em;
+  margin-bottom: 20px;
+    background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #8b00ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    animation: rainbow-text 8s linear infinite;
+  }
+  
+  @keyframes rainbow-text {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+  }
+  
+  .preview-synesthesia p {
+    font-size: 1.2em;
+  margin-bottom: 30px;
+    opacity: 0.8;
+}
+
+  .preview-synesthesia button {
+  background: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 50px;
+  padding: 15px 40px;
+    font-family: inherit;
+    font-size: 1em;
+  letter-spacing: 2px;
+    position: relative;
+    overflow: hidden;
+  transition: all 0.3s ease;
+  }
+  
+  .preview-synesthesia button:hover {
+    background: #fff;
+    color: #1a0b19;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+  }
+  
+  .preview-synesthesia button::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(from 0deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #8b00ff, #ff0000);
+    animation: rotate 4s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .preview-synesthesia button:hover::before {
+    opacity: 0.3;
+  }
+  
+  @keyframes rotate {
+    100% { transform: rotate(360deg); }
+}
+            </code></pre>
+            <button class="copy-button">Copy CSS</button>
+          </div>
+        </div>
+
+
+        <div class="preview-card">
+            <div class="preview-frame preview-mystic">
+              <h1>Mystic</h1>
+              <p>Unveil the secrets</p>
+              <button>Discover</button>
+            </div>
+            <div class="preview-info">
+              <div class="preview-style">Mystic</div>
+              <div class="style-details">
+                <code>
+                  <strong>Font:</strong> Cinzel<br />
+                  <strong>Colors:</strong> Purple, Dark Blue<br />
+                  <strong>Style:</strong> Enigmatic, ethereal<br />
+                  <strong>Features:</strong> Text shadows, gradients
+                </code>
+              </div>
+            </div>
+            <button class="expand-button">View CSS</button>
+            <div class="expandable-section">
+              <pre><code class="css-code">
+          .preview-mystic {
+            background: linear-gradient(135deg, #5e42a6, #342e65);
+            color: #d4b3ff;
+            font-family: 'Cinzel', serif;
+          }
+          .preview-mystic h1 { text-shadow: 0 0 10px #d4b3ff; }
+          .preview-mystic button { border: 2px solid #d4b3ff; }
+              </code></pre>
+              <button class="copy-button">Copy CSS</button>
+            </div>
+          </div>
+          
+          <div class="preview-card">
+            <div class="preview-frame preview-night-vision">
+              <h1>Night Vision</h1>
+              <p>See beyond the dark</p>
+              <button>Explore</button>
+            </div>
+            <div class="preview-info">
+              <div class="preview-style">Night Vision</div>
+              <div class="style-details">
+                <code>
+                  <strong>Font:</strong> Courier New<br />
+                  <strong>Colors:</strong> Green, Black<br />
+                  <strong>Style:</strong> Tactical, stealthy<br />
+                  <strong>Features:</strong> Monospace font, high contrast
+                </code>
+              </div>
+            </div>
+            <button class="expand-button">View CSS</button>
+            <div class="expandable-section">
+              <pre><code class="css-code">
+          .preview-night-vision {
+            background: #183a2e;
+            color: #a6ffaf;
+            font-family: 'Courier New', monospace;
+          }
+          .preview-night-vision button { background: #a6ffaf; color: #183a2e; }
+              </code></pre>
+              <button class="copy-button">Copy CSS</button>
+            </div>
+          </div>
+          
+          <div class="preview-card">
+            <div class="preview-frame preview-velvet">
+              <h1>Velvet Void</h1>
+              <p>Luxurious depth</p>
+              <button>Indulge</button>
+            </div>
+            <div class="preview-info">
+              <div class="preview-style">Velvet Void</div>
+              <div class="style-details">
+                <code>
+                  <strong>Font:</strong> Cormorant Garamond<br />
+                  <strong>Colors:</strong> Deep Purple, Pink<br />
+                  <strong>Style:</strong> Rich, elegant<br />
+                  <strong>Features:</strong> Radial gradients, serif font
+                </code>
+              </div>
+            </div>
+            <button class="expand-button">View CSS</button>
+            <div class="expandable-section">
+              <pre><code class="css-code">
+          .preview-velvet {
+            background: radial-gradient(circle, #3e1046, #1f0824);
+            color: #f9d2ff;
+            font-family: 'Cormorant Garamond', serif;
+          }
+          .preview-velvet button { background: #f9d2ff; color: #3e1046; }
+              </code></pre>
+              <button class="copy-button">Copy CSS</button>
+            </div>
+          </div>
+          
+          <div class="preview-card">
+            <div class="preview-frame preview-solar">
+              <h1>Solar Flare</h1>
+              <p>Radiant energy</p>
+              <button>Shine</button>
+            </div>
+            <div class="preview-info">
+              <div class="preview-style">Solar Flare</div>
+              <div class="style-details">
+                <code>
+                  <strong>Font:</strong> Poppins<br />
+                  <strong>Colors:</strong> Yellow, Orange<br />
+                  <strong>Style:</strong> Bright, dynamic<br />
+                  <strong>Features:</strong> Linear gradients, sans-serif
+                </code>
+              </div>
+            </div>
+            <button class="expand-button">View CSS</button>
+            <div class="expandable-section">
+              <pre><code class="css-code">
+          .preview-solar {
+            background: linear-gradient(90deg, #ffdd00, #ff3e00);
+            color: #2d2d2d;
+            font-family: 'Poppins', sans-serif;
+          }
+          .preview-solar button { background: #ff3e00; color: #fff; }
+              </code></pre>
+              <button class="copy-button">Copy CSS</button>
+            </div>
+          </div>
+          
+          <div class="preview-card">
+            <div class="preview-frame preview-crystal-lake">
+              <h1>Crystal Lake</h1>
+              <p>Serene reflections</p>
+              <button>Dive In</button>
+            </div>
+            <div class="preview-info">
+              <div class="preview-style">Crystal Lake</div>
+              <div class="style-details">
+                <code>
+                  <strong>Font:</strong> Inter<br />
+                  <strong>Colors:</strong> Blue, Teal<br />
+                  <strong>Style:</strong> Calm, refreshing<br />
+                  <strong>Features:</strong> Cool tones, sans-serif
+                </code>
+              </div>
+            </div>
+            <button class="expand-button">View CSS</button>
+            <div class="expandable-section">
+              <pre><code class="css-code">
+          .preview-crystal-lake {
+            background: #88ccee;
+            color: #005f73;
+            font-family: 'Inter', sans-serif;
+          }
+          .preview-crystal-lake button { background: #005f73; color: #88ccee; }
+              </code></pre>
+              <button class="copy-button">Copy CSS</button>
+            </div>
+          </div>
+
+          <div class="preview-card">
+            <div class="preview-frame preview-candy">
+              <h1>Candy Kingdom</h1>
+              <p>Sugar rush</p>
+              <button>Indulge</button>
+            </div>
+            <div class="preview-info">
+              <div class="preview-style">Candy Kingdom</div>
+              <div class="style-details">
+                <code>
+                  <strong>Font:</strong> Permanent Marker<br />
+                  <strong>Colors:</strong> Pink, Yellow, Blue<br />
+                  <strong>Style:</strong> Fun, playful<br />
+                  <strong>Features:</strong> Bouncing elements, lollipop cursor
+                </code>
+              </div>
+            </div>
+            <button class="expand-button">View CSS</button>
+            <div class="expandable-section">
+              <pre><code class="css-code">
+          .preview-candy {
+            background: linear-gradient(135deg, #ff4da6, #ffe0e0);
+            color: #ff0090;
+            font-family: 'Permanent Marker', cursive;
+            position: relative;
+            overflow: hidden;
+            cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23ff4da6'/%3E%3Crect x='14' y='5' width='4' height='22' fill='white' rx='2'/%3E%3C/svg%3E"), auto;
+          }
+          .preview-candy::before, .preview-candy::after {
+            content: '🍬';
+            position: absolute;
+            font-size: 2em;
+            animation: float 3s ease-in-out infinite alternate;
+          }
+          .preview-candy::before {
+            top: 10px;
+            left: 10px;
+          }
+          .preview-candy::after {
+            bottom: 10px;
+            right: 10px;
+            animation-delay: -1.5s;
+          }
+          .preview-candy h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            animation: bounce 0.5s ease infinite alternate;
+          }
+          .preview-candy p {
+            font-size: 1.2em;
+            color: #0090ff;
+          }
+          .preview-candy button {
+            background: #ff0090;
+            color: #ffe0e0;
+            border: none;
+            border-radius: 50px;
+            padding: 15px 40px;
+            font-family: inherit;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: all 0.3s;
+            animation: squish 2s ease-in-out infinite;
+          }
+          .preview-candy button:hover {
+            background: #0090ff;
+            transform: scale(1.1);
+          }
+          @keyframes float {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-10px); }
+          }
+          @keyframes bounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-5px); }
+          }
+          @keyframes squish {
+            0%, 100% { transform: scaleX(1); }
+            50% { transform: scaleX(1.2) scaleY(0.8); }
+          }
+              </code></pre>
+              <button class="copy-button">Copy CSS</button>
+            </div>
+          </div>
+          
+          <div class="preview-card">
+            <div class="preview-frame preview-frost">
+              <h1>Arctic Frost</h1>
+              <p>Chill vibes</p>
+              <button>Cool Down</button>
+            </div>
+            <div class="preview-info">
+              <div class="preview-style">Arctic Frost</div>
+              <div class="style-details">
+                <code>
+                  <strong>Font:</strong> Quicksand<br />
+                  <strong>Colors:</strong> Ice Blue, White<br />
+                  <strong>Style:</strong> Icy, fresh<br />
+                  <strong>Features:</strong> Frost effect, icicle formation
+                </code>
+              </div>
+            </div>
+            <button class="expand-button">View CSS</button>
+            <div class="expandable-section">
+              <pre><code class="css-code">
+          .preview-frost {
+            background: linear-gradient(to bottom, #e0f7fa, #b2ebf2);
+            color: #006064;
+            font-family: 'Quicksand', sans-serif;
+            position: relative;
+            overflow: hidden;
+          }
+          .preview-frost::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 50 50'%3E%3Cpath d='M25 10 L30 3 L25 0 L20 3 Z' fill='white' fill-opacity='0.5'/%3E%3C/svg%3E");
+            animation: snowfall 10s linear infinite;
+          }
+          .preview-frost h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(255,255,255,0.8);
+          }
+          .preview-frost p {
+            font-size: 1.2em;
+            text-shadow: 0 0 5px rgba(255,255,255,0.8);
+          }
+          .preview-frost button {
+            background: transparent;
+            border: 2px solid #006064;
+            color: #006064;
+            padding: 15px 40px;
+            font-family: inherit;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+          }
+          .preview-frost button::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            height: 0;
+            background: #006064;
+            transition: height 0.3s ease-out;
+            z-index: -1;
+          }
+          .preview-frost button:hover {
+            color: #e0f7fa;
+          }
+          .preview-frost button:hover::before {
+            height: calc(100% + 4px);
+          }
+          @keyframes snowfall {
+            0% { background-position: 0 0; }
+            100% { background-position: 0 50px; }
+          }
+              </code></pre>
+              <button class="copy-button">Copy CSS</button>
+            </div>
+          </div>
+          
+          <div class="preview-card">
+            <div class="preview-frame preview-lava">
+              <h1>Lava Lamp</h1>
+              <p>Flowing energy</p>
+              <button>Feel the Heat</button>
+            </div>
+            <div class="preview-info">
+              <div class="preview-style">Lava Lamp</div>
+              <div class="style-details">
+                <code>
+                  <strong>Font:</strong> Orbitron<br />
+                  <strong>Colors:</strong> Dark Blue, Orange, Red<br />
+                  <strong>Style:</strong> Dynamic, fluid<br />
+                  <strong>Features:</strong> Lava blob animation, heat distortion
+                </code>
+              </div>
+            </div>
+            <button class="expand-button">View CSS</button>
+            <div class="expandable-section">
+              <pre><code class="css-code">
+          .preview-lava {
+            background: #2d3047;
+            color: #ff6f59;
+            font-family: 'Orbitron', sans-serif;
+            position: relative;
+            overflow: hidden;
+          }
+          .preview-lava::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, #ff6f59, #ff4136);
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+            animation: morph 10s linear infinite alternate;
+            z-index: -1;
+            filter: blur(20px);
+          }
+          .preview-lava h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #ff6f59;
+          }
+          .preview-lava p {
+            font-size: 1.2em;
+            text-shadow: 0 0 5px #ff6f59;
+          }
+          .preview-lava button {
+            background: #ff6f59;
+            color: #2d3047;
+            border: none;
+            padding: 15px 40px;
+            font-family: inherit;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+          }
+          .preview-lava button::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, transparent, rgba(255,255,255,0.2), transparent);
+            transform: rotate(45deg);
+            transition: all 0.3s;
+          }
+          .preview-lava button:hover::after {
+            left: 100%;
+          }
+          @keyframes morph {
+            0% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+            100% { border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%; }
+          }
+              </code></pre>
+              <button class="copy-button">Copy CSS</button>
+            </div>
+          </div>
+          
+          <div class="preview-card">
+            <div class="preview-frame preview-sundown">
+              <h1>Sundown</h1>
+              <p>Warm hues</p>
+              <button>Relax</button>
+            </div>
+            <div class="preview-info">
+              <div class="preview-style">Sundown</div>
+              <div class="style-details">
+                <code>
+                  <strong>Font:</strong> Roboto<br />
+                  <strong>Colors:</strong> Orange, Red, Purple<br />
+                  <strong>Style:</strong> Warm, inviting<br />
+                  <strong>Features:</strong> Sunset gradient, silhouette effect
+                </code>
+              </div>
+            </div>
+            <button class="expand-button">View CSS</button>
+            <div class="expandable-section">
+              <pre><code class="css-code">
+          .preview-sundown {
+            background: linear-gradient(to bottom, #ff8966, #e76f51, #6f1d1b);
+            color: #fff;
+            font-family: 'Roboto', sans-serif;
+            position: relative;
+            overflow: hidden;
+          }
+          .preview-sundown::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 30%;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23000' fill-opacity='0.5' d='M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,208C1248,224,1344,192,1392,176L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") no-repeat bottom;
+            background-size: cover;
+          }
+          .preview-sundown h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+          }
+          .preview-sundown p {
+            font-size: 1.2em;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+          }
+          .preview-sundown button {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: #fff;
+            padding: 15px 40px;
+            font-family: inherit;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: all 0.3s;
+            backdrop-filter: blur(5px);
+            border-radius: 30px;
+          }
+          .preview-sundown button:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+          }
+              </code></pre>
+              <button class="copy-button">Copy CSS</button>
+            </div>
+          </div>
+          
+          <div class="preview-card">
+            <div class="preview-frame preview-midnight">
+              <h1>Midnight Glow</h1>
+              <p>After dark</p>
+              <button>Enter</button>
+            </div>
+            <div class="preview-info">
+              <div class="preview-style">Midnight Glow</div>
+              <div class="style-details">
+                <code>
+                  <strong>Font:</strong> VT323<br />
+                  <strong>Colors:</strong> Dark Blue, Neon Pink<br />
+                  <strong>Style:</strong> Mysterious, vibrant<br />
+                  <strong>Features:</strong> Glowing text, starry background
+                </code>
+              </div>
+            </div>
+            <button class="expand-button">View CSS</button>
+            <div class="expandable-section">
+              <pre><code class="css-code">
+          .preview-midnight {
+            background: #1b1b2f;
+            color: #ff4a6e;
+            font-family: 'VT323', monospace;
+            position: relative;
+            overflow: hidden;
+          }
+          .preview-midnight::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+              radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+              radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
+              radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px);
+            background-size: 550px 550px, 350px 350px, 250px 250px;
+            background-position: 0 0, 40px 60px, 130px 270px;
+            animation: twinkle 10s linear infinite;
+          }
+          .preview-midnight h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #ff4a6e, 0 0 20px #ff4a6e, 0 0 30px #ff4a6e;
+          }
+          .preview-midnight p {
+            font-size: 1.5em;
+            text-shadow: 0 0 5px #ff4a6e;
+          }
+          .preview-midnight button {
+            background: transparent;
+            border: 2px solid #ff4a6e;
+            color: #ff4a6e;
+            padding: 15px 40px;
+            font-family: inherit;
+            font-size: 1.3em;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+          }
+          .preview-midnight button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+              120deg,
+              transparent,
+              rgba(255, 74, 110, 0.4),
+              transparent
+            );
+            transition: all 0.4s;
+          }
+          .preview-midnight button:hover::before {
+            left: 100%;
+          }
+          .preview-midnight button:hover {
+            box-shadow: 0 0 10px #ff4a6e, 0 0 20px #ff4a6e, 0 0 30px #ff4a6e;
+          }
+          @keyframes twinkle {
+            0% { background-position: 0 0, 40px 60px, 130px 270px; }
+            100% { background-position: -550px 0, -310px 60px, -180px 270px; }
+          }
+              </code></pre>
+              <button class="copy-button">Copy CSS</button>
+            </div>
+          </div>
+  
+  
+      <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          document.querySelectorAll("button").forEach((button) => {
+            button.addEventListener("mouseenter", (e) => {
+              e.target.style.transform = "scale(1.02)";
+            });
+
+            button.addEventListener("mouseleave", (e) => {
+              e.target.style.transform = "scale(1)";
+            });
+          });
+
+          document.querySelectorAll(".expand-button").forEach((button) => {
+            button.addEventListener("click", () => {
+              const section = button.nextElementSibling;
+              if (section.style.display === "block") {
+                section.style.display = "none";
+              } else {
+                section.style.display = "block";
+              }
+            });
+          });
+
+          document.querySelectorAll(".copy-button").forEach((button) => {
+            button.addEventListener("click", () => {
+              const code = button.previousElementSibling.textContent;
+              navigator.clipboard.writeText(code).then(() => {
+                button.textContent = "Copied!";
+                setTimeout(() => {
+                  button.textContent = "Copy CSS";
+                }, 2000);
+              });
+            });
+          });
+        });
+      </script>
+    </body>
+  </html>

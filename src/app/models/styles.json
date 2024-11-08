@@ -1,0 +1,134 @@
+[
+  {
+    "text": {
+      "title": "Golden Age",
+      "shortDescription": "Luxurious & bold",
+      "buttonText": "Indulge"
+    },
+    "info": {
+      "name": "Art Deco",
+      "fontname": "Cinzel",
+      "colorScheme": "Gold & Black",
+      "style": "Elegant, Geometric",
+      "features": "Bold shapes"
+    },
+    "css": {
+      "frame": {
+        "background": "#000",
+        "color": "#ffd700",
+        "fontFamily": "'Cinzel', serif",
+        "border": "5px solid #ffd700"
+      },
+      "h1": {
+        "fontSize": "3em",
+        "textTransform": "uppercase"
+      },
+      "p": {
+        "fontSize": "1.2em",
+        "fontStyle": "italic"
+      },
+      "button": {
+        "background": "#ffd700",
+        "color": "#000",
+        "border": "none",
+        "fontFamily": "inherit",
+        "fontSize": "1em",
+        "cursor": "pointer",
+        "transition": "all 0.3s ease"
+      },
+      "font": {
+        "family": "Cinzel",
+        "weights": ["400", "700"]
+      }
+    }
+  },
+  {
+    "text": {
+      "title": "Lava Lamp",
+      "shortDescription": "Flowing energy",
+      "buttonText": "Feel the Heat"
+    },
+    "info": {
+      "name": "Lava Lamp",
+      "fontname": "Orbitron",
+      "colorScheme": "Dark Blue, Orange & Red",
+      "style": "Dynamic, Fluid",
+      "features": "Lava blob animation, Heat distortion"
+    },
+    "css": {
+      "frame": {
+        "background": "linear-gradient(45deg, #120458, #ff4e00)",
+        "color": "#fff",
+        "fontFamily": "'Orbitron', sans-serif",
+        "position": "relative",
+        "overflow": "hidden"
+      },
+      "h1": {
+        "fontSize": "3em",
+        "textTransform": "uppercase",
+        "textShadow": "0 0 10px rgba(255,78,0,0.5)"
+      },
+      "p": {
+        "fontSize": "1.2em",
+        "color": "rgba(255,255,255,0.9)"
+      },
+      "button": {
+        "background": "transparent",
+        "color": "#fff",
+        "border": "2px solid #ff4e00",
+        "fontFamily": "inherit",
+        "textTransform": "uppercase",
+        "cursor": "pointer",
+        "transition": "all 0.3s ease"
+      },
+      "font": {
+        "family": "Orbitron",
+        "weights": ["400", "700"]
+      }
+    }
+  },
+  {
+    "text": {
+      "title": "Sundown",
+      "shortDescription": "Warm hues",
+      "buttonText": "Relax"
+    },
+    "info": {
+      "name": "Sundown",
+      "fontname": "Roboto",
+      "colorScheme": "Orange, Red & Purple",
+      "style": "Warm, Inviting",
+      "features": "Sunset gradient, Silhouette effect"
+    },
+    "css": {
+      "frame": {
+        "background": "linear-gradient(to bottom, #ff8966, #e76f51, #6f1d1b)",
+        "color": "#fff",
+        "fontFamily": "'Roboto', sans-serif",
+        "position": "relative",
+        "overflow": "hidden"
+      },
+      "h1": {
+        "fontSize": "2.8em",
+        "fontWeight": "700",
+        "textShadow": "0 2px 4px rgba(0,0,0,0.2)"
+      },
+      "p": {
+        "fontSize": "1.2em",
+        "color": "rgba(255,255,255,0.9)"
+      },
+      "button": {
+        "background": "rgba(255,255,255,0.1)",
+        "color": "#fff",
+        "border": "none",
+        "backdropFilter": "blur(5px)",
+        "borderRadius": "30px",
+        "transition": "all 0.3s"
+      },
+      "font": {
+        "family": "Roboto",
+        "weights": ["400", "700"]
+      }
+    }
+  }
+]
