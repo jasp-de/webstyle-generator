@@ -110,9 +110,25 @@ body {
   color: #4a90e2;
   cursor: pointer;
   font-size: 14px;
-  padding: 20px;
+  padding: 20px 0px 10px 0px;
   width: 100%;
   text-align: left;
+}
+
+.copy-button {
+  background: #4a90e2;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  margin: 20px 0px 10px 0px;
+  padding: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  text-align: left;
+}
+
+.copy-button:hover {
+  background: #6c9cd4;
 }
 
 .expand-button:hover {
