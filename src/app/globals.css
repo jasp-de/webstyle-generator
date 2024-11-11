@@ -76,6 +76,22 @@ body {
   text-align: center;
 }
 
+.style-frame h1 {
+  font-size: 3em;
+  margin-bottom: 20px;
+}
+
+.style-frame p {
+  font-size: 1.2em;
+  margin-bottom: 30px;
+}
+
+.style-frame button {
+  padding: 15px 40px;
+  font-size: 1em;
+  cursor: pointer;
+}
+
 .style-info {
   padding: 20px;
   border-top: 1px solid #eee;
