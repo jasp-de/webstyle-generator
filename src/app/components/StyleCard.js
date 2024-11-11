@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 export default function StyleCard({ style }) {
-  const { text, info, css } = style;
+  const { text, info, css, tags } = style;
   const [isHovered, setIsHovered] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -87,6 +87,13 @@ export default function StyleCard({ style }) {
             <br />
             <strong>Features:</strong> {info.features}
           </code>
+        </div>
+        <div className="style-tags">
+          {tags.map((tag, index) => (
+            <span key={index} className="style-tag">
+              {tag}
+            </span>
+          ))}
         </div>
         <button
           className="expand-button"

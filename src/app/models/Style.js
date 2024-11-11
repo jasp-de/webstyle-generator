@@ -13,6 +13,7 @@ const StyleSchema = new mongoose.Schema({
     style: String,
     features: String,
   },
+  tags: [String],
   css: {
     frame: Object,
     h1: Object,

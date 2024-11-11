@@ -144,3 +144,26 @@ code {
   color: #666;
   line-height: 1.4;
 }
+
+.style-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 15px 0;
+}
+
+.style-tag {
+  background: #f5f5f5;
+  color: #666;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.style-tag:hover {
+  background: #eeeeee;
+  transform: translateY(-1px);
+  cursor: default;
+}
