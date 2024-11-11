@@ -1,0 +1,68 @@
+[
+  {
+    "text": {
+      "title": "Art Deco",
+      "shortDescription": "Luxurious & bold",
+      "buttonText": "Indulge"
+    },
+    "info": {
+      "name": "Art Deco",
+      "fontname": "Cinzel",
+      "colorScheme": "Gold & Black",
+      "style": "Elegant, Geometric",
+      "features": "Bold shapes"
+    },
+    "tags": ["elegant", "luxury", "geometric", "classic", "bold", "golden"],
+    "css": ".preview-art-deco {\n    background: #000;\n    color: #ffd700;\n    font-family: 'Cinzel', serif;\n    border: 5px solid #ffd700;\n    position: relative;\n    overflow: hidden;\n  }\n\n  .preview-art-deco::before {\n    content: '';\n    position: absolute;\n    top: -50%;\n    left: -50%;\n    width: 200%;\n    height: 200%;\n    background: linear-gradient(45deg, #ffd700 25%, transparent 25%, transparent 50%, #ffd700 50%, #ffd700 75%, transparent 75%);\n    background-size: 20px 20px;\n    opacity: 0.1;\n    animation: artDecoPattern 10s linear infinite;\n  }\n\n  .preview-art-deco h1 {\n    font-size: 3em;\n    text-transform: uppercase;\n    letter-spacing: 2px;\n    margin-bottom: 20px;\n    position: relative;\n    text-shadow: 2px 2px 0px rgba(0,0,0,0.5);\n    animation: titleGlow 2s ease-in-out infinite;\n  }\n\n  .preview-art-deco p {\n    font-size: 1.2em;\n    font-style: italic;\n    margin-bottom: 30px;\n    opacity: 0.8;\n  }\n\n  .preview-art-deco button {\n    background: #ffd700;\n    color: #000;\n    border: none;\n    padding: 15px 40px;\n    font-family: inherit;\n    font-size: 1em;\n    cursor: pointer;\n    position: relative;\n    overflow: hidden;\n    transition: all 0.3s ease;\n    transform-style: preserve-3d;\n  }\n\n  .preview-art-deco button::before {\n    content: '';\n    position: absolute;\n    top: 0;\n    left: -100%;\n    width: 100%;\n    height: 100%;\n    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);\n    transition: all 0.5s ease;\n  }\n\n  .preview-art-deco button:hover {\n    transform: translateY(-3px) scale(1.02);\n    box-shadow: 0 5px 15px rgba(255,215,0,0.4);\n  }\n\n  .preview-art-deco button:hover::before {\n    left: 100%;\n  }\n\n  @keyframes artDecoPattern {\n    0% { transform: rotate(0deg); }\n    100% { transform: rotate(360deg); }\n  }\n\n  @keyframes titleGlow {\n    0%, 100% { text-shadow: 2px 2px 0px rgba(0,0,0,0.5); }\n    50% { text-shadow: 2px 2px 20px rgba(255,215,0,0.5); }\n  }"
+  },
+
+  {
+    "text": {
+      "title": "Neural Network",
+      "shortDescription": "Digital synapses",
+      "buttonText": "Connect"
+    },
+    "info": {
+      "name": "Neural Network",
+      "fontname": "Space Grotesk",
+      "colorScheme": "Deep Purple, Electric Blue",
+      "style": "Futuristic, Dynamic",
+      "features": "Neural animations, Particle system"
+    },
+    "tags": [
+      "futuristic",
+      "animated",
+      "complex",
+      "network",
+      "particles",
+      "ai",
+      "dynamic"
+    ],
+    "css": ".preview-neural-network {\n    background: #0a0320;\n    color: #fff;\n    font-family: 'Space Grotesk', sans-serif;\n    position: relative;\n    overflow: hidden;\n  }\n\n  .preview-neural-network::before {\n    content: '';\n    position: absolute;\n    inset: 0;\n    background: radial-gradient(2px 2px at 50% 50%, #5b49ff 50%, transparent);\n    animation: neuralNodes 20s linear infinite;\n    opacity: 0.5;\n  }\n\n  .preview-neural-network::after {\n    content: '';\n    position: absolute;\n    inset: 0;\n    background: radial-gradient(2px 2px at 50% 50%, #49c7ff 50%, transparent);\n    animation: neuralNodes 20s linear infinite reverse;\n    opacity: 0.3;\n  }\n\n  .preview-neural-network h1 {\n    font-size: 3.2em;\n    background: linear-gradient(120deg, #5b49ff, #49c7ff);\n    -webkit-background-clip: text;\n    background-clip: text;\n    color: transparent;\n    text-shadow: 0 0 20px rgba(91, 73, 255, 0.5);\n    position: relative;\n    z-index: 2;\n    animation: neuralGlow 4s ease-in-out infinite;\n  }\n\n  .preview-neural-network p {\n    color: rgba(255,255,255,0.8);\n    text-shadow: 0 0 10px rgba(73, 199, 255, 0.5);\n    position: relative;\n    z-index: 2;\n  }\n\n  .preview-neural-network button {\n    background: transparent;\n    border: 2px solid #5b49ff;\n    color: #fff;\n    padding: 15px 40px;\n    position: relative;\n    overflow: hidden;\n    transition: all 0.3s;\n    z-index: 2;\n    cursor: pointer;\n  }\n\n  .preview-neural-network button:hover {\n    background: rgba(91, 73, 255, 0.2);\n    transform: translateY(-2px);\n    box-shadow: 0 5px 15px rgba(91, 73, 255, 0.4);\n  }\n\n  @keyframes neuralNodes {\n    0%, 100% { background-size: 100px 100px; transform: rotate(0deg); }\n    50% { background-size: 150px 150px; transform: rotate(180deg); }\n  }\n\n  @keyframes neuralGlow {\n    0%, 100% { text-shadow: 0 0 20px rgba(91, 73, 255, 0.5); }\n    50% { text-shadow: 0 0 40px rgba(91, 73, 255, 0.8); }\n  }"
+  },
+
+  {
+    "text": {
+      "title": "Quantum Flux",
+      "shortDescription": "Reality bending",
+      "buttonText": "Collapse"
+    },
+    "info": {
+      "name": "Quantum Flux",
+      "fontname": "Syncopate",
+      "colorScheme": "Iridescent, Holographic",
+      "style": "Abstract, Dimensional",
+      "features": "Reality distortion, Quantum effects"
+    },
+    "tags": [
+      "quantum",
+      "holographic",
+      "abstract",
+      "iridescent",
+      "3d",
+      "distortion",
+      "experimental"
+    ],
+    "css": ".preview-quantum-flux {\n    background: linear-gradient(45deg, #000033, #330066);\n    color: #fff;\n    font-family: 'Syncopate', sans-serif;\n    position: relative;\n    overflow: hidden;\n  }\n\n  .preview-quantum-flux::before {\n    content: '';\n    position: absolute;\n    inset: 0;\n    background: repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255,255,255,0.1) 20px, rgba(255,255,255,0.1) 40px);\n    animation: quantumShift 20s linear infinite;\n    opacity: 0.5;\n  }\n\n  .preview-quantum-flux h1 {\n    font-size: 2.8em;\n    background: linear-gradient(120deg, #00ffff, #ff00ff);\n    -webkit-background-clip: text;\n    background-clip: text;\n    color: transparent;\n    text-shadow: 0 0 15px rgba(255,255,255,0.5);\n    position: relative;\n    z-index: 2;\n    animation: quantumPulse 4s ease-in-out infinite;\n  }\n\n  .preview-quantum-flux p {\n    color: rgba(255,255,255,0.9);\n    text-shadow: 0 0 8px rgba(0,255,255,0.8);\n    position: relative;\n    z-index: 2;\n    letter-spacing: 2px;\n  }\n\n  .preview-quantum-flux button {\n    background: transparent;\n    border: 2px solid #00ffff;\n    color: #fff;\n    padding: 15px 40px;\n    position: relative;\n    overflow: hidden;\n    transition: all 0.4s;\n    z-index: 2;\n    cursor: pointer;\n    backdrop-filter: blur(5px);\n  }\n\n  .preview-quantum-flux button:hover {\n    background: rgba(0,255,255,0.2);\n    transform: translateY(-2px) scale(1.05);\n    box-shadow: 0 0 20px rgba(0,255,255,0.4);\n  }\n\n  @keyframes quantumShift {\n    0% { transform: perspective(500px) rotateX(0deg) rotateY(0deg); }\n    100% { transform: perspective(500px) rotateX(360deg) rotateY(360deg); }\n  }\n\n  @keyframes quantumPulse {\n    0%, 100% { opacity: 0.8; transform: scale(1); }\n    50% { opacity: 1; transform: scale(1.05); }\n  }"
+  }
+]

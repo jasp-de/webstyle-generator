@@ -14,16 +14,7 @@ const StyleSchema = new mongoose.Schema({
     features: String,
   },
   tags: [String],
-  css: {
-    frame: Object,
-    h1: Object,
-    p: Object,
-    button: Object,
-    font: {
-      family: String,
-      weights: [String],
-    },
-  },
+  css: String,
 });
 
 export default mongoose.models.Style || mongoose.model("Style", StyleSchema);

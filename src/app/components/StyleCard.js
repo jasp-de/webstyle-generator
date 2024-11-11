@@ -1,55 +1,16 @@
 "use client";
 
 import { useState } from "react";
+import StyleSheet from "./StyleSheet";
 
 export default function StyleCard({ style }) {
   const { text, info, css, tags } = style;
-  const [isHovered, setIsHovered] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
-
-  const buttonStyle = {
-    ...css.button,
-    ...(isHovered ? css.button[":hover"] : {}),
-  };
-
-  const cssText = `
-.preview-${info.name.toLowerCase().replace(/\s+/g, "-")} {
-  background: ${css.frame.background};
-  color: ${css.frame.color};
-  font-family: ${css.frame.fontFamily};
-  ${css.frame.border ? `border: ${css.frame.border};` : ""}
-}
-
-.preview-${info.name.toLowerCase().replace(/\s+/g, "-")} h1 {
-  font-size: ${css.h1.fontSize};
-  ${css.h1.textTransform ? `text-transform: ${css.h1.textTransform};` : ""}
-}
-
-.preview-${info.name.toLowerCase().replace(/\s+/g, "-")} p {
-  font-size: ${css.p.fontSize};
-  ${css.p.fontStyle ? `font-style: ${css.p.fontStyle};` : ""}
-}
-
-.preview-${info.name.toLowerCase().replace(/\s+/g, "-")} button {
-  background: ${css.button.background};
-  color: ${css.button.color};
-  border: ${css.button.border || "none"};
-  padding: 15px 40px;
-  font-family: inherit;
-  font-size: ${css.button.fontSize};
-  cursor: pointer;
-  transition: ${css.button.transition};
-}
-
-.preview-${info.name.toLowerCase().replace(/\s+/g, "-")} button:hover {
-  ${Object.entries(css.button[":hover"])
-    .map(([key, value]) => `${key}: ${value};`)
-    .join("\n  ")}
-}`;
+  const styleId = info.name.toLowerCase().replace(/\s+/g, "-");
 
   const copyToClipboard = (event) => {
     const button = event.currentTarget;
-    navigator.clipboard.writeText(cssText).then(() => {
+    navigator.clipboard.writeText(css).then(() => {
       button.textContent = "Copied!";
       setTimeout(() => {
         button.textContent = "Copy CSS";
@@ -59,21 +20,11 @@ export default function StyleCard({ style }) {
 
   return (
     <div className="style-card">
-      <div className="style-frame" style={css.frame}>
-        <h1 className="preview-heading" style={css.h1}>
-          {text.title}
-        </h1>
-        <p className="preview-paragraph" style={css.p}>
-          {text.shortDescription}
-        </p>
-        <button
-          className="preview-button"
-          style={buttonStyle}
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-        >
-          {text.buttonText}
-        </button>
+      <StyleSheet css={css} id={styleId} />
+      <div className={`style-frame preview-${styleId}`}>
+        <h1>{text.title}</h1>
+        <p>{text.shortDescription}</p>
+        <button>{text.buttonText}</button>
       </div>
       <div className="style-info">
         <div className="style-name">{info.name}</div>
@@ -106,7 +57,7 @@ export default function StyleCard({ style }) {
           style={{ display: isExpanded ? "block" : "none" }}
         >
           <pre>
-            <code>{cssText}</code>
+            <code>{css}</code>
           </pre>
           <button className="copy-button" onClick={copyToClipboard}>
             Copy CSS
