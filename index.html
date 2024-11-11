@@ -1765,14 +1765,14 @@
 }
 
 /* Midnight Glow */
-.preview-midnight {
+.preview-midnight-glow {
   background: #1b1b2f;
   color: #ff4a6e;
   font-family: 'VT323', monospace;
   position: relative;
   overflow: hidden;
 }
-.preview-midnight::before {
+.preview-midnight-glow::before {
   content: '';
   position: absolute;
   top: 0;
@@ -1787,17 +1787,17 @@
   background-position: 0 0, 40px 60px, 130px 270px;
   animation: twinkle 10s linear infinite;
 }
-.preview-midnight h1 {
+.preview-midnight-glow h1 {
   font-size: 3.5em;
   margin-bottom: 20px;
   text-shadow: 0 0 10px #ff4a6e, 0 0 20px #ff4a6e, 0 0 30px #ff4a6e;
 }
-.preview-midnight p {
+.preview-midnight-glow p {
   font-size: 1.5em;
   margin-bottom: 30px;
   text-shadow: 0 0 5px #ff4a6e;
 }
-.preview-midnight button {
+.preview-midnight-glow button {
   background: transparent;
   border: 2px solid #ff4a6e;
   color: #ff4a6e;
@@ -1809,7 +1809,7 @@
   position: relative;
   overflow: hidden;
 }
-.preview-midnight button::before {
+.preview-midnight-glow button::before {
   content: '';
   position: absolute;
   top: 0;
@@ -1824,10 +1824,10 @@
   );
   transition: all 0.4s;
 }
-.preview-midnight button:hover::before {
+.preview-midnight-glow button:hover::before {
   left: 100%;
 }
-.preview-midnight button:hover {
+.preview-midnight-glow button:hover {
   box-shadow: 0 0 10px #ff4a6e, 0 0 20px #ff4a6e, 0 0 30px #ff4a6e;
 }
 @keyframes twinkle {
@@ -3713,7 +3713,7 @@
           </div>
           
           <div class="preview-card">
-            <div class="preview-frame preview-midnight">
+            <div class="preview-frame preview-midnight-glow">
               <h1>Midnight Glow</h1>
               <p>After dark</p>
               <button>Enter</button>
@@ -3732,14 +3732,14 @@
             <button class="expand-button">View CSS</button>
             <div class="expandable-section">
               <pre><code class="css-code">
-          .preview-midnight {
+          .preview-midnight-glow {
             background: #1b1b2f;
             color: #ff4a6e;
             font-family: 'VT323', monospace;
             position: relative;
             overflow: hidden;
           }
-          .preview-midnight::before {
+          .preview-midnight-glow::before {
             content: '';
             position: absolute;
             top: 0;
@@ -3754,16 +3754,16 @@
             background-position: 0 0, 40px 60px, 130px 270px;
             animation: twinkle 10s linear infinite;
           }
-          .preview-midnight h1 {
+          .preview-midnight-glow h1 {
             font-size: 3.5em;
             margin-bottom: 20px;
             text-shadow: 0 0 10px #ff4a6e, 0 0 20px #ff4a6e, 0 0 30px #ff4a6e;
           }
-          .preview-midnight p {
+          .preview-midnight-glow p {
             font-size: 1.5em;
             text-shadow: 0 0 5px #ff4a6e;
           }
-          .preview-midnight button {
+          .preview-midnight-glow button {
             background: transparent;
             border: 2px solid #ff4a6e;
             color: #ff4a6e;
@@ -3775,7 +3775,7 @@
             position: relative;
             overflow: hidden;
           }
-          .preview-midnight button::before {
+          .preview-midnight-glow button::before {
             content: '';
             position: absolute;
             top: 0;
@@ -3790,10 +3790,10 @@
             );
             transition: all 0.4s;
           }
-          .preview-midnight button:hover::before {
+          .preview-midnight-glow button:hover::before {
             left: 100%;
           }
-          .preview-midnight button:hover {
+          .preview-midnight-glow button:hover {
             box-shadow: 0 0 10px #ff4a6e, 0 0 20px #ff4a6e, 0 0 30px #ff4a6e;
           }
           @keyframes twinkle {
