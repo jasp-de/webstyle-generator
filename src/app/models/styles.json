@@ -12,7 +12,15 @@
       "style": "Elegant, Geometric",
       "features": "Bold shapes"
     },
-    "tags": ["elegant", "luxury", "geometric", "classic", "bold"],
+    "tags": [
+      "elegant",
+      "luxury",
+      "geometric",
+      "classic",
+      "bold",
+      "golden",
+      "sophisticated"
+    ],
     "css": {
       "frame": {
         "background": "#000",
@@ -61,7 +69,15 @@
       "style": "Dynamic, Fluid",
       "features": "Lava blob animation, Heat distortion"
     },
-    "tags": ["dynamic", "fluid", "modern", "energetic", "gradient"],
+    "tags": [
+      "dynamic",
+      "fluid",
+      "modern",
+      "energetic",
+      "gradient",
+      "glowing",
+      "futuristic"
+    ],
     "css": {
       "frame": {
         "background": "linear-gradient(45deg, #120458, #ff4e00)",
@@ -112,7 +128,15 @@
       "style": "Warm, Inviting",
       "features": "Sunset gradient, Silhouette effect"
     },
-    "tags": ["warm", "gradient", "sunset", "relaxing", "natural"],
+    "tags": [
+      "warm",
+      "gradient",
+      "sunset",
+      "relaxing",
+      "natural",
+      "peaceful",
+      "ambient"
+    ],
     "css": {
       "frame": {
         "background": "linear-gradient(to bottom, #ff8966, #e76f51, #6f1d1b)",
@@ -162,7 +186,15 @@
       "style": "Luxurious, Royal",
       "features": "Velvet texture, Gold accents"
     },
-    "tags": ["royal", "luxury", "elegant", "rich", "velvet"],
+    "tags": [
+      "royal",
+      "luxury",
+      "elegant",
+      "rich",
+      "velvet",
+      "purple",
+      "majestic"
+    ],
     "css": {
       "frame": {
         "background": "#2c0735",
@@ -216,7 +248,15 @@
       "style": "Natural, Organic",
       "features": "Leaf patterns, Organic shapes"
     },
-    "tags": ["nature", "organic", "peaceful", "green", "earthy"],
+    "tags": [
+      "nature",
+      "organic",
+      "peaceful",
+      "green",
+      "earthy",
+      "fresh",
+      "serene"
+    ],
     "css": {
       "frame": {
         "background": "#2d5a27",
@@ -269,7 +309,15 @@
       "style": "Mysterious, Fluid",
       "features": "Wave effects, Depth gradients"
     },
-    "tags": ["ocean", "deep", "mysterious", "fluid", "dark"],
+    "tags": [
+      "ocean",
+      "deep",
+      "mysterious",
+      "fluid",
+      "dark",
+      "magical",
+      "luminous"
+    ],
     "css": {
       "frame": {
         "background": "linear-gradient(to bottom, #0a2342, #2c4a7f)",
@@ -323,7 +371,15 @@
       "style": "Minimal, Peaceful",
       "features": "Sand texture, Ripple effects"
     },
-    "tags": ["minimal", "peaceful", "zen", "japanese", "calm"],
+    "tags": [
+      "minimal",
+      "peaceful",
+      "zen",
+      "japanese",
+      "calm",
+      "tranquil",
+      "meditative"
+    ],
     "css": {
       "frame": {
         "background": "#f5f5f0",
@@ -377,7 +433,15 @@
       "style": "Digital, Electric",
       "features": "Glitch effects, Neon glow"
     },
-    "tags": ["digital", "neon", "glitch", "electric", "modern"],
+    "tags": [
+      "digital",
+      "neon",
+      "glitch",
+      "electric",
+      "modern",
+      "cyber",
+      "vibrant"
+    ],
     "css": {
       "frame": {
         "background": "#0c0c2a",
@@ -431,7 +495,15 @@
       "style": "Organic, Weathered",
       "features": "Sand particles, Wind effects"
     },
-    "tags": ["desert", "organic", "warm", "natural", "rustic"],
+    "tags": [
+      "desert",
+      "organic",
+      "warm",
+      "natural",
+      "rustic",
+      "sandy",
+      "weathered"
+    ],
     "css": {
       "frame": {
         "background": "#e6d5ac",
@@ -484,7 +556,15 @@
       "style": "Ethereal, Flowing",
       "features": "Aurora animation, Light waves"
     },
-    "tags": ["ethereal", "animated", "cosmic", "colorful", "night"],
+    "tags": [
+      "ethereal",
+      "animated",
+      "cosmic",
+      "colorful",
+      "night",
+      "magical",
+      "luminous"
+    ],
     "css": {
       "frame": {
         "background": "#0B1026",
@@ -541,7 +621,15 @@
       "style": "Metallic, Fluid",
       "features": "Mercury effect, Metallic sheen"
     },
-    "tags": ["metallic", "modern", "sleek", "chrome", "minimal"],
+    "tags": [
+      "metallic",
+      "modern",
+      "sleek",
+      "chrome",
+      "minimal",
+      "reflective",
+      "smooth"
+    ],
     "css": {
       "frame": {
         "background": "linear-gradient(135deg, #757575, #9E9E9E, #424242)",
@@ -603,7 +691,15 @@
       "style": "Prismatic, Playful",
       "features": "Rainbow animations, Light refraction"
     },
-    "tags": ["rainbow", "colorful", "playful", "bright", "animated"],
+    "tags": [
+      "rainbow",
+      "colorful",
+      "playful",
+      "bright",
+      "animated",
+      "prismatic",
+      "iridescent"
+    ],
     "css": {
       "frame": {
         "background": "#fff",
