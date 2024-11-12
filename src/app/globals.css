@@ -183,3 +183,54 @@ code {
   transform: translateY(-1px);
   cursor: default;
 }
+
+.style-generator {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 20px;
+}
+
+.style-generator form {
+  display: flex;
+  gap: 10px;
+}
+
+.style-generator input {
+  flex: 1;
+  padding: 12px 16px;
+  border: 2px solid #eee;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.style-generator input:focus {
+  outline: none;
+  border-color: #4a90e2;
+}
+
+.style-generator button {
+  padding: 12px 24px;
+  background: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.style-generator button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.style-generator button:hover:not(:disabled) {
+  background: #357abd;
+}
+
+.style-generator .error {
+  color: #e74c3c;
+  margin-top: 10px;
+  text-align: center;
+}

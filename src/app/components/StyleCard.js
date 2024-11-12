@@ -21,7 +21,7 @@ export default function StyleCard({ style }) {
   return (
     <div className="style-card">
       <StyleSheet css={css} id={styleId} />
-      <div className={`style-frame preview-${styleId}`}>
+      <div className={`style-frame ${styleId}`}>
         <h1>{text.title}</h1>
         <p>{text.shortDescription}</p>
         <button>{text.buttonText}</button>

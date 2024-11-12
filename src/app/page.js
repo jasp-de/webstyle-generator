@@ -1,7 +1,7 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import StyleGrid from "./components/StyleGrid.js";
-import StyleCard from "./components/StyleCard.js";
+import StyleGenerator from "./components/StyleGenerator";
 
 export default function Home() {
   return (
@@ -11,6 +11,7 @@ export default function Home() {
           <h1>Webstyle Explorer</h1>
           <p>Discover and compare different web design aesthetics</p>
         </div>
+        <StyleGenerator></StyleGenerator>
         <div>
           <StyleGrid></StyleGrid>
         </div>

@@ -3,14 +3,17 @@ import { useState } from "react";
 
 export default function StyleGenerator() {
   const [prompt, setPrompt] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  const generateStyle = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
+    setIsLoading(true);
+    setError(null);
 
     try {
-      const response = await fetch("/api/generate-style", {
+      // First, get the style from OpenAI
+      const aiResponse = await fetch("/api/styles/generate", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -18,30 +21,53 @@ export default function StyleGenerator() {
         body: JSON.stringify({ prompt }),
       });
 
-      const newStyle = await response.json();
+      if (!aiResponse.ok) {
+        throw new Error("Failed to generate style");
+      }
 
-      // Here you would add code to update your UI with the new style
-      console.log("Generated style:", newStyle);
-    } catch (error) {
-      console.error("Error:", error);
+      const generatedStyle = await aiResponse.json();
+
+      // Then, save the style to the database
+      const dbResponse = await fetch("/api/styles", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(generatedStyle),
+      });
+
+      if (!dbResponse.ok) {
+        throw new Error("Failed to save style");
+      }
+
+      // Clear the input
+      setPrompt("");
+
+      // Trigger a refresh of the grid by dispatching a custom event
+      window.dispatchEvent(new CustomEvent("styleAdded"));
+    } catch (err) {
+      setError(err.message);
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
   };
 
   return (
     <div className="style-generator">
-      <form onSubmit={generateStyle}>
-        <textarea
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
           value={prompt}
           onChange={(e) => setPrompt(e.target.value)}
-          placeholder="Describe your desired web style..."
-          rows={4}
+          placeholder="Describe your desired style (e.g., 'A cyberpunk theme with neon colors')"
+          disabled={isLoading}
+          className={isLoading ? "loading" : ""}
         />
-        <button type="submit" disabled={loading}>
-          {loading ? "Generating..." : "Generate Style"}
+        <button type="submit" disabled={isLoading || !prompt.trim()}>
+          {isLoading ? "Generating..." : "Generate Style"}
         </button>
       </form>
+      {error && <div className="error">{error}</div>}
     </div>
   );
 }
