@@ -20,3 +20,18 @@ export async function GET() {
     );
   }
 }
+
+export async function POST(request) {
+  try {
+    await dbConnect();
+    const style = await request.json();
+    const newStyle = await Style.create(style);
+    return Response.json(newStyle);
+  } catch (error) {
+    console.error("Database error:", error);
+    return Response.json(
+      { error: "Failed to save style to database" },
+      { status: 500 }
+    );
+  }
+}

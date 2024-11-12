@@ -18,31 +18,3 @@ const StyleSchema = new mongoose.Schema({
 });
 
 export default mongoose.models.Style || mongoose.model("Style", StyleSchema);
-
-/*
-
-Style Model
-
-text
-- title
-- shortDescription
-- buttonText
-info
-- name
-- fontname
-- colors
-- style
-- features
----
----
-- font
---family
--- weights
----
-- css
--- frame
--- h1
--- p
--- button
-
-*/
