@@ -16,12 +16,16 @@ function validateAndFormatStyle(style) {
   return style;
 }
 
+export const maxDuration = 60; // Vercel Edge Function timeout
+export const dynamic = "force-dynamic";
+
 export async function POST(request) {
   try {
     const { prompt } = await request.json();
 
     const completion = await openai.chat.completions.create({
       model: "gpt-4",
+      temperature: 0.7,
       messages: [
         {
           role: "system",
@@ -59,7 +63,6 @@ Important:
 Base your response on this prompt: ${prompt}`,
         },
       ],
-      temperature: 0.7,
     });
 
     console.log("OpenAI Response:", completion.choices[0].message.content);
