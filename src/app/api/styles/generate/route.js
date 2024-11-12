@@ -46,7 +46,7 @@ export async function POST(request) {
     "features": "Key visual effects and animations"
   },
   "tags": ["Include 5-7 relevant design tags"],
-  "css": ".style-name { background: linear-gradient(...); color: #fff; position: relative; overflow: hidden; } .style-name h1 { /* heading styles */ } .style-name p { /* paragraph styles */ } .style-name button { /* button styles */ } .style-name button:hover { /* hover effects */ } .style-name::before { /* decorative effects */ }"
+  "css": ".style-name { background: linear-gradient(...); } .style-name h1 { } .style-name p { } .style-name button { } .style-name button:hover { } @keyframes style-name-animation { 0% { } 100% { } }"
 }
 
 Important:
@@ -55,10 +55,13 @@ Important:
 3. Avoid any font-sizes, margins, padding, or dimensions
 4. Include all required CSS selectors
 5. Make the style name match between title, info.name, and CSS classes
-6. Include creative animations and effects where appropriate
-7. make sure very button has a hover animation!
-8. make sure you define the keyframes for custom animations.
-9. Make Sure the Style-name does not contain any special characters.
+6. DO NOT use any images, sprites, or external resources
+7. Use only gradients and solid colors for backgrounds
+8. When creating animations:
+   - Prefix keyframe names with the style name
+   - Keep animations simple and performant
+   - Avoid complex transforms that might break on mobile
+9. Make Sure the Style-name does not contain any special characters
 10. Make sure the css classes are all in lowercase and replace any spaces with "-"
 
 Base your response on this prompt: ${prompt}`,
