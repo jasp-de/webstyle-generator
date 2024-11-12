@@ -5,11 +5,13 @@ export default function StyleGenerator() {
   const [prompt, setPrompt] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [successMessage, setSuccessMessage] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     setError(null);
+    setSuccessMessage("");
 
     try {
       // First, get the style from OpenAI
@@ -40,11 +42,21 @@ export default function StyleGenerator() {
         throw new Error("Failed to save style");
       }
 
-      // Clear the input
+      // Clear the input and show success message
       setPrompt("");
+      setSuccessMessage("Style generated successfully!");
 
-      // Trigger a refresh of the grid by dispatching a custom event
-      window.dispatchEvent(new CustomEvent("styleAdded"));
+      // Add the new style to the grid immediately
+      window.dispatchEvent(
+        new CustomEvent("styleAdded", {
+          detail: generatedStyle,
+        })
+      );
+
+      // Clear success message after 3 seconds
+      setTimeout(() => {
+        setSuccessMessage("");
+      }, 3000);
     } catch (err) {
       setError(err.message);
     } finally {
@@ -59,15 +71,16 @@ export default function StyleGenerator() {
           type="text"
           value={prompt}
           onChange={(e) => setPrompt(e.target.value)}
-          placeholder="Describe your desired style (e.g., 'A cyberpunk theme with neon colors')"
+          placeholder="Describe your style..."
           disabled={isLoading}
           className={isLoading ? "loading" : ""}
         />
         <button type="submit" disabled={isLoading || !prompt.trim()}>
-          {isLoading ? "Generating..." : "Generate Style"}
+          {isLoading ? "Generating..." : "Generate"}
         </button>
       </form>
-      {error && <div className="error">{error}</div>}
+      {error && <p className="error-message">{error}</p>}
+      {successMessage && <p className="success-message">{successMessage}</p>}
     </div>
   );
 }

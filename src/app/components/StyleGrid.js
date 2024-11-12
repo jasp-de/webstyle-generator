@@ -4,32 +4,32 @@ import StyleCard from "./StyleCard";
 
 export default function StyleGrid() {
   const [styles, setStyles] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function fetchStyles() {
-      try {
-        const response = await fetch("/api/styles");
-        const data = await response.json();
-        setStyles(data);
-      } catch (error) {
-        console.error("Error fetching styles:", error);
-      } finally {
-        setLoading(false);
-      }
-    }
+    const fetchStyles = async () => {
+      const response = await fetch("/api/styles");
+      const data = await response.json();
+      setStyles(data);
+    };
 
     fetchStyles();
-  }, []);
 
-  if (loading) {
-    return <div>Loading styles...</div>;
-  }
+    // Listen for new styles
+    const handleStyleAdded = (event) => {
+      setStyles((prevStyles) => [event.detail, ...prevStyles]);
+    };
+
+    window.addEventListener("styleAdded", handleStyleAdded);
+
+    return () => {
+      window.removeEventListener("styleAdded", handleStyleAdded);
+    };
+  }, []);
 
   return (
     <div className="style-grid">
-      {styles.map((style, index) => (
-        <StyleCard key={style._id || index} style={style} />
+      {styles.map((style) => (
+        <StyleCard key={style.id} style={style} />
       ))}
     </div>
   );

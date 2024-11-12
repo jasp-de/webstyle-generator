@@ -21,7 +21,7 @@ export async function POST(request) {
     const { prompt } = await request.json();
 
     const completion = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo",
+      model: "gpt-4",
       messages: [
         {
           role: "system",
@@ -29,9 +29,9 @@ export async function POST(request) {
 
 {
   "text": {
-    "title": "Create a memorable, creative title",
-    "shortDescription": "2-3 word evocative description",
-    "buttonText": "Single engaging action word"
+    "title": "Create a memorable, creative title (1-2 words)",
+    "shortDescription": "2-4 word evocative description",
+    "buttonText": "Engaging call to action (1-2 words)"
   },
   "info": {
     "name": "Descriptive name of the Design-Style",
@@ -41,7 +41,7 @@ export async function POST(request) {
     "features": "Key visual effects and animations"
   },
   "tags": ["Include 5-7 relevant design tags"],
-  "css": ".preview-style-name { background: linear-gradient(...); color: #fff; position: relative; overflow: hidden; } .preview-style-name h1 { /* heading styles */ } .preview-style-name p { /* paragraph styles */ } .preview-style-name button { /* button styles */ } .preview-style-name button:hover { /* hover effects */ } .preview-style-name::before { /* decorative effects */ }"
+  "css": ".style-name { background: linear-gradient(...); color: #fff; position: relative; overflow: hidden; } .style-name h1 { /* heading styles */ } .style-name p { /* paragraph styles */ } .style-name button { /* button styles */ } .style-name button:hover { /* hover effects */ } .style-name::before { /* decorative effects */ }"
 }
 
 Important:
@@ -51,8 +51,10 @@ Important:
 4. Include all required CSS selectors
 5. Make the style name match between title, info.name, and CSS classes
 6. Include creative animations and effects where appropriate
-
-Reference the "Neural Network" and "Midnight Glow" styles from the examples for inspiration.
+7. make sure very button has a hover animation!
+8. make sure you define the keyframes for custom animations.
+9. Make Sure the Style-name does not contain any special characters.
+10. Make sure the css classes are all in lowercase and replace any spaces with "-"
 
 Base your response on this prompt: ${prompt}`,
         },
