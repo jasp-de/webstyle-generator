@@ -1,6 +1,6 @@
 {
   "functions": {
-    "api/styles/generate": {
+    "src/app/api/styles/generate/route.js": {
       "maxDuration": 60
     }
   }

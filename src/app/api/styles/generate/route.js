@@ -16,7 +16,8 @@ function validateAndFormatStyle(style) {
   return style;
 }
 
-export const maxDuration = 60; // Vercel Edge Function timeout
+export const runtime = "edge";
+export const maxDuration = 60;
 export const dynamic = "force-dynamic";
 
 export async function POST(request) {
