@@ -5,8 +5,6 @@ export async function GET() {
   try {
     await dbConnect();
     const styles = await Style.find({});
-    console.log("Styles from DB:", styles);
-
     if (!styles || styles.length === 0) {
       return Response.json({ error: "No styles found" }, { status: 404 });
     }
