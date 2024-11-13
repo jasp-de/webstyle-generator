@@ -271,3 +271,83 @@ code {
     font-size: 14px;
   }
 }
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.auth-button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  background: #4a90e2;
+  color: white;
+  cursor: pointer;
+}
+
+.profile-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.profile-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.profile-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+.profile-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.tab {
+  padding: 0.5rem 1rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+}
+
+.tab.active {
+  border-bottom-color: #4a90e2;
+}
+
+.like-button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #ccc;
+  transition: all 0.3s ease;
+}
+
+.like-button.liked {
+  color: #ff4a6e;
+}
+
+.style-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

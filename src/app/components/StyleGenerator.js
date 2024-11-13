@@ -1,7 +1,9 @@
 "use client";
 import { useState } from "react";
+import { useSession } from "next-auth/react";
 
 export default function StyleGenerator() {
+  const { data: session } = useSession();
   const [prompt, setPrompt] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -35,7 +37,10 @@ export default function StyleGenerator() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(generatedStyle),
+        body: JSON.stringify({
+          ...generatedStyle,
+          createdBy: session?.user?.id || "anonymous",
+        }),
       });
 
       if (!dbResponse.ok) {
