@@ -351,3 +351,27 @@ code {
   justify-content: space-between;
   align-items: center;
 }
+
+.action-buttons {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.like-count {
+  font-size: 0.8rem;
+  margin-left: 0.25rem;
+}
+
+.delete-button {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.delete-button:hover {
+  opacity: 1;
+}
