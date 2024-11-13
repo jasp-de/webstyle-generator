@@ -25,7 +25,7 @@ export async function POST(request) {
     const { prompt } = await request.json();
 
     const completion = await openai.chat.completions.create({
-      model: "gpt-4",
+      model: "gpt-4o-mini",
       temperature: 0.7,
       messages: [
         {
@@ -35,8 +35,8 @@ export async function POST(request) {
 {
   "text": {
     "title": "Create a memorable, creative title (1-2 words)",
-    "shortDescription": "2-4 word evocative description",
-    "buttonText": "Engaging call to action (1-2 words)"
+    "shortDescription": "2-7 word evocative description",
+    "buttonText": "Engaging call to action (1-3 words)"
   },
   "info": {
     "name": "Descriptive name of the Design-Style",
