@@ -38,6 +38,20 @@ export default function ProfilePage() {
     }
   }, [session]);
 
+  const handleUnlike = (styleId) => {
+    setStyles((prev) => ({
+      ...prev,
+      liked: prev.liked.filter((style) => style._id !== styleId),
+    }));
+  };
+
+  const handleDelete = (styleId) => {
+    setStyles((prev) => ({
+      ...prev,
+      generated: prev.generated.filter((style) => style._id !== styleId),
+    }));
+  };
+
   if (!session) {
     return <div>Please sign in to view your profile.</div>;
   }
@@ -72,9 +86,11 @@ export default function ProfilePage() {
         </button>
       </div>
 
-      <div className="styles-container">
-        <StyleGrid styles={styles[activeTab]} />
-      </div>
+      <StyleGrid
+        styles={styles[activeTab]}
+        onUnlike={handleUnlike}
+        onDelete={handleDelete}
+      />
     </div>
   );
 }
