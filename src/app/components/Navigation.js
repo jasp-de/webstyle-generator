@@ -7,24 +7,28 @@ export default function Navigation() {
   const { data: session } = useSession();
 
   return (
-    <nav className="navigation">
-      <div className="nav-brand">
-        <Link href="/">Webstyle Explorer</Link>
-      </div>
-      <div className="nav-links">
-        {session ? (
-          <>
-            <Link href="/profile">Profile</Link>
-            <button onClick={() => signOut()} className="auth-button">
-              Sign Out
+    <div className="navigation">
+      <div className="nav-content">
+        <div className="nav-title">
+          <h1>Webstyle Explorer</h1>
+          <p>Discover and compare different web design aesthetics</p>
+        </div>
+        <div className="nav-links">
+          <Link href="/">All Styles</Link>
+          {session ? (
+            <>
+              <Link href="/profile">Profile</Link>
+              <button className="auth-button" onClick={() => signOut()}>
+                Sign Out
+              </button>
+            </>
+          ) : (
+            <button className="auth-button" onClick={() => signIn()}>
+              Sign In
             </button>
-          </>
-        ) : (
-          <button onClick={() => signIn("github")} className="auth-button">
-            Sign in with GitHub
-          </button>
-        )}
+          )}
+        </div>
       </div>
-    </nav>
+    </div>
   );
 }

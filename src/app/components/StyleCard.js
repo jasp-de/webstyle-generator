@@ -6,11 +6,14 @@ import StyleSheet from "./StyleSheet";
 
 export default function StyleCard({ style, onUnlike, onDelete }) {
   const { data: session } = useSession();
-  const [isLiked, setIsLiked] = useState(false);
-  const [likeCount, setLikeCount] = useState(0);
+  const [isLiked, setIsLiked] = useState(
+    style.likedBy?.includes(session?.user?.id) || false
+  );
+  const likeCount = style.likedBy?.length || 0;
   const { text, info, css, tags } = style;
   const [isExpanded, setIsExpanded] = useState(false);
   const styleId = info.name.toLowerCase().replace(/\s+/g, "-");
+  const [isLiking, setIsLiking] = useState(false);
 
   useEffect(() => {
     if (session && style._id) {
@@ -60,27 +63,27 @@ export default function StyleCard({ style, onUnlike, onDelete }) {
   };
 
   const handleLike = async () => {
-    if (!session) return;
+    if (!session || isLiking) return;
+    setIsLiking(true);
 
     try {
-      const response = await fetch("/api/likes", {
+      const response = await fetch(`/api/styles/${style._id}/like`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          styleId: style._id,
-          userId: session.user.id,
-        }),
+        body: JSON.stringify({ userId: session.user.id }),
       });
 
-      const data = await response.json();
-      setIsLiked(data.liked);
-      setLikeCount((prev) => (data.liked ? prev + 1 : prev - 1));
-
-      if (!data.liked && onUnlike) {
-        onUnlike(style._id);
+      if (response.ok) {
+        const newIsLiked = !isLiked;
+        setIsLiked(newIsLiked);
+        if (!newIsLiked && onUnlike) {
+          onUnlike(style._id);
+        }
       }
     } catch (error) {
       console.error("Error toggling like:", error);
+    } finally {
+      setIsLiking(false);
     }
   };
 
@@ -118,7 +121,7 @@ export default function StyleCard({ style, onUnlike, onDelete }) {
                   className={`like-button ${isLiked ? "liked" : ""}`}
                   onClick={handleLike}
                 >
-                  ♥ <span className="like-count">{likeCount}</span>
+                  <span className="like-count">{likeCount}</span> ♥
                 </button>
                 {session.user.id === style.createdBy && (
                   <button className="delete-button" onClick={handleDelete}>

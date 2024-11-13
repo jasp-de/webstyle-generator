@@ -1,10 +1,11 @@
-import dbConnect from "../../utils/dbConnect";
-import Style from "../../models/Style";
+import dbConnect from "@/app/utils/dbConnect";
+import Style from "@/app/models/Style";
 
-export async function POST(request) {
+export async function POST(request, { params }) {
   try {
     await dbConnect();
-    const { userId, styleId } = await request.json();
+    const { styleId } = params;
+    const { userId } = await request.json();
 
     const style = await Style.findById(styleId);
     if (!style) {
@@ -19,10 +20,7 @@ export async function POST(request) {
     }
     await style.save();
 
-    return Response.json({
-      liked: !isLiked,
-      likeCount: style.likedBy.length,
-    });
+    return Response.json({ success: true });
   } catch (error) {
     console.error("Like error:", error);
     return Response.json({ error: "Failed to process like" }, { status: 500 });

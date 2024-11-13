@@ -9,10 +9,7 @@ export async function GET(request, { params }) {
     const styles = await Style.find({ createdBy: userId });
     return Response.json(styles);
   } catch (error) {
-    console.error("Error fetching user styles:", error);
-    return Response.json(
-      { error: "Failed to fetch user styles" },
-      { status: 500 }
-    );
+    console.error("Error fetching styles:", error);
+    return Response.json({ error: "Failed to fetch styles" }, { status: 500 });
   }
 }

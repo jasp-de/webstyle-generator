@@ -2,37 +2,58 @@
 import { useEffect, useState } from "react";
 import StyleCard from "./StyleCard";
 
-export default function StyleGrid({ styles: propStyles, onUnlike, onDelete }) {
+export default function StyleGrid({
+  styles: propStyles,
+  onUnlike,
+  onDelete,
+  searchTerm,
+  sortBy,
+}) {
   const [styles, setStyles] = useState([]);
+
+  const sortStyles = (styles) => {
+    switch (sortBy) {
+      case "oldest":
+        return [...styles].sort(
+          (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
+        );
+      case "mostLiked":
+        return [...styles].sort((a, b) => b.likedBy.length - a.likedBy.length);
+      case "newest":
+      default:
+        return [...styles].sort(
+          (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+        );
+    }
+  };
+
+  const filterStyles = (styles) => {
+    if (!searchTerm) return styles;
+    return styles.filter((style) =>
+      style.tags.some((tag) =>
+        tag.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    );
+  };
 
   useEffect(() => {
     if (propStyles) {
-      setStyles(propStyles);
+      setStyles(filterStyles(sortStyles(propStyles)));
     } else {
       const fetchStyles = async () => {
         try {
           const response = await fetch("/api/styles");
           if (!response.ok) throw new Error("Failed to fetch styles");
           const data = await response.json();
-          setStyles(
-            data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
-          );
+          setStyles(filterStyles(sortStyles(data)));
         } catch (error) {
           console.error("Error fetching styles:", error);
           setStyles([]);
         }
       };
       fetchStyles();
-
-      // Listen for new styles
-      const handleNewStyle = async () => {
-        await fetchStyles();
-      };
-
-      window.addEventListener("styleAdded", handleNewStyle);
-      return () => window.removeEventListener("styleAdded", handleNewStyle);
     }
-  }, [propStyles]);
+  }, [propStyles, sortBy, searchTerm]);
 
   return (
     <div className="style-grid">

@@ -68,8 +68,14 @@ export default function ProfilePage() {
   return (
     <div className="profile-page">
       <div className="profile-header">
-        <img src={session.user.image} alt="Profile" className="profile-image" />
-        <h1>{session.user.name}</h1>
+        <div className="profile-info">
+          <img
+            src={session.user.image}
+            alt="Profile"
+            className="profile-image"
+          />
+          <h1>{session.user.name}</h1>
+        </div>
       </div>
 
       <div className="profile-tabs">
