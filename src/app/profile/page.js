@@ -3,6 +3,7 @@
 import { useSession } from "next-auth/react";
 import { useState, useEffect } from "react";
 import StyleGrid from "../components/StyleGrid";
+import StyleGenerator from "../components/StyleGenerator";
 
 export default function ProfilePage() {
   const { data: session } = useSession();
@@ -86,8 +87,24 @@ export default function ProfilePage() {
         </button>
       </div>
 
+      {activeTab === "generated" && (
+        <div className="generate-section">
+          <StyleGenerator
+            onStyleGenerated={(newStyle) => {
+              setStyles((prev) => ({
+                ...prev,
+                generated: [newStyle, ...prev.generated],
+              }));
+              window.dispatchEvent(new CustomEvent("styleAdded"));
+            }}
+          />
+        </div>
+      )}
+
       <StyleGrid
-        styles={styles[activeTab]}
+        styles={styles[activeTab].sort(
+          (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+        )}
         onUnlike={handleUnlike}
         onDelete={handleDelete}
       />

@@ -10,11 +10,27 @@ export default function StyleGrid({ styles: propStyles, onUnlike, onDelete }) {
       setStyles(propStyles);
     } else {
       const fetchStyles = async () => {
-        const response = await fetch("/api/styles");
-        const data = await response.json();
-        setStyles(data);
+        try {
+          const response = await fetch("/api/styles");
+          if (!response.ok) throw new Error("Failed to fetch styles");
+          const data = await response.json();
+          setStyles(
+            data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+          );
+        } catch (error) {
+          console.error("Error fetching styles:", error);
+          setStyles([]);
+        }
       };
       fetchStyles();
+
+      // Listen for new styles
+      const handleNewStyle = async () => {
+        await fetchStyles();
+      };
+
+      window.addEventListener("styleAdded", handleNewStyle);
+      return () => window.removeEventListener("styleAdded", handleNewStyle);
     }
   }, [propStyles]);
 

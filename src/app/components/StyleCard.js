@@ -13,16 +13,39 @@ export default function StyleCard({ style, onUnlike, onDelete }) {
   const styleId = info.name.toLowerCase().replace(/\s+/g, "-");
 
   useEffect(() => {
-    if (session) {
-      // Check if user has liked this style
-      fetch(`/api/styles/${style._id}/likes/${session.user.id}`)
-        .then((res) => res.json())
-        .then((data) => setIsLiked(data.isLiked));
+    if (session && style._id) {
+      const controller = new AbortController();
+      const { signal } = controller;
 
-      // Get like count
-      fetch(`/api/styles/${style._id}/likes/count`)
-        .then((res) => res.json())
-        .then((data) => setLikeCount(data.count));
+      const fetchData = async () => {
+        try {
+          const [likeStatus, likeCount] = await Promise.all([
+            fetch(`/api/styles/${style._id}/likes/${session.user.id}`, {
+              signal,
+            }),
+            fetch(`/api/styles/${style._id}/likes/count`, { signal }),
+          ]);
+
+          if (!likeStatus.ok || !likeCount.ok) {
+            throw new Error("Failed to fetch like data");
+          }
+
+          const [likeData, countData] = await Promise.all([
+            likeStatus.json(),
+            likeCount.json(),
+          ]);
+
+          setIsLiked(likeData.isLiked);
+          setLikeCount(countData.count);
+        } catch (error) {
+          if (error.name !== "AbortError") {
+            console.error("Error fetching style data:", error);
+          }
+        }
+      };
+
+      fetchData();
+      return () => controller.abort();
     }
   }, [style._id, session]);
 

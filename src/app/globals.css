@@ -375,3 +375,14 @@ code {
 .delete-button:hover {
   opacity: 1;
 }
+
+.profile-page .generate-section {
+  margin: 2rem 0;
+  padding: 1rem;
+  background: var(--background-secondary);
+  border-radius: 8px;
+}
+
+.profile-page .style-grid {
+  margin-top: 2rem;
+}
