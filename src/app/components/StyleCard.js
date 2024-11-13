@@ -1,9 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import { useSession } from "next-auth/react";
 import StyleSheet from "./StyleSheet";
 
 export default function StyleCard({ style }) {
+  const { data: session } = useSession();
+  const [isLiked, setIsLiked] = useState(false);
   const { text, info, css, tags } = style;
   const [isExpanded, setIsExpanded] = useState(false);
   const styleId = info.name.toLowerCase().replace(/\s+/g, "-");
@@ -18,6 +21,29 @@ export default function StyleCard({ style }) {
     });
   };
 
+  const handleLike = async () => {
+    if (!session) return;
+
+    try {
+      const response = await fetch("/api/likes", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          styleId: style._id,
+          userId: session.user.id,
+        }),
+      });
+
+      if (response.ok) {
+        setIsLiked(!isLiked);
+      }
+    } catch (error) {
+      console.error("Error toggling like:", error);
+    }
+  };
+
   return (
     <div className="style-card">
       <StyleSheet css={css} id={styleId} />
@@ -27,7 +53,17 @@ export default function StyleCard({ style }) {
         <button>{text.buttonText}</button>
       </div>
       <div className="style-info">
-        <div className="style-name">{info.name}</div>
+        <div className="style-actions">
+          <div className="style-name">{info.name}</div>
+          {session && (
+            <button
+              className={`like-button ${isLiked ? "liked" : ""}`}
+              onClick={handleLike}
+            >
+              ♥
+            </button>
+          )}
+        </div>
         <div className="style-details">
           <code>
             <strong>Font:</strong> {info.fontname}

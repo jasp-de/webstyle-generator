@@ -15,6 +15,14 @@ const StyleSchema = new mongoose.Schema({
   },
   tags: [String],
   css: String,
+  createdBy: {
+    type: String,
+    required: true,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 export default mongoose.models.Style || mongoose.model("Style", StyleSchema);
