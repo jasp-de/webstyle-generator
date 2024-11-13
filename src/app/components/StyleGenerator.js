@@ -47,16 +47,14 @@ export default function StyleGenerator() {
         throw new Error("Failed to save style");
       }
 
-      // Clear the input and show success message
+      const savedStyle = await dbResponse.json();
       setPrompt("");
       setSuccessMessage("Style generated successfully!");
 
-      // Add the new style to the grid immediately
-      window.dispatchEvent(
-        new CustomEvent("styleAdded", {
-          detail: generatedStyle,
-        })
-      );
+      // Call the callback with the saved style
+      if (onStyleGenerated) {
+        onStyleGenerated(savedStyle);
+      }
 
       // Clear success message after 3 seconds
       setTimeout(() => {

@@ -95,6 +95,7 @@ export default function ProfilePage() {
                 ...prev,
                 generated: [newStyle, ...prev.generated],
               }));
+              window.dispatchEvent(new CustomEvent("styleAdded"));
             }}
           />
         </div>
