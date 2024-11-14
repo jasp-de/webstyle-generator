@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useSession, signIn } from "next-auth/react";
+import { useState } from "react";
+import { useSession } from "next-auth/react";
 import StyleSheet from "./StyleSheet";
+import SignInPopup from "./SignInPopup";
 
 export default function StyleCard({ style, onUnlike, onDelete }) {
   const { data: session } = useSession();
@@ -11,13 +12,14 @@ export default function StyleCard({ style, onUnlike, onDelete }) {
   );
   const [likeCount, setLikeCount] = useState(style.likedBy?.length || 0);
   const [isLiking, setIsLiking] = useState(false);
+  const [showSignIn, setShowSignIn] = useState(false);
   const { text, info, css, tags } = style;
   const [isExpanded, setIsExpanded] = useState(false);
   const styleId = info.name.toLowerCase().replace(/\s+/g, "-");
 
   const handleLike = async () => {
     if (!session) {
-      signIn();
+      setShowSignIn(true);
       return;
     }
 
@@ -89,6 +91,7 @@ export default function StyleCard({ style, onUnlike, onDelete }) {
 
   return (
     <div className="style-card">
+      {showSignIn && <SignInPopup onClose={() => setShowSignIn(false)} />}
       <StyleSheet css={css} id={styleId} />
       <div className={`style-frame ${styleId}`}>
         <h1>{text.title}</h1>
