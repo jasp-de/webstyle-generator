@@ -13,16 +13,18 @@ const StyleSchema = new mongoose.Schema({
     style: String,
     features: String,
   },
-  tags: [String],
   css: String,
-  createdBy: {
-    type: String,
-    required: true,
-  },
+  tags: [String],
+  createdBy: String,
   createdAt: {
     type: Date,
     default: Date.now,
   },
+  likedBy: [String],
+});
+
+StyleSchema.virtual("likeCount").get(function () {
+  return this.likedBy.length;
 });
 
 export default mongoose.models.Style || mongoose.model("Style", StyleSchema);

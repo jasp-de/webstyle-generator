@@ -1,53 +1,59 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useSession } from "next-auth/react";
 import StyleSheet from "./StyleSheet";
+import SignInPopup from "./SignInPopup";
 
 export default function StyleCard({ style, onUnlike, onDelete }) {
   const { data: session } = useSession();
-  const [isLiked, setIsLiked] = useState(false);
-  const [likeCount, setLikeCount] = useState(0);
+  const [isLiked, setIsLiked] = useState(
+    style.likedBy?.includes(session?.user?.id) || false
+  );
+  const [likeCount, setLikeCount] = useState(style.likedBy?.length || 0);
+  const [isLiking, setIsLiking] = useState(false);
+  const [showSignIn, setShowSignIn] = useState(false);
   const { text, info, css, tags } = style;
   const [isExpanded, setIsExpanded] = useState(false);
   const styleId = info.name.toLowerCase().replace(/\s+/g, "-");
 
-  useEffect(() => {
-    if (session && style._id) {
-      const controller = new AbortController();
-      const { signal } = controller;
-
-      const fetchData = async () => {
-        try {
-          const [likeStatus, likeCount] = await Promise.all([
-            fetch(`/api/styles/${style._id}/likes/${session.user.id}`, {
-              signal,
-            }),
-            fetch(`/api/styles/${style._id}/likes/count`, { signal }),
-          ]);
-
-          if (!likeStatus.ok || !likeCount.ok) {
-            throw new Error("Failed to fetch like data");
-          }
-
-          const [likeData, countData] = await Promise.all([
-            likeStatus.json(),
-            likeCount.json(),
-          ]);
-
-          setIsLiked(likeData.isLiked);
-          setLikeCount(countData.count);
-        } catch (error) {
-          if (error.name !== "AbortError") {
-            console.error("Error fetching style data:", error);
-          }
-        }
-      };
-
-      fetchData();
-      return () => controller.abort();
+  const handleLike = async () => {
+    if (!session) {
+      setShowSignIn(true);
+      return;
     }
-  }, [style._id, session]);
+
+    if (isLiking) return;
+    setIsLiking(true);
+
+    try {
+      const response = await fetch(`/api/styles/${style._id}/like`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId: session.user.id }),
+      });
+
+      if (response.ok) {
+        const newIsLiked = !isLiked;
+        setIsLiked(newIsLiked);
+        setLikeCount((prev) => prev + (newIsLiked ? 1 : -1));
+
+        if (!newIsLiked && onUnlike) {
+          onUnlike(style._id);
+        }
+
+        window.dispatchEvent(
+          new CustomEvent("likeStatusChanged", {
+            detail: { styleId: style._id, isLiked: newIsLiked },
+          })
+        );
+      }
+    } catch (error) {
+      console.error("Error toggling like:", error);
+    } finally {
+      setIsLiking(false);
+    }
+  };
 
   const copyToClipboard = (event) => {
     const button = event.currentTarget;
@@ -59,31 +65,6 @@ export default function StyleCard({ style, onUnlike, onDelete }) {
     });
   };
 
-  const handleLike = async () => {
-    if (!session) return;
-
-    try {
-      const response = await fetch("/api/likes", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          styleId: style._id,
-          userId: session.user.id,
-        }),
-      });
-
-      const data = await response.json();
-      setIsLiked(data.liked);
-      setLikeCount((prev) => (data.liked ? prev + 1 : prev - 1));
-
-      if (!data.liked && onUnlike) {
-        onUnlike(style._id);
-      }
-    } catch (error) {
-      console.error("Error toggling like:", error);
-    }
-  };
-
   const handleDelete = async () => {
     if (!session || session.user.id !== style.createdBy) return;
 
@@ -92,8 +73,16 @@ export default function StyleCard({ style, onUnlike, onDelete }) {
         method: "DELETE",
       });
 
-      if (response.ok && onDelete) {
-        onDelete(style._id);
+      if (response.ok) {
+        if (onDelete) {
+          onDelete(style._id);
+        }
+        // Dispatch event to refresh all tabs
+        window.dispatchEvent(
+          new CustomEvent("styleDeleted", {
+            detail: { styleId: style._id },
+          })
+        );
       }
     } catch (error) {
       console.error("Error deleting style:", error);
@@ -102,6 +91,7 @@ export default function StyleCard({ style, onUnlike, onDelete }) {
 
   return (
     <div className="style-card">
+      {showSignIn && <SignInPopup onClose={() => setShowSignIn(false)} />}
       <StyleSheet css={css} id={styleId} />
       <div className={`style-frame ${styleId}`}>
         <h1>{text.title}</h1>
@@ -112,20 +102,16 @@ export default function StyleCard({ style, onUnlike, onDelete }) {
         <div className="style-actions">
           <div className="style-name">{info.name}</div>
           <div className="action-buttons">
-            {session && (
-              <>
-                <button
-                  className={`like-button ${isLiked ? "liked" : ""}`}
-                  onClick={handleLike}
-                >
-                  ♥ <span className="like-count">{likeCount}</span>
-                </button>
-                {session.user.id === style.createdBy && (
-                  <button className="delete-button" onClick={handleDelete}>
-                    🗑️
-                  </button>
-                )}
-              </>
+            <button
+              className={`like-button ${isLiked ? "liked" : ""}`}
+              onClick={handleLike}
+            >
+              <span className="like-count">{likeCount}</span> ♥
+            </button>
+            {session && session.user.id === style.createdBy && (
+              <button className="delete-button" onClick={handleDelete}>
+                🗑️
+              </button>
             )}
           </div>
         </div>

@@ -18,15 +18,12 @@ export default function ProfilePage() {
       setError(null);
 
       Promise.all([
-        fetch(`/api/users/${session.user.id}/likes`).then((res) => {
-          if (!res.ok) throw new Error("Failed to fetch liked styles");
-          return res.json();
-        }),
-        fetch(`/api/users/${session.user.id}/styles`).then((res) => {
-          if (!res.ok) throw new Error("Failed to fetch generated styles");
-          return res.json();
-        }),
+        fetch(`/api/styles?likedBy=${session.user.id}`),
+        fetch(`/api/styles?createdBy=${session.user.id}`),
       ])
+        .then(([likedRes, generatedRes]) =>
+          Promise.all([likedRes.json(), generatedRes.json()])
+        )
         .then(([likedStyles, generatedStyles]) => {
           setStyles({ liked: likedStyles, generated: generatedStyles });
         })
@@ -37,6 +34,59 @@ export default function ProfilePage() {
           setIsLoading(false);
         });
     }
+  }, [session]);
+
+  useEffect(() => {
+    const handleLikeChange = async (event) => {
+      if (session) {
+        const [likedRes, generatedRes] = await Promise.all([
+          fetch(`/api/styles?likedBy=${session.user.id}`),
+          fetch(`/api/styles?createdBy=${session.user.id}`),
+        ]);
+
+        if (likedRes.ok && generatedRes.ok) {
+          const [likedStyles, generatedStyles] = await Promise.all([
+            likedRes.json(),
+            generatedRes.json(),
+          ]);
+
+          setStyles({
+            liked: likedStyles,
+            generated: generatedStyles,
+          });
+        }
+      }
+    };
+
+    window.addEventListener("likeStatusChanged", handleLikeChange);
+    return () =>
+      window.removeEventListener("likeStatusChanged", handleLikeChange);
+  }, [session]);
+
+  useEffect(() => {
+    const handleStyleDelete = async () => {
+      if (session) {
+        const [likedRes, generatedRes] = await Promise.all([
+          fetch(`/api/styles?likedBy=${session.user.id}`),
+          fetch(`/api/styles?createdBy=${session.user.id}`),
+        ]);
+
+        if (likedRes.ok && generatedRes.ok) {
+          const [likedStyles, generatedStyles] = await Promise.all([
+            likedRes.json(),
+            generatedRes.json(),
+          ]);
+
+          setStyles({
+            liked: likedStyles,
+            generated: generatedStyles,
+          });
+        }
+      }
+    };
+
+    window.addEventListener("styleDeleted", handleStyleDelete);
+    return () => window.removeEventListener("styleDeleted", handleStyleDelete);
   }, [session]);
 
   const handleUnlike = (styleId) => {
@@ -68,8 +118,14 @@ export default function ProfilePage() {
   return (
     <div className="profile-page">
       <div className="profile-header">
-        <img src={session.user.image} alt="Profile" className="profile-image" />
-        <h1>{session.user.name}</h1>
+        <div className="profile-info">
+          <img
+            src={session.user.image}
+            alt="Profile"
+            className="profile-image"
+          />
+          <h1>{session.user.name}</h1>
+        </div>
       </div>
 
       <div className="profile-tabs">

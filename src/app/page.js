@@ -1,22 +1,30 @@
-import Image from "next/image";
+"use client";
+import { useState } from "react";
 import styles from "./page.module.css";
-import StyleGrid from "./components/StyleGrid.js";
+import StyleGrid from "./components/StyleGrid";
 import StyleGenerator from "./components/StyleGenerator";
+import { useSession } from "next-auth/react";
+import Link from "next/link";
+import Navigation from "./components/Navigation";
+import SearchBar from "./components/SearchBar";
 
 export default function Home() {
+  const { data: session } = useSession();
+  const [sortBy, setSortBy] = useState("newest");
+  const [searchTerm, setSearchTerm] = useState("");
+
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <div className="heading">
-          <h1>Webstyle Explorer</h1>
-          <p>Discover and compare different web design aesthetics</p>
-        </div>
-        <StyleGenerator></StyleGenerator>
-        <div>
-          <StyleGrid></StyleGrid>
-        </div>
+        <SearchBar
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
+          sortBy={sortBy}
+          setSortBy={setSortBy}
+        />
+        <StyleGenerator />
+        <StyleGrid searchTerm={searchTerm} sortBy={sortBy} />
       </main>
-      <footer className={styles.footer}></footer>
     </div>
   );
 }

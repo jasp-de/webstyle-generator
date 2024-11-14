@@ -157,3 +157,13 @@ a.secondary {
     filter: invert();
   }
 }
+
+.header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  background: var(--background-secondary);
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
