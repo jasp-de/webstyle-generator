@@ -63,6 +63,32 @@ export default function ProfilePage() {
       window.removeEventListener("likeStatusChanged", handleLikeChange);
   }, [session]);
 
+  useEffect(() => {
+    const handleStyleDelete = async () => {
+      if (session) {
+        const [likedRes, generatedRes] = await Promise.all([
+          fetch(`/api/styles?likedBy=${session.user.id}`),
+          fetch(`/api/styles?createdBy=${session.user.id}`),
+        ]);
+
+        if (likedRes.ok && generatedRes.ok) {
+          const [likedStyles, generatedStyles] = await Promise.all([
+            likedRes.json(),
+            generatedRes.json(),
+          ]);
+
+          setStyles({
+            liked: likedStyles,
+            generated: generatedStyles,
+          });
+        }
+      }
+    };
+
+    window.addEventListener("styleDeleted", handleStyleDelete);
+    return () => window.removeEventListener("styleDeleted", handleStyleDelete);
+  }, [session]);
+
   const handleUnlike = (styleId) => {
     setStyles((prev) => ({
       ...prev,

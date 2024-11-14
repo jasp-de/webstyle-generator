@@ -71,8 +71,16 @@ export default function StyleCard({ style, onUnlike, onDelete }) {
         method: "DELETE",
       });
 
-      if (response.ok && onDelete) {
-        onDelete(style._id);
+      if (response.ok) {
+        if (onDelete) {
+          onDelete(style._id);
+        }
+        // Dispatch event to refresh all tabs
+        window.dispatchEvent(
+          new CustomEvent("styleDeleted", {
+            detail: { styleId: style._id },
+          })
+        );
       }
     } catch (error) {
       console.error("Error deleting style:", error);
