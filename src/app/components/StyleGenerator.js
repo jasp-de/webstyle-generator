@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useSession } from "next-auth/react";
 
-export default function StyleGenerator() {
+export default function StyleGenerator({ onStyleGenerated }) {
   const { data: session } = useSession();
   const [prompt, setPrompt] = useState("");
   const [isLoading, setIsLoading] = useState(false);

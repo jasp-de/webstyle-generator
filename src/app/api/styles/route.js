@@ -1,12 +1,24 @@
 import dbConnect from "../../utils/dbConnect.js";
 import Style from "../../models/Style.js";
 
-export async function GET() {
+export async function GET(request) {
   try {
     await dbConnect();
-    const styles = await Style.find({});
+    const { searchParams } = new URL(request.url);
+    const likedBy = searchParams.get("likedBy");
+    const createdBy = searchParams.get("createdBy");
+
+    let query = {};
+    if (likedBy) {
+      query.likedBy = likedBy;
+    }
+    if (createdBy) {
+      query.createdBy = createdBy;
+    }
+
+    const styles = await Style.find(query);
     if (!styles || styles.length === 0) {
-      return Response.json({ error: "No styles found" }, { status: 404 });
+      return Response.json([]);
     }
 
     return Response.json(styles);

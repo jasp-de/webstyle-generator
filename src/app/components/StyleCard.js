@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useSession } from "next-auth/react";
+import { useSession, signIn } from "next-auth/react";
 import StyleSheet from "./StyleSheet";
 
 export default function StyleCard({ style, onUnlike, onDelete }) {
@@ -9,61 +9,19 @@ export default function StyleCard({ style, onUnlike, onDelete }) {
   const [isLiked, setIsLiked] = useState(
     style.likedBy?.includes(session?.user?.id) || false
   );
-  const likeCount = style.likedBy?.length || 0;
+  const [likeCount, setLikeCount] = useState(style.likedBy?.length || 0);
+  const [isLiking, setIsLiking] = useState(false);
   const { text, info, css, tags } = style;
   const [isExpanded, setIsExpanded] = useState(false);
   const styleId = info.name.toLowerCase().replace(/\s+/g, "-");
-  const [isLiking, setIsLiking] = useState(false);
-
-  useEffect(() => {
-    if (session && style._id) {
-      const controller = new AbortController();
-      const { signal } = controller;
-
-      const fetchData = async () => {
-        try {
-          const [likeStatus, likeCount] = await Promise.all([
-            fetch(`/api/styles/${style._id}/likes/${session.user.id}`, {
-              signal,
-            }),
-            fetch(`/api/styles/${style._id}/likes/count`, { signal }),
-          ]);
-
-          if (!likeStatus.ok || !likeCount.ok) {
-            throw new Error("Failed to fetch like data");
-          }
-
-          const [likeData, countData] = await Promise.all([
-            likeStatus.json(),
-            likeCount.json(),
-          ]);
-
-          setIsLiked(likeData.isLiked);
-          setLikeCount(countData.count);
-        } catch (error) {
-          if (error.name !== "AbortError") {
-            console.error("Error fetching style data:", error);
-          }
-        }
-      };
-
-      fetchData();
-      return () => controller.abort();
-    }
-  }, [style._id, session]);
-
-  const copyToClipboard = (event) => {
-    const button = event.currentTarget;
-    navigator.clipboard.writeText(css).then(() => {
-      button.textContent = "Copied!";
-      setTimeout(() => {
-        button.textContent = "Copy CSS";
-      }, 2000);
-    });
-  };
 
   const handleLike = async () => {
-    if (!session || isLiking) return;
+    if (!session) {
+      signIn();
+      return;
+    }
+
+    if (isLiking) return;
     setIsLiking(true);
 
     try {
@@ -76,15 +34,33 @@ export default function StyleCard({ style, onUnlike, onDelete }) {
       if (response.ok) {
         const newIsLiked = !isLiked;
         setIsLiked(newIsLiked);
+        setLikeCount((prev) => prev + (newIsLiked ? 1 : -1));
+
         if (!newIsLiked && onUnlike) {
           onUnlike(style._id);
         }
+
+        window.dispatchEvent(
+          new CustomEvent("likeStatusChanged", {
+            detail: { styleId: style._id, isLiked: newIsLiked },
+          })
+        );
       }
     } catch (error) {
       console.error("Error toggling like:", error);
     } finally {
       setIsLiking(false);
     }
+  };
+
+  const copyToClipboard = (event) => {
+    const button = event.currentTarget;
+    navigator.clipboard.writeText(css).then(() => {
+      button.textContent = "Copied!";
+      setTimeout(() => {
+        button.textContent = "Copy CSS";
+      }, 2000);
+    });
   };
 
   const handleDelete = async () => {

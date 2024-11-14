@@ -18,15 +18,12 @@ export default function ProfilePage() {
       setError(null);
 
       Promise.all([
-        fetch(`/api/users/${session.user.id}/likes`).then((res) => {
-          if (!res.ok) throw new Error("Failed to fetch liked styles");
-          return res.json();
-        }),
-        fetch(`/api/users/${session.user.id}/styles`).then((res) => {
-          if (!res.ok) throw new Error("Failed to fetch generated styles");
-          return res.json();
-        }),
+        fetch(`/api/styles?likedBy=${session.user.id}`),
+        fetch(`/api/styles?createdBy=${session.user.id}`),
       ])
+        .then(([likedRes, generatedRes]) =>
+          Promise.all([likedRes.json(), generatedRes.json()])
+        )
         .then(([likedStyles, generatedStyles]) => {
           setStyles({ liked: likedStyles, generated: generatedStyles });
         })
@@ -37,6 +34,25 @@ export default function ProfilePage() {
           setIsLoading(false);
         });
     }
+  }, [session]);
+
+  useEffect(() => {
+    const handleLikeChange = async (event) => {
+      if (session) {
+        const response = await fetch(`/api/users/${session.user.id}/likes`);
+        if (response.ok) {
+          const likedStyles = await response.json();
+          setStyles((prev) => ({
+            ...prev,
+            liked: likedStyles,
+          }));
+        }
+      }
+    };
+
+    window.addEventListener("likeStatusChanged", handleLikeChange);
+    return () =>
+      window.removeEventListener("likeStatusChanged", handleLikeChange);
   }, [session]);
 
   const handleUnlike = (styleId) => {

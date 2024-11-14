@@ -4,7 +4,7 @@ import Style from "../../../../models/Style";
 export async function GET(request, { params }) {
   try {
     await dbConnect();
-    const userId = await params.userId;
+    const { userId } = await params;
 
     const styles = await Style.find({ createdBy: userId });
     return Response.json(styles);

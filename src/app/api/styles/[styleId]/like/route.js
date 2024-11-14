@@ -4,7 +4,7 @@ import Style from "@/app/models/Style";
 export async function POST(request, { params }) {
   try {
     await dbConnect();
-    const { styleId } = params;
+    const { styleId } = await params;
     const { userId } = await request.json();
 
     const style = await Style.findById(styleId);
@@ -20,7 +20,11 @@ export async function POST(request, { params }) {
     }
     await style.save();
 
-    return Response.json({ success: true });
+    return Response.json({
+      success: true,
+      isLiked: !isLiked,
+      likeCount: style.likedBy.length,
+    });
   } catch (error) {
     console.error("Like error:", error);
     return Response.json({ error: "Failed to process like" }, { status: 500 });
