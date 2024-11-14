@@ -6,16 +6,11 @@ const handler = NextAuth({
     GithubProvider({
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET,
-      authorization: {
-        params: {
-          prompt: "consent",
-        },
-      },
     }),
   ],
   callbacks: {
     async signIn({ user, account, profile }) {
-      return true; // Allow all sign-ins
+      return true;
     },
     async session({ session, token }) {
       if (session?.user) {
@@ -24,7 +19,12 @@ const handler = NextAuth({
       return session;
     },
   },
-  debug: true, // Enable debug messages in console
+  secret: process.env.NEXTAUTH_SECRET,
+  debug: true,
+  pages: {
+    signIn: "/",
+    error: "/",
+  },
 });
 
 export { handler as GET, handler as POST };

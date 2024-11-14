@@ -24,7 +24,14 @@ export default function SignInPopup({ onClose }) {
       </button>
       <h2>Sign In</h2>
       <p>Please sign in to continue</p>
-      <button className="signin-button" onClick={() => signIn()}>
+      <button
+        className="signin-button"
+        onClick={() =>
+          signIn("github", {
+            callbackUrl: "https://webstyle-generator.vercel.app",
+          })
+        }
+      >
         Sign In with GitHub
       </button>
     </div>
