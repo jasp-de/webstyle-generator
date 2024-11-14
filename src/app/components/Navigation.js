@@ -14,14 +14,12 @@ export default function Navigation() {
           <p>Discover and compare different web design aesthetics</p>
         </div>
         <div className="nav-links">
-          <Link href="/">All Styles</Link>
+          <Link href="/">Home</Link>
+          <Link href="/profile">Profile</Link>
           {session ? (
-            <>
-              <Link href="/profile">Profile</Link>
-              <button className="auth-button" onClick={() => signOut()}>
-                Sign Out
-              </button>
-            </>
+            <button className="auth-button" onClick={() => signOut()}>
+              Sign Out
+            </button>
           ) : (
             <button className="auth-button" onClick={() => signIn()}>
               Sign In

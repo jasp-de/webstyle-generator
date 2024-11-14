@@ -99,20 +99,16 @@ export default function StyleCard({ style, onUnlike, onDelete }) {
         <div className="style-actions">
           <div className="style-name">{info.name}</div>
           <div className="action-buttons">
-            {session && (
-              <>
-                <button
-                  className={`like-button ${isLiked ? "liked" : ""}`}
-                  onClick={handleLike}
-                >
-                  <span className="like-count">{likeCount}</span> ♥
-                </button>
-                {session.user.id === style.createdBy && (
-                  <button className="delete-button" onClick={handleDelete}>
-                    🗑️
-                  </button>
-                )}
-              </>
+            <button
+              className={`like-button ${isLiked ? "liked" : ""}`}
+              onClick={handleLike}
+            >
+              <span className="like-count">{likeCount}</span> ♥
+            </button>
+            {session && session.user.id === style.createdBy && (
+              <button className="delete-button" onClick={handleDelete}>
+                🗑️
+              </button>
             )}
           </div>
         </div>
