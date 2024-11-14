@@ -17,6 +17,13 @@ export default function SignInPopup({ onClose }) {
     };
   }, [onClose]);
 
+  const handleSignIn = async () => {
+    await signIn("github", {
+      callbackUrl: "https://webstyle-generator.vercel.app",
+      redirect: true,
+    });
+  };
+
   return (
     <div className="signin-popup">
       <button className="close-button" onClick={onClose}>
@@ -24,14 +31,7 @@ export default function SignInPopup({ onClose }) {
       </button>
       <h2>Sign In</h2>
       <p>Please sign in to continue</p>
-      <button
-        className="signin-button"
-        onClick={() =>
-          signIn("github", {
-            callbackUrl: "https://webstyle-generator.vercel.app",
-          })
-        }
-      >
+      <button className="signin-button" onClick={handleSignIn}>
         Sign In with GitHub
       </button>
     </div>
