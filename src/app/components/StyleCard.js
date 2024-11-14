@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useSession } from "next-auth/react";
 import StyleSheet from "./StyleSheet";
 import SignInPopup from "./SignInPopup";
+import { processCssWithSvg } from "../utils/cssUtils";
 
 export default function StyleCard({ style, onUnlike, onDelete }) {
   const { data: session } = useSession();
@@ -16,6 +17,7 @@ export default function StyleCard({ style, onUnlike, onDelete }) {
   const { text, info, css, tags } = style;
   const [isExpanded, setIsExpanded] = useState(false);
   const styleId = info.name.toLowerCase().replace(/\s+/g, "-");
+  const processedCss = processCssWithSvg(css);
 
   const handleLike = async () => {
     if (!session) {
@@ -92,7 +94,7 @@ export default function StyleCard({ style, onUnlike, onDelete }) {
   return (
     <div className="style-card">
       {showSignIn && <SignInPopup onClose={() => setShowSignIn(false)} />}
-      <StyleSheet css={css} id={styleId} />
+      <StyleSheet css={processedCss} id={styleId} />
       <div className={`style-frame ${styleId}`}>
         <h1>{text.title}</h1>
         <p>{text.shortDescription}</p>
