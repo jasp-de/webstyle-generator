@@ -39,13 +39,21 @@ export default function ProfilePage() {
   useEffect(() => {
     const handleLikeChange = async (event) => {
       if (session) {
-        const response = await fetch(`/api/users/${session.user.id}/likes`);
-        if (response.ok) {
-          const likedStyles = await response.json();
-          setStyles((prev) => ({
-            ...prev,
+        const [likedRes, generatedRes] = await Promise.all([
+          fetch(`/api/styles?likedBy=${session.user.id}`),
+          fetch(`/api/styles?createdBy=${session.user.id}`),
+        ]);
+
+        if (likedRes.ok && generatedRes.ok) {
+          const [likedStyles, generatedStyles] = await Promise.all([
+            likedRes.json(),
+            generatedRes.json(),
+          ]);
+
+          setStyles({
             liked: likedStyles,
-          }));
+            generated: generatedStyles,
+          });
         }
       }
     };
