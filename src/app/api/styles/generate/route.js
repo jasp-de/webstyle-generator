@@ -29,7 +29,12 @@ export async function POST(request) {
       messages: [
         {
           role: "system",
-          content: `You are a web design expert that generates CSS styles in JSON format. Create a unique, creative and style. Follow this structure:
+          content:
+            "You are a web design expert that generates CSS styles in JSON format. Return only valid JSON with no markdown formatting, no code blocks, and no backticks.",
+        },
+        {
+          role: "user",
+          content: `Create a unique, creative style following this exact structure:
 
 {
   "text": {
@@ -39,85 +44,51 @@ export async function POST(request) {
   },
   "info": {
     "name": "Descriptive name of the Design-Style",
-    "fontname": "Specific Google Font that matches the style",
+    "fontnames": "1-2 Specific Google Fonts that match the style",
     "colorScheme": "Color palette description",
     "style": "three specific style adjectives",
     "features": "Key visual effects and animations"
   },
-  "tags": ["Include 5-7 relevant design tags that are specific to the style - no generic tags such as web-design or "],
+  "tags": ["Include 7 relevant design tags that are specific to the style. The first tag must the name of the style. Dont include generic tags such as web-design"],
+  "css": "Create a self-contained CSS style following these strict rules:
 
-  "css": ".style-name { 
-    background: #000; 
-    color: #fff; 
-    font-family: 'Font Name', sans-serif; 
-    position: relative; 
-    overflow: hidden; 
-  } 
-  
-  .style-name::before { 
-    content: ''; 
-    position: absolute; 
-    inset: 0; 
-    z-index: 1;
-    background-image: linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
-    background-size: 20px 20px; 
-    animation: style-name-pattern 10s linear infinite; 
-  } 
-  
-  .style-name h1, 
-  .style-name p, 
-  .style-name button { 
-    position: relative;
-    z-index: 2;
-  }
-  
-  .style-name button { 
-    background: transparent; 
-    border: 1px solid currentColor; 
-    transition: all 0.3s ease;
-    cursor: pointer;
-  } 
-  
-  .style-name button:hover { 
-    background: rgba(255,255,255,0.1);
-    transform: translateY(-2px);
-    box-shadow: 0 0 20px rgba(255,255,255,0.2);
-  }"
+1. Class Naming:
+   - Use lowercase kebab-case for ALL class names (example: .cyber-punk)
+   - Main container class must match the lowercase name
+   - All selectors must use the exact same class name
+
+2. Selector Structure:
+   - Container: .style-name { }
+   - Elements: .style-name h1 { }, .style-name p { }, .style-name button { }
+   - Hover: .style-name button:hover { }
+   - Animations: @keyframes style-name-animation { }
+
+3. Style Guidelines:
+   - Background and base styles in container
+   - Direct child selectors for elements
+   - One hover effect for button
+   - Optional: one keyframe animation
+
+4. Format:
+   - No empty lines between rules
+   - No spaces before opening braces
+   - One space after colons
+   - Semicolon after each property
+
+Example format:
+.style-name{background:linear-gradient(...)}.style-name h1{color:#fff}.style-name p{color:#000}.style-name button{background:#fff}.style-name button:hover{transform:scale(1.1)}@keyframes style-name-animation{0%{opacity:0}100%{opacity:1}}
+
+IMPORTANT: Always use the exact same lowercase kebab-case class name throughout the entire CSS."
 }
 
-Important:
-1. Create a cohesive theme throughout all elements
-2. Write CSS as a single line string without line breaks
-3. Include all required CSS selectors
-4. Make the style name match between title, info.name, and CSS classes
-5. For visual effects you can use:
-
-   a) Background Pattern:
-      - Solid Colors
-      - Gradients
-      - SVG Patterns 
-      - SVG Images from the web
-      - Solid color with (gradient) overlay effects
-
-   b) Animation Layer:
-      - Must be smooth and looping
-      - Use ::before or ::after for overlays
-      - Ensure start and end states match
-
-    c) H1 Text effects
-      - Text Gradient
-      - Optional text effects
-      - Optional glow effects
-
-6. When using SVG patterns:
-   - Ensure pattern tiles seamlessly
-   - Use proper URL encoding
-   - Keep viewBox proportional
-
-7. Make sure the css classes are all in lowercase and replace any spaces with "-"
-8. Make sure THE TEXT and BUTTON ELEMENTS are in the front layer!
-9. Make sure every button has a hover animation!
-10. Ensure proper contrast and readability of text and button!
+IMPORTANT:
+1. Never use standalone element selectors (h1, p, button)
+2. Always prefix classes and animations with the style name (i.e. style-name h1)
+3. Keep styles contained within the main component class
+4. Avoid position: fixed or absolute positioning
+5. Limit special effects to maintain performance
+6. Avoid any spacing, margins, and padding.
+7. Choose tasteful Font-Combinations
 
 Base your response on this prompt: ${prompt}`,
         },

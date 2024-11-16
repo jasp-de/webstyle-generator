@@ -8,7 +8,7 @@ const StyleSchema = new mongoose.Schema({
   },
   info: {
     name: String,
-    fontname: String,
+    fontnames: String,
     colorScheme: String,
     style: String,
     features: String,

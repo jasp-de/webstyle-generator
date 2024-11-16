@@ -119,7 +119,7 @@ export default function StyleCard({ style, onUnlike, onDelete }) {
         </div>
         <div className="style-details">
           <code>
-            <strong>Font:</strong> {info.fontname}
+            <strong>Fonts:</strong> {info.fontnames}
             <br />
             <strong>Colors:</strong> {info.colorScheme}
             <br />
