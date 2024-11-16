@@ -88,7 +88,8 @@ IMPORTANT:
 4. Avoid position: fixed or absolute positioning
 5. Limit special effects to maintain performance
 6. Avoid any spacing, margins, and padding.
-7. Choose tasteful Font-Combinations
+7. Choose tasteful font-Combinations.
+8. Ensure sufficient contrast between backgground and text-elements.
 
 Base your response on this prompt: ${prompt}`,
         },
