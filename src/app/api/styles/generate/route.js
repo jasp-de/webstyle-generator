@@ -7,10 +7,20 @@ function validateAndFormatStyle(style) {
     throw new Error("Generated style missing name");
   }
 
-  const cssName = style.info.name.toLowerCase().replace(/\s+/g, "-");
+  const cssName = style.info.name
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-");
+
+  if (!cssName.match(/^[a-z][a-z0-9-]*$/)) {
+    throw new Error("Invalid style name format");
+  }
+
   style.css = style.css
-    .replace(/\.[\w-]+\s*{/g, `.${cssName} {`)
-    .replace(/\.[\w-]+::/g, `.${cssName}::`);
+    .replace(/\.[a-zA-Z0-9-_]+\s*{/g, `.${cssName} {`)
+    .replace(/\.[a-zA-Z0-9-_]+::/g, `.${cssName}::`)
+    .replace(/\.[a-zA-Z0-9-_]+:/g, `.${cssName}:`);
 
   return style;
 }
@@ -53,8 +63,12 @@ export async function POST(request) {
   "css": "Create a self-contained CSS style following these strict rules:
 
 1. Class Naming:
-   - Use lowercase kebab-case for ALL class names (example: .cyber-punk)
-   - Main container class must match the lowercase name
+   - Use ONLY lowercase letters, numbers, and single hyphens for class names
+   - Class name must start with a letter
+   - No special characters or spaces allowed
+   - Example valid names: 'cyber-punk', 'neon-glow', 'retro-wave'
+   - Example invalid names: 'Cyber_Punk', 'neon & glow', 'retro--wave'
+   - Main container class must match the info.name in kebab-case
    - All selectors must use the exact same class name
 
 2. Selector Structure:
