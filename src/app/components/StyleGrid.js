@@ -8,8 +8,10 @@ export default function StyleGrid({
   onDelete,
   searchTerm,
   sortBy,
+  setSortBy,
 }) {
   const [styles, setStyles] = useState([]);
+  const [lastUpdate, setLastUpdate] = useState(Date.now());
 
   const sortStyles = (styles) => {
     switch (sortBy) {
@@ -36,24 +38,46 @@ export default function StyleGrid({
     );
   };
 
+  const fetchAndUpdateStyles = async (forceNewest = false) => {
+    try {
+      const response = await fetch("/api/styles");
+      if (!response.ok) throw new Error("Failed to fetch styles");
+      const data = await response.json();
+      if (forceNewest && setSortBy) {
+        setSortBy("newest");
+      }
+      setStyles(filterStyles(sortStyles(data)));
+    } catch (error) {
+      console.error("Error fetching styles:", error);
+      setStyles([]);
+    }
+  };
+
+  useEffect(() => {
+    if (!propStyles) {
+      const interval = setInterval(() => {
+        setLastUpdate(Date.now());
+      }, 5000);
+      return () => clearInterval(interval);
+    }
+  }, [propStyles]);
+
   useEffect(() => {
     if (propStyles) {
       setStyles(filterStyles(sortStyles(propStyles)));
     } else {
-      const fetchStyles = async () => {
-        try {
-          const response = await fetch("/api/styles");
-          if (!response.ok) throw new Error("Failed to fetch styles");
-          const data = await response.json();
-          setStyles(filterStyles(sortStyles(data)));
-        } catch (error) {
-          console.error("Error fetching styles:", error);
-          setStyles([]);
-        }
-      };
-      fetchStyles();
+      fetchAndUpdateStyles();
     }
-  }, [propStyles, sortBy, searchTerm]);
+  }, [propStyles, sortBy, searchTerm, lastUpdate]);
+
+  useEffect(() => {
+    const handleStyleGenerated = () => {
+      fetchAndUpdateStyles(true);
+    };
+    window.addEventListener("styleGenerated", handleStyleGenerated);
+    return () =>
+      window.removeEventListener("styleGenerated", handleStyleGenerated);
+  }, []);
 
   return (
     <div className="style-grid">
