@@ -60,6 +60,10 @@ export default function StyleGenerator({ onStyleGenerated }) {
       setTimeout(() => {
         setSuccessMessage("");
       }, 3000);
+
+      // Trigger a refresh of the grid
+      const event = new CustomEvent("styleGenerated");
+      window.dispatchEvent(event);
     } catch (err) {
       setError(err.message);
     } finally {

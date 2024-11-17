@@ -23,7 +23,11 @@ export default function Home() {
           setSortBy={setSortBy}
         />
         <StyleGenerator />
-        <StyleGrid searchTerm={searchTerm} sortBy={sortBy} />
+        <StyleGrid
+          searchTerm={searchTerm}
+          sortBy={sortBy}
+          setSortBy={setSortBy}
+        />
       </main>
     </div>
   );
