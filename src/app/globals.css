@@ -222,12 +222,16 @@ code {
   border: 2px solid #eee;
   border-radius: 8px;
   font-size: 16px;
-  transition: border-color 0.3s ease;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
 }
 
 .style-generator input:focus {
   outline: none;
   border-color: #4a90e2;
+}
+
+.style-generator input.loading {
+  background-color: #dfdfdf;
 }
 
 .style-generator button {
@@ -292,7 +296,6 @@ code {
 }
 
 .nav-content {
-  max-width: 1200px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
