@@ -222,12 +222,16 @@ code {
   border: 2px solid #eee;
   border-radius: 8px;
   font-size: 16px;
-  transition: border-color 0.3s ease;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
 }
 
 .style-generator input:focus {
   outline: none;
   border-color: #4a90e2;
+}
+
+.style-generator input.loading {
+  background-color: #dfdfdf;
 }
 
 .style-generator button {
@@ -292,7 +296,6 @@ code {
 }
 
 .nav-content {
-  max-width: 1200px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -453,6 +456,10 @@ code {
   background: #357abd;
 }
 
+.credits {
+  font-size: 0.8rem;
+}
+
 @media (max-width: 768px) {
   .navigation {
     padding: 1rem;
@@ -465,11 +472,11 @@ code {
   }
 
   .nav-title h1 {
-    font-size: 1.5rem;
+    font-size: 2.2rem;
   }
 
   .nav-title p {
-    font-size: 0.9rem;
+    font-size: 1.2rem;
   }
 
   .nav-links {
@@ -489,16 +496,28 @@ code {
     width: 100%;
     padding: 0.75rem;
   }
+
+  .nav-title p.credits {
+    font-size: 0.8rem;
+  }
 }
 
 .controls-section {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  align-content: center;
+  align-items: center;
   gap: 1rem;
   padding: 0 1rem;
   max-width: 800px;
   width: 100%;
+}
+
+@media (max-width: 768px) {
+  .controls-section {
+    justify-content: center;
+  }
 }
 
 .search-box input,

@@ -23,6 +23,7 @@ export default function Navigation() {
           <div className="nav-title">
             <h1>Webstyle Explorer</h1>
             <p>Discover Web Design Aesthetics</p>
+            <p className="credits">made with 🩵 by jasp-de</p>
           </div>
           <div className="nav-links">
             <Link href="/">Home</Link>
