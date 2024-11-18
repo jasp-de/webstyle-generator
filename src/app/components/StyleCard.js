@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react";
 import StyleSheet from "./StyleSheet";
 import SignInPopup from "./SignInPopup";
 import { processCssWithSvg } from "../utils/cssUtils";
+import Link from "next/link";
 
 export default function StyleCard({ style, onUnlike, onDelete, onTagClick }) {
   const { data: session } = useSession();
@@ -101,65 +102,52 @@ export default function StyleCard({ style, onUnlike, onDelete, onTagClick }) {
         <button>{text.buttonText}</button>
       </div>
       <div className="style-info">
-        <div className="style-actions">
-          <div className="style-name">{info.name}</div>
-          <div className="action-buttons">
-            <button
-              className={`like-button ${isLiked ? "liked" : ""}`}
-              onClick={handleLike}
-            >
-              <span className="like-count">{likeCount}</span> ♥
-            </button>
-            {session && session.user.id === style.createdBy && (
-              <button className="delete-button" onClick={handleDelete}>
-                🗑️
-              </button>
-            )}
+        <div className="style-content-wrapper">
+          <div className="style-details">
+            <code>
+              <strong>Fonts:</strong> {info.fontnames}
+              <br />
+              <strong>Colors:</strong> {info.colorScheme}
+              <br />
+              <strong>Style:</strong> {info.style}
+              <br />
+              <strong>Features:</strong> {info.features}
+            </code>
+          </div>
+          <div className="style-tags">
+            {tags.map((tag, index) => (
+              <span
+                key={index}
+                className="style-tag"
+                onClick={() => onTagClick(tag)}
+                style={{ cursor: "pointer" }}
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+          <div className="style-details">
+            <p>Created by: {style.createdBy}</p>
+            <p>Prompt: {info.prompt}</p>
           </div>
         </div>
-        <div className="style-details">
-          <code>
-            <strong>Fonts:</strong> {info.fontnames}
-            <br />
-            <strong>Colors:</strong> {info.colorScheme}
-            <br />
-            <strong>Style:</strong> {info.style}
-            <br />
-            <strong>Features:</strong> {info.features}
-          </code>
-        </div>
-        <div className="style-tags">
-          {tags.map((tag, index) => (
-            <span
-              key={index}
-              className="style-tag"
-              onClick={() => onTagClick(tag)}
-              style={{ cursor: "pointer" }}
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-        <div className="style-details">Created by: {style.createdBy}</div>
-        <div className="style-details">Prompt: {info.prompt}</div>
-
         <button
           className="expand-button"
           onClick={() => setIsExpanded(!isExpanded)}
         >
           {isExpanded ? "Hide CSS" : "Show CSS"}
         </button>
-        <div
-          className="expandable-section"
-          style={{ display: isExpanded ? "block" : "none" }}
-        >
-          <pre>
-            <code>{css}</code>
-          </pre>
-          <button className="copy-button" onClick={copyToClipboard}>
-            Copy CSS
-          </button>
-        </div>
+      </div>
+      <div
+        className="expandable-section"
+        style={{ display: isExpanded ? "block" : "none" }}
+      >
+        <pre>
+          <code>{css}</code>
+        </pre>
+        <button className="copy-button" onClick={copyToClipboard}>
+          Copy CSS
+        </button>
       </div>
     </div>
   );

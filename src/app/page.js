@@ -7,18 +7,8 @@ import { useSession } from "next-auth/react";
 import SearchBar from "./components/SearchBar";
 
 export default function Home() {
-  const [sortBy, setSortBy] = useState("newest");
+  const [sortBy, setSortBy] = useState("mostLiked");
   const [searchTerm, setSearchTerm] = useState("");
-  const [searchTags, setSearchTags] = useState([]);
-
-  const handleTagClick = (tag) => {
-    setSearchTags((prev) => {
-      if (prev.includes(tag)) {
-        return prev.filter((t) => t !== tag);
-      }
-      return [...prev, tag];
-    });
-  };
 
   return (
     <div className={styles.page}>
