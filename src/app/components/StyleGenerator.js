@@ -40,6 +40,10 @@ export default function StyleGenerator({ onStyleGenerated }) {
         body: JSON.stringify({
           ...generatedStyle,
           createdBy: session?.user?.id || "anonymous",
+          info: {
+            ...generatedStyle.info,
+            prompt: prompt,
+          },
         }),
       });
 

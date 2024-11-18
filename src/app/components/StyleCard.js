@@ -135,6 +135,9 @@ export default function StyleCard({ style, onUnlike, onDelete }) {
             </span>
           ))}
         </div>
+        <div className="style-details">Created by: {style.createdBy}</div>
+        <div className="style-details">Original Prompt: {info.prompt}</div>
+
         <button
           className="expand-button"
           onClick={() => setIsExpanded(!isExpanded)}

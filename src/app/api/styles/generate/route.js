@@ -57,7 +57,8 @@ export async function POST(request) {
     "fontnames": "1-2 Specific Google Fonts that match the style",
     "colorScheme": "Color palette description",
     "style": "three specific style adjectives",
-    "features": "Key visual effects and animations"
+    "features": "Key visual effects and animations",
+    "prompt": "the oringal user prompt"
   },
   "tags": ["Include 7 relevant design tags that are specific to the style. The first tag must the name of the style. Dont include generic tags such as web-design, google-font, etc "],
   "css": "Create a self-contained CSS style following these strict rules:

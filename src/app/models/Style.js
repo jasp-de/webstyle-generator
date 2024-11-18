@@ -12,6 +12,7 @@ const StyleSchema = new mongoose.Schema({
     colorScheme: String,
     style: String,
     features: String,
+    prompt: String,
   },
   css: String,
   tags: [String],
