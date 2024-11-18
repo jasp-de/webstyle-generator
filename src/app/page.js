@@ -22,7 +22,8 @@ export default function Home() {
           sortBy={sortBy}
           setSortBy={setSortBy}
         />
-        <StyleGenerator />
+        <StyleGenerator> </StyleGenerator>
+
         <StyleGrid
           searchTerm={searchTerm}
           sortBy={sortBy}

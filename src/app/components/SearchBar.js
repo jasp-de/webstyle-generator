@@ -1,4 +1,5 @@
 "use client";
+import StyleGenerator from "./StyleGenerator";
 
 export default function SearchBar({
   searchTerm,
