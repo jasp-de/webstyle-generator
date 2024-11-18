@@ -73,6 +73,10 @@ export default function StyleGenerator({ onStyleGenerated }) {
 
   return (
     <div className="style-generator">
+      <div className="style-generator__heading">
+        {" "}
+        Generate a new Style with AI
+      </div>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
