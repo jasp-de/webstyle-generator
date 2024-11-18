@@ -506,10 +506,18 @@ code {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  align-content: center;
+  align-items: center;
   gap: 1rem;
   padding: 0 1rem;
   max-width: 800px;
   width: 100%;
+}
+
+@media (max-width: 768px) {
+  .controls-section {
+    justify-content: center;
+  }
 }
 
 .search-box input,
