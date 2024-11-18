@@ -152,7 +152,7 @@ body {
 
 .style-generator {
   align-self: center;
-  padding: 0rem 1rem;
+  padding: 0.5rem 1rem;
   padding-bottom: 2rem;
   max-width: 800px;
 }
@@ -161,7 +161,7 @@ body {
   font-size: 1.2rem;
   font-weight: 600;
   padding: 1rem 0rem;
-  text-align: flex-start;
+  text-align: center;
 }
 
 @media (max-width: 480px) {
@@ -179,12 +179,18 @@ body {
 
 .style-generator input {
   flex: 1;
-  min-width: 0;
+  min-width: 300px;
   padding: 1rem;
   border: 2px solid #eee;
   border-radius: 8px;
   font-size: 16px;
   transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+@media (max-width: 480px) {
+  .style-generator input {
+    min-width: 200px;
+  }
 }
 
 .style-generator input:focus {
@@ -473,7 +479,7 @@ body {
   align-content: center;
   align-items: center;
   gap: 1rem;
-  padding: 0 1rem;
+  padding: 0.5rem 1rem;
   width: 100%;
 }
 
