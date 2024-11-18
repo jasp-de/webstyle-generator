@@ -4,12 +4,9 @@ import styles from "./page.module.css";
 import StyleGrid from "./components/StyleGrid";
 import StyleGenerator from "./components/StyleGenerator";
 import { useSession } from "next-auth/react";
-import Link from "next/link";
-import Navigation from "./components/Navigation";
 import SearchBar from "./components/SearchBar";
 
 export default function Home() {
-  const { data: session } = useSession();
   const [sortBy, setSortBy] = useState("newest");
   const [searchTerm, setSearchTerm] = useState("");
   const [searchTags, setSearchTags] = useState([]);

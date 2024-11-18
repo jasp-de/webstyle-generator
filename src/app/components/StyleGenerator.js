@@ -42,7 +42,6 @@ export default function StyleGenerator({ onStyleGenerated }) {
           createdBy: session?.user?.id || "anon",
           info: {
             ...generatedStyle.info,
-            prompt: prompt,
           },
         }),
       });

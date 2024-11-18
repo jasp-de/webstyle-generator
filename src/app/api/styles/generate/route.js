@@ -91,20 +91,17 @@ export async function POST(request) {
    - Semicolon after each property
 
 Example format:
-.style-name{background:linear-gradient(...)}.style-name h1{color:#fff}.style-name p{color:#000}.style-name button{background:#fff}.style-name button:hover{transform:scale(1.1)}@keyframes style-name-animation{0%{opacity:0}100%{opacity:1}}
-
-IMPORTANT: Always use the exact same lowercase kebab-case class name throughout the entire CSS."
-}
+.style-name{background:linear-gradient(...)}.style-name h1{color:#fff}.style-name p{color:#000}.style-name button{background:#fff}.style-name button:hover{transform:scale(1.1)}@keyframes style-name-animation{0%{opacity:0}100%{opacity:1}}"}
 
 IMPORTANT:
 1. Never use standalone element selectors (h1, p, button)
 2. Always prefix classes and animations with the style name (i.e. style-name h1)
 3. Keep styles contained within the main component class
-4. Avoid position: fixed or absolute positioning
-5. Limit special effects to maintain performance
+4. Avoid any position: fixed or absolute positioning
 6. Avoid any spacing, margins, and padding.
 7. Choose tasteful font-Combinations.
 8. Ensure sufficient contrast between backgground and text-elements.
+SUPER IMPORTANT: Always use the exact same lowercase kebab-case class name throughout the entire CSS.
 
 Base your response on this prompt: ${prompt}`,
         },

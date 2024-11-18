@@ -22,7 +22,7 @@ export default function Navigation() {
         <div className="nav-content">
           <div className="nav-title">
             <h1>Webstyle Explorer</h1>
-            <p>Discover and compare different web design aesthetics</p>
+            <p>Discover Web Design Aesthetics</p>
           </div>
           <div className="nav-links">
             <Link href="/">Home</Link>
