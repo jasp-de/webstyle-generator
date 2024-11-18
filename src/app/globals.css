@@ -456,6 +456,10 @@ code {
   background: #357abd;
 }
 
+.credits {
+  font-size: 0.8rem;
+}
+
 @media (max-width: 768px) {
   .navigation {
     padding: 1rem;
@@ -468,11 +472,11 @@ code {
   }
 
   .nav-title h1 {
-    font-size: 1.5rem;
+    font-size: 2.2rem;
   }
 
   .nav-title p {
-    font-size: 0.9rem;
+    font-size: 1.2rem;
   }
 
   .nav-links {
@@ -491,6 +495,10 @@ code {
   .auth-button {
     width: 100%;
     padding: 0.75rem;
+  }
+
+  .nav-title p.credits {
+    font-size: 0.8rem;
   }
 }
 
