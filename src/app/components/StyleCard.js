@@ -6,7 +6,7 @@ import StyleSheet from "./StyleSheet";
 import SignInPopup from "./SignInPopup";
 import { processCssWithSvg } from "../utils/cssUtils";
 
-export default function StyleCard({ style, onUnlike, onDelete }) {
+export default function StyleCard({ style, onUnlike, onDelete, onTagClick }) {
   const { data: session } = useSession();
   const [isLiked, setIsLiked] = useState(
     style.likedBy?.includes(session?.user?.id) || false
@@ -130,7 +130,12 @@ export default function StyleCard({ style, onUnlike, onDelete }) {
         </div>
         <div className="style-tags">
           {tags.map((tag, index) => (
-            <span key={index} className="style-tag">
+            <span
+              key={index}
+              className="style-tag"
+              onClick={() => onTagClick(tag)}
+              style={{ cursor: "pointer" }}
+            >
               {tag}
             </span>
           ))}

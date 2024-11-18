@@ -39,7 +39,7 @@ export default function StyleGenerator({ onStyleGenerated }) {
         },
         body: JSON.stringify({
           ...generatedStyle,
-          createdBy: session?.user?.id || "anonymous",
+          createdBy: session?.user?.id || "anon",
           info: {
             ...generatedStyle.info,
             prompt: prompt,
