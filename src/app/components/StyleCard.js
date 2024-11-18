@@ -102,34 +102,49 @@ export default function StyleCard({ style, onUnlike, onDelete, onTagClick }) {
         <button>{text.buttonText}</button>
       </div>
       <div className="style-info">
-        <div className="style-content-wrapper">
-          <div className="style-details">
-            <code>
-              <strong>Fonts:</strong> {info.fontnames}
-              <br />
-              <strong>Colors:</strong> {info.colorScheme}
-              <br />
-              <strong>Style:</strong> {info.style}
-              <br />
-              <strong>Features:</strong> {info.features}
-            </code>
+        <div className="style-actions">
+          <div className="style-name">{info.name}</div>
+          <div className="action-buttons">
+            <button
+              className={`like-button ${isLiked ? "liked" : ""}`}
+              onClick={handleLike}
+            >
+              <span className="like-count">{likeCount}</span> ♥
+            </button>
+            {session && session.user.id === style.createdBy && (
+              <button className="delete-button" onClick={handleDelete}>
+                🗑️
+              </button>
+            )}
           </div>
-          <div className="style-tags">
-            {tags.map((tag, index) => (
-              <span
-                key={index}
-                className="style-tag"
-                onClick={() => onTagClick(tag)}
-                style={{ cursor: "pointer" }}
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-          <div className="style-details">
-            <p>Created by: {style.createdBy}</p>
-            <p>Prompt: {info.prompt}</p>
-          </div>
+        </div>
+        <div className="style-details">
+          <code>
+            <strong>Fonts:</strong> {info.fontnames}
+            <br />
+            <strong>Colors:</strong> {info.colorScheme}
+            <br />
+            <strong>Style:</strong> {info.style}
+            <br />
+            <strong>Features:</strong> {info.features}
+          </code>
+        </div>
+        <div className="style-tags">
+          {tags.map((tag, index) => (
+            <span
+              key={index}
+              className="style-tag"
+              onClick={() => onTagClick(tag)}
+              style={{ cursor: "pointer" }}
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        <div className="style-details">
+          <p>Created by: {style.createdBy}</p>
+          <p>Prompt: {info.prompt}</p>
         </div>
         <button
           className="expand-button"
@@ -137,17 +152,17 @@ export default function StyleCard({ style, onUnlike, onDelete, onTagClick }) {
         >
           {isExpanded ? "Hide CSS" : "Show CSS"}
         </button>
-      </div>
-      <div
-        className="expandable-section"
-        style={{ display: isExpanded ? "block" : "none" }}
-      >
-        <pre>
-          <code>{css}</code>
-        </pre>
-        <button className="copy-button" onClick={copyToClipboard}>
-          Copy CSS
-        </button>
+        <div
+          className="expandable-section"
+          style={{ display: isExpanded ? "block" : "none" }}
+        >
+          <pre>
+            <code>{css}</code>
+          </pre>
+          <button className="copy-button" onClick={copyToClipboard}>
+            Copy CSS
+          </button>
+        </div>
       </div>
     </div>
   );
