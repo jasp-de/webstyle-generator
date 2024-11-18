@@ -151,9 +151,10 @@ body {
 }
 
 .style-generator {
-  max-width: 800px;
+  align-self: center;
   padding: 0rem 1rem;
   padding-bottom: 2rem;
+  max-width: 800px;
 }
 
 .style-generator__heading {
@@ -267,6 +268,7 @@ body {
   display: flex;
   gap: 1rem;
   align-items: center;
+  align-self: flex-start;
 }
 
 .nav-title h1 {
@@ -444,6 +446,7 @@ body {
     flex-direction: row;
     width: 100%;
     gap: 0.5rem;
+    align-self: flex-start;
   }
 
   .nav-links a {
@@ -466,12 +469,11 @@ body {
 .controls-section {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: center;
   align-content: center;
   align-items: center;
   gap: 1rem;
   padding: 0 1rem;
-  max-width: 800px;
   width: 100%;
 }
 
