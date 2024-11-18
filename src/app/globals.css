@@ -191,7 +191,8 @@ code {
 .style-generator {
   max-width: 800px;
   margin: 0px 0.4rem;
-  padding: 1rem;
+  padding: 0rem 1rem;
+  padding-bottom: 2rem;
 }
 
 .style-generator__heading {
@@ -269,10 +270,6 @@ code {
 }
 
 @media (max-width: 480px) {
-  .style-generator {
-    padding-bottom: 1rem;
-  }
-
   .style-generator form {
     gap: 8px;
   }
