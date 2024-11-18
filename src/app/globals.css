@@ -190,7 +190,6 @@ code {
 
 .style-generator {
   max-width: 800px;
-  margin: 0px 0.4rem;
   padding: 0rem 1rem;
   padding-bottom: 2rem;
 }
@@ -620,4 +619,15 @@ code {
   opacity: 0.6;
   padding: 4px;
   line-height: 1;
+}
+
+.user-link {
+  color: #4a90e2;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.user-link:hover {
+  color: #357abd;
+  text-decoration: underline;
 }

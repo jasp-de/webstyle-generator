@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react";
 import StyleSheet from "./StyleSheet";
 import SignInPopup from "./SignInPopup";
 import { processCssWithSvg } from "../utils/cssUtils";
+import Link from "next/link";
 
 export default function StyleCard({ style, onUnlike, onDelete, onTagClick }) {
   const { data: session } = useSession();
@@ -140,7 +141,8 @@ export default function StyleCard({ style, onUnlike, onDelete, onTagClick }) {
             </span>
           ))}
         </div>
-        <div className="style-details">Created by: {style.createdBy}</div>
+
+        <div className="style-details">Created by: {style.createdBy} </div>
         <div className="style-details">Prompt: {info.prompt}</div>
 
         <button
