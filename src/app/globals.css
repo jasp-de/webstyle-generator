@@ -154,7 +154,6 @@ body {
   align-self: center;
   padding: 0.5rem 1rem;
   padding-bottom: 2rem;
-  max-width: 800px;
 }
 
 .style-generator__heading {
@@ -390,7 +389,6 @@ body {
 
 .profile-page .generate-section {
   margin: 2rem 0;
-  padding: 1rem;
   background: var(--background-secondary);
   border-radius: 8px;
 }
