@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useSession } from "next-auth/react";
 
-export default function StyleGenerator({ onStyleGenerated }) {
+export default function StyleGenerator({ onStyleGenerated, setSortBy }) {
   const { data: session } = useSession();
   const [prompt, setPrompt] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -16,57 +16,42 @@ export default function StyleGenerator({ onStyleGenerated }) {
     setSuccessMessage("");
 
     try {
-      // First, get the style from OpenAI
       const aiResponse = await fetch("/api/styles/generate", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ prompt }),
       });
 
-      if (!aiResponse.ok) {
-        throw new Error("Failed to generate style");
-      }
-
+      if (!aiResponse.ok) throw new Error("Failed to generate style");
       const generatedStyle = await aiResponse.json();
 
-      // Then, save the style to the database
       const dbResponse = await fetch("/api/styles", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...generatedStyle,
           createdBy: session?.user?.id || "anon",
-          info: {
-            ...generatedStyle.info,
-          },
+          info: { ...generatedStyle.info },
         }),
       });
 
-      if (!dbResponse.ok) {
-        throw new Error("Failed to save style");
+      if (!dbResponse.ok) throw new Error("Failed to save style");
+      const savedStyle = await dbResponse.json();
+
+      if (setSortBy) {
+        setSortBy("newest");
       }
 
-      const savedStyle = await dbResponse.json();
-      setPrompt("");
-      setSuccessMessage("Style generated successfully!");
+      const event = new CustomEvent("styleGenerated");
+      window.dispatchEvent(event);
 
-      // Call the callback with the saved style
       if (onStyleGenerated) {
         onStyleGenerated(savedStyle);
       }
 
-      // Clear success message after 3 seconds
-      setTimeout(() => {
-        setSuccessMessage("");
-      }, 3000);
-
-      // Trigger a refresh of the grid
-      const event = new CustomEvent("styleGenerated");
-      window.dispatchEvent(event);
+      setPrompt("");
+      setSuccessMessage("Style generated successfully!");
+      setTimeout(() => setSuccessMessage(""), 3000);
     } catch (err) {
       setError(err.message);
     } finally {

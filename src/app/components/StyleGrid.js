@@ -38,16 +38,11 @@ export default function StyleGrid({
     );
   };
 
-  const fetchAndUpdateStyles = async (forceNewest = false) => {
+  const fetchAndUpdateStyles = async () => {
     try {
       const response = await fetch("/api/styles");
       if (!response.ok) throw new Error("Failed to fetch styles");
       const data = await response.json();
-
-      if (forceNewest && setSortBy && sortBy !== "newest") {
-        setSortBy("newest");
-      }
-
       setStyles(filterStyles(sortStyles(data)));
     } catch (error) {
       console.error("Error fetching styles:", error);
@@ -74,12 +69,12 @@ export default function StyleGrid({
 
   useEffect(() => {
     const handleStyleGenerated = () => {
-      fetchAndUpdateStyles(true);
+      fetchAndUpdateStyles();
     };
     window.addEventListener("styleGenerated", handleStyleGenerated);
     return () =>
       window.removeEventListener("styleGenerated", handleStyleGenerated);
-  }, []);
+  }, [sortBy]);
 
   return (
     <div className="style-grid">
