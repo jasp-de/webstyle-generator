@@ -91,7 +91,7 @@ export async function POST(request) {
    - Semicolon after each property
 
 Example format:
-.style-name{background:linear-gradient(...)}.style-name h1{color:#fff}.style-name p{color:#000}.style-name button{background:#fff}.style-name button:hover{transform:scale(1.1)}@keyframes style-name-animation{0%{opacity:0}100%{opacity:1}}"}
+.style-name{background:linear-gradient(...)}.style-name h1{color:#fff}.style-name p{color:#000}.style-name button{background:#fff}.style-name button:hover{animation: style-name-animation 0.5s forwards}@keyframes style-name-animation{0%{opacity:0}100%{opacity:1}}"}
 
 SUPER IMPORTANT: Always use the exact same lowercase kebab-case class name throughout the entire CSS. Also for all pseudoclasses and animations!
 IMPORTANT:
@@ -102,6 +102,8 @@ IMPORTANT:
 6. Avoid any spacing, margins, and padding.
 7. Choose tasteful font-Combinations.
 8. Ensure sufficient contrast between backgground and text-elements.
+9. Make sure you add the keyframe animation to the target object (usually the button)!
+10. You can also use looping animations!
 
 Base your response on this prompt: ${prompt}`,
         },
