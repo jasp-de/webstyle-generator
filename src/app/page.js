@@ -1,10 +1,9 @@
 "use client";
 import { useState } from "react";
 import styles from "./page.module.css";
-import StyleGrid from "./components/StyleGrid";
 import StyleGenerator from "./components/StyleGenerator";
-import { useSession } from "next-auth/react";
 import SearchBar from "./components/SearchBar";
+import StyleGrid from "./components/StyleGrid";
 
 export default function Home() {
   const [sortBy, setSortBy] = useState("mostLiked");
@@ -20,7 +19,6 @@ export default function Home() {
           setSortBy={setSortBy}
         />
         <StyleGenerator> </StyleGenerator>
-
         <StyleGrid
           searchTerm={searchTerm}
           sortBy={sortBy}
