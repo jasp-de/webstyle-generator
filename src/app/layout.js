@@ -15,8 +15,8 @@ const geistMono = localFont({
 });
 
 export const metadata = {
-  title: "Webstyle Generator",
-  description: "Generate and compare Webstyles",
+  title: "Webstyle Explorer",
+  description: "Generate and compare webstyles",
 };
 
 export default function RootLayout({ children }) {
