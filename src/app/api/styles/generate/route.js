@@ -102,7 +102,7 @@ IMPORTANT:
 6. Avoid any spacing, margins, and padding.
 7. Choose tasteful font-Combinations.
 8. Ensure sufficient contrast between backgground and text-elements.
-9. Make sure you add the keyframe animation to the target object (usually the button)!
+9. Make sure you add the keyframe animation to the target object (usually the button) and use the proper name - style-name-animation !
 10. You can also use looping animations!
 
 Base your response on this prompt: ${prompt}`,
